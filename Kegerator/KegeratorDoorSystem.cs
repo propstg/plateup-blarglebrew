@@ -1,12 +1,12 @@
-﻿using BlargleBrew.Kegerator;
-using Kitchen;
+﻿using Kitchen;
+using KitchenBlargleBrew;
 using KitchenMods;
 using Unity.Entities;
 
-namespace KitchenBlargleBrew
-{
+namespace KitchenBlargleBrew.kegerator {
+
     [UpdateBefore(typeof(ItemTransferGroup))]
-    public class PreventCounterFlipWhenItemInHolderSystem : ItemInteractionSystem, IModSystem {
+    public class KegeratorDoorSystem : ItemInteractionSystem, IModSystem {
         private CKegeratorState state;
 
         protected override InteractionType RequiredType => InteractionType.Act;
@@ -18,11 +18,11 @@ namespace KitchenBlargleBrew
         protected override void Perform(ref InteractionData data) {
             BlargleBrewMod.Log("perform, current state = " + state.open);
 
-            if (isCounterClearOfItems(data)) {
+            //if (isCounterClearOfItems(data)) {
                 state.open = !state.open;
                 BlargleBrewMod.Log("new state = " + state.open);
                 SetComponent(data.Target, state);
-            }
+            //}
         }
 
         private bool isCounterClearOfItems(InteractionData data) {

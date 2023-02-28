@@ -4,23 +4,13 @@ using KitchenLib.Utils;
 using UnityEngine;
 
 namespace KitchenBlargleBrew {
-    public class Mug : CustomItem {
+
+    public class BeerIpa : CustomItem {
 
         public override Appliance DedicatedProvider => Refs.Kegerator;
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("mug");
         public override string ColourBlindTag => "";
-        public override string UniqueNameID => "BlargleBrew - Mug";
-
-        /*
-        public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
-            new Item.ItemProcess {
-                Duration = 1f,
-                IsBad = false,
-                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop),
-                Result = Refs.Keg
-            }
-        };
-        */
+        public override string UniqueNameID => "BlargleBrew - IPA Mug";
 
         public override void OnRegister(GameDataObject gdo) {
             var glass = MaterialUtils.GetExistingMaterial("BobaCup");

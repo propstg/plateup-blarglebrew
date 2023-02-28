@@ -1,6 +1,17 @@
-﻿using Kitchen;
+﻿using ApplianceLib.Api;
+using IngredientLib.Util;
+using Kitchen;
+using KitchenBlargleBrew.kegerator;
+using KitchenBusinglargleBrew.zeknikz;
+using KitchenData;
+using KitchenDrinksMod.Customs;
 using KitchenLib;
+using KitchenLib.Customs;
+using KitchenLib.Event;
+using KitchenLib.References;
+using KitchenLib.Utils;
 using KitchenMods;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -24,12 +35,24 @@ namespace KitchenBlargleBrew {
             bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
             Log($"Asset bundle loaded.");
 
-            AddGameDataObject<Mug>();
+            AddGameDataObject<BeerIpa>();
+            AddGameDataObject<BeerLight>();
             AddGameDataObject<EmptyMug>();
-            AddGameDataObject<Keg>();
-            AddGameDataObject<KegProvider>();
+            AddGameDataObject<EmptyKeg>();
+            AddGameDataObject<KegIpa>();
+            AddGameDataObject<KegLight>();
+            AddGameDataObject<KegIpaProvider>();
+            AddGameDataObject<KegLightProvider>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+            AddGameDataObject<BeerDish>();
+
+            Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
+                RestrictedItemSplits.BlacklistItem(Refs.KegIpa);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegIpa);
+                RestrictedItemSplits.BlacklistItem(Refs.KegLight);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
+            };
         }
 
         protected override void OnInitialise() {
@@ -49,5 +72,85 @@ namespace KitchenBlargleBrew {
         public static void Log(object message) {
             Debug.Log($"[{MOD_ID}] {message}");
         }
+    }
+
+    public class BeerDish : ModDish {
+        public override string UniqueNameID => "Blargle Beer";
+        public override DishType Type => DishType.Base;
+        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("mug");
+        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("mug");
+
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeIncrease;
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
+        public override bool IsAvailableAsLobbyOption => true;
+        public override List<string> StartingNameSet => new List<string> {
+            "BLARGLEBEER"
+        };
+
+        public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
+            Refs.BeerIpa,
+            Refs.BeerLight,
+            Refs.KegIpa,
+            Refs.KegLight,
+            (Item) GDOUtils.GetExistingGDO(ItemReferences.WineBottle)
+        };
+
+        public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
+            new Dish.MenuItem() {
+                Item = Refs.BeerIpa,
+                Phase = MenuPhase.Main,
+                Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerLight,
+                Phase = MenuPhase.Main,
+                Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerIpa,
+                Phase = MenuPhase.Starter,
+                Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerLight,
+                Phase = MenuPhase.Starter,
+                Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerIpa,
+                Phase = MenuPhase.Side,
+                Weight = 10 
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerLight,
+                Phase = MenuPhase.Side,
+                Weight = 10 
+            },
+            new Dish.MenuItem() {
+                Item = (Item) GDOUtils.GetExistingGDO(ItemReferences.WineBottle),
+                Phase = MenuPhase.Side,
+                Weight = 10,
+                
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerIpa,
+                Phase = MenuPhase.Dessert,
+                Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerLight,
+                Phase = MenuPhase.Dessert,
+                Weight = 1
+            }
+        };
+
+
+        public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
+            { Locale.English, "TODO" }
+        };
+
+        public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo> {
+            { Locale.English, LocalisationUtils.CreateUnlockInfo("Blargle Beer", "TODO", "TODO") }
+        };
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace KitchenBlargleBrew {
     public class EmptyMug : CustomItem {
 
-        public override Appliance DedicatedProvider => Refs.KegProvider;
+        public override Appliance DedicatedProvider => Refs.KegIpaProvider;
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("empty mug");
         public override string ColourBlindTag => "";
         public override string UniqueNameID => "BlargleBrew - Empty Mug";
