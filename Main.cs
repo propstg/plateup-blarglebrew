@@ -2,7 +2,6 @@
 using IngredientLib.Util;
 using Kitchen;
 using KitchenBlargleBrew.kegerator;
-using KitchenBusinglargleBrew.zeknikz;
 using KitchenData;
 using KitchenDrinksMod.Customs;
 using KitchenLib;
@@ -34,6 +33,11 @@ namespace KitchenBlargleBrew {
             Log($"Loading asset bundle...");
             bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
             Log($"Asset bundle loaded.");
+
+            AddGameDataObject<BeerCanEmpty>();
+            AddGameDataObject<BeerCanClosed>();
+            AddGameDataObject<BeerCanOpen>();
+            AddGameDataObject<BeerCanProvider>();
 
             AddGameDataObject<BeerIpa>();
             AddGameDataObject<BeerLight>();
@@ -92,6 +96,7 @@ namespace KitchenBlargleBrew {
             Refs.BeerLight,
             Refs.KegIpa,
             Refs.KegLight,
+            Refs.BeerCanClosed,
             (Item) GDOUtils.GetExistingGDO(ItemReferences.WineBottle)
         };
 
@@ -115,6 +120,11 @@ namespace KitchenBlargleBrew {
                 Item = Refs.BeerLight,
                 Phase = MenuPhase.Starter,
                 Weight = 1
+            },
+            new Dish.MenuItem() {
+                Item = Refs.BeerCanOpen,
+                Phase = MenuPhase.Main,
+                Weight = 10
             },
             new Dish.MenuItem() {
                 Item = Refs.BeerIpa,

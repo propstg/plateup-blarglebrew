@@ -16,11 +16,12 @@ namespace KitchenBlargleBrew {
         public override string UniqueNameID => "BlargleBrew - Keg IPA";
 
         public override void OnRegister(GameDataObject gdo) {
+            var metalVeryDark = MaterialUtils.GetExistingMaterial("Metal Very Dark");
             var metalBlack = MaterialUtils.GetExistingMaterial("Metal Black");
             var metalShiny = MaterialUtils.GetExistingMaterial("Metal- Shiny");
             MaterialUtils.ApplyMaterial(Prefab, "kegs", new Material[] { metalShiny });
             MaterialUtils.ApplyMaterial(Prefab, "labels", new Material[] { metalBlack });
-            MaterialUtils.ApplyMaterial(Prefab, "rack", new Material[] { metalShiny });
+            MaterialUtils.ApplyMaterial(Prefab, "rack", new Material[] { metalVeryDark });
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {
@@ -45,12 +46,12 @@ namespace KitchenBlargleBrew {
         public override string UniqueNameID => "BlargleBrew - Keg Light";
 
         public override void OnRegister(GameDataObject gdo) {
-            var metalBlack = MaterialUtils.GetExistingMaterial("Metal Black");
+            var metalBlack = MaterialUtils.GetExistingMaterial("Metal Very Dark");
             var metalShiny = MaterialUtils.GetExistingMaterial("Metal- Shiny");
             var label = MaterialUtils.GetExistingMaterial("Paper - Postit Yellow");
             MaterialUtils.ApplyMaterial(Prefab, "kegs", new Material[] { metalShiny });
             MaterialUtils.ApplyMaterial(Prefab, "labels", new Material[] { label });
-            MaterialUtils.ApplyMaterial(Prefab, "rack", new Material[] { metalShiny });
+            MaterialUtils.ApplyMaterial(Prefab, "rack", new Material[] { metalBlack });
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {
