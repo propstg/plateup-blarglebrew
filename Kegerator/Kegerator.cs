@@ -28,7 +28,6 @@ namespace KitchenBlargleBrew.kegerator {
             new CRestrictedSplitter {
                 ApplianceKey = UniqueNameID
             },
-            //KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<Mug>().GameDataObject.ID)
         };
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
@@ -37,27 +36,6 @@ namespace KitchenBlargleBrew.kegerator {
                 Description = "TODO"
             })
         };
-
-        /*
-        public override List<Appliance.ApplianceProcesses> Processes => new List<Appliance.ApplianceProcesses> {
-            new Appliance.ApplianceProcesses() {
-                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop),
-                Speed = 1f,
-                IsAutomatic = false
-            },
-            new Appliance.ApplianceProcesses() {
-                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Knead),
-                Speed = 1f,
-                IsAutomatic = false
-            },
-        };
-        */
-
-        /*
-        public override List<Appliance> Upgrades => new List<Appliance>() {
-            GDOUtils.GetExistingGDO(ApplianceReferences.Countertop) as Appliance
-        };
-        */
 
         public override void OnRegister(GameDataObject gameDataObject) {
             setupMaterials();
