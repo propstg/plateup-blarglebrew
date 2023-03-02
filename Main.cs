@@ -1,4 +1,5 @@
 ﻿using ApplianceLib.Api;
+using ApplianceLib.Customs.GDO;
 using IngredientLib.Util;
 using Kitchen;
 using KitchenBlargleBrew.kegerator;
@@ -159,8 +160,8 @@ namespace KitchenBlargleBrew {
             { Locale.English, "TODO" }
         };
 
-        public override IDictionary<Locale, UnlockInfo> LocalisedInfo => new Dictionary<Locale, UnlockInfo> {
-            { Locale.English, LocalisationUtils.CreateUnlockInfo("Blargle Beer", "TODO", "TODO") }
+        public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Blargle Beer", "TODO", "TODO") )}
         };
     }
 }
