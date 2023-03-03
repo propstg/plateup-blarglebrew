@@ -4,8 +4,8 @@
 
         protected override string beerMaterial => "Paper - Postit Yellow";
         protected override string foamMaterial => "Uncooked Batter";
-        protected override string name => "Light";
+        protected override string name => "Wheat";
         protected override string prefabName => "BeerLight";
-        public override string ColourBlindTag => "Lt";
+        public override string ColourBlindTag => "Wh";
     }
 }

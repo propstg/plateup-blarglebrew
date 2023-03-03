@@ -7,11 +7,9 @@ namespace KitchenBlargleBrew {
 
     public class BeerCanEmpty : CustomItem {
 
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerCanEmpty");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerCanCrushed");
         public override string ColourBlindTag => "";
         public override string UniqueNameID => "BlargleBrew - Beer Can Empty";
-
-        // TODO disposes to?
 
         public override void OnRegister(GameDataObject gdo) {
             var metal = MaterialUtils.GetExistingMaterial("Metal- Shiny");

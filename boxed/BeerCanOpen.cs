@@ -8,7 +8,7 @@ namespace KitchenBlargleBrew {
     public class BeerCanOpen : CustomItem {
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerCanOpen");
-        public override string ColourBlindTag => "";
+        public override string ColourBlindTag => "Lt";
         public override string UniqueNameID => "BlargleBrew - Beer Can Open";
         public override Item DirtiesTo => Refs.BeerCanEmpty;
 

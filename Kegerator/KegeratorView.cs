@@ -14,28 +14,35 @@ namespace KitchenBlargleBrew.kegerator {
         [SerializeField]
         public GameObject closedGdo;
         [SerializeField]
-        public HoldPointContainer holdPointContainer;
-        [SerializeField]
-        public Transform kegHoldPoint;
-        [SerializeField]
-        public Transform mugHoldPoint;
+        public GameObject labelGdo;
 
         public void Setup(GameObject prefab) {
             openGdo = GameObjectUtils.GetChildObject(prefab, "door/open");
             closedGdo = GameObjectUtils.GetChildObject(prefab, "door/closed");
-            holdPointContainer = prefab.GetComponent<HoldPointContainer>();
-            kegHoldPoint = GameObjectUtils.GetChildObject(prefab, "KegHoldPoint").transform;
-            mugHoldPoint = GameObjectUtils.GetChildObject(prefab, "MugHoldPoint").transform;
+            labelGdo = GameObjectUtils.GetChildObject(prefab, "tap label");
         }
 
         protected override void UpdateData(ViewData viewData) {
             openGdo.SetActive(false);
             closedGdo.SetActive(false);
-            //if (viewData.open) {
-                //holdPointContainer.HoldPoint = kegHoldPoint;
-            //} else {
-                //holdPointContainer.HoldPoint = mugHoldPoint;
-            //}
+
+            switch (viewData.colorId) {
+                case 1:
+                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
+                        MaterialUtils.GetExistingMaterial("Metal Black")
+                    });
+                    break;
+                case 2:
+                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
+                        MaterialUtils.GetExistingMaterial("Paper - Postit Yellow")
+                    });
+                    break;
+                default:
+                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
+                        MaterialUtils.GetExistingMaterial("Metal - Dirty")
+                    });
+                    break;
+            }
         }
 
         public class UpdateView : IncrementalViewSystemBase<VariableProviderView.ViewData> {
@@ -45,28 +52,27 @@ namespace KitchenBlargleBrew.kegerator {
             protected override void Initialise() {
                 base.Initialise();
                 viewsQuery = GetEntityQuery(new QueryHelper()
-                    .All(typeof(CLinkedView), typeof(CKegeratorState)));
+                    .All(typeof(CLinkedView), typeof(CKegeratorState), typeof(CItemHolder)));
             }
 
             protected override void OnUpdate() {
                 var entities = viewsQuery.ToEntityArray(Allocator.TempJob);
                 var views = viewsQuery.ToComponentDataArray<CLinkedView>(Allocator.Temp);
                 var components = viewsQuery.ToComponentDataArray<CKegeratorState>(Allocator.Temp);
+                var holders = viewsQuery.ToComponentDataArray<CItemHolder>(Allocator.Temp);
 
                 for (var i = 0; i < views.Length; i++) {
                     var entity = entities[i];
                     var view = views[i];
                     var data = components[i];
+                    var holder = holders[i];
 
-                    SendUpdate(view, new ViewData { open = data.open }, MessageType.SpecificViewUpdate);
-
-                    /*
-                    if (!data.open) {
-                        EntityManager.AddComponent<CIsInactive>(entity);
-                    } else {
-                        EntityManager.RemoveComponent<CIsInactive>(entity);
+                    int color = 0;
+                    if (HasComponent<CKegColor>(holder.HeldItem)) {
+                        color = GetComponent<CKegColor>(holder.HeldItem).colorId;
                     }
-                    */
+
+                    SendUpdate(view, new ViewData { open = data.open, colorId = color }, MessageType.SpecificViewUpdate);
                 }
 
                 entities.Dispose();
@@ -80,10 +86,12 @@ namespace KitchenBlargleBrew.kegerator {
 
             [Key(0)]
             public bool open;
+            [Key(1)]
+            public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
                 BlargleBrewMod.Log($"checking if changed. open != check.open = {open} != {check.open} = {open != check.open}");
-                return open != check.open;
+                return open != check.open && colorId != check.colorId;
             }
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) {

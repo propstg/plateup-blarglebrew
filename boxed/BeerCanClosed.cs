@@ -11,7 +11,7 @@ namespace KitchenBlargleBrew {
 
         public override Appliance DedicatedProvider => Refs.BeerCanProvider;
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerCanClosed");
-        public override string ColourBlindTag => "";
+        public override string ColourBlindTag => "Lt";
         public override string UniqueNameID => "BlargleBrew - Beer Can Closed";
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
