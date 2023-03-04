@@ -18,7 +18,7 @@ namespace BlargleBrew.draft {
         };
 
         public override void OnRegister(GameDataObject gdo) {
-            MaterialUtils.ApplyMaterial(Prefab, "keg", new Material[] { MaterialUtils.GetExistingMaterial("Metal - Dirty") });
+            MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.dirty);
         }
     }
 }

@@ -1,43 +1,8 @@
 ﻿using Kitchen;
 using KitchenMods;
-using Unity.Collections;
 using Unity.Entities;
 
 namespace KitchenBlargleBrew.kegerator {
-
-    /*
-    public class KegeratorLoadedSystem : GameSystemBase, IModSystem {
-        private EntityQuery viewsQuery;
-
-        protected override void Initialise() {
-            base.Initialise();
-            viewsQuery = GetEntityQuery(new QueryHelper()
-                .All(typeof(CItemHolder), typeof(CKegeratorState)));
-        }
-
-        protected override void OnUpdate() {
-            var entities = viewsQuery.ToEntityArray(Allocator.TempJob);
-            var holders = viewsQuery.ToComponentDataArray<CItemHolder>(Allocator.Temp);
-            var components = viewsQuery.ToComponentDataArray<CKegeratorState>(Allocator.Temp);
-
-            for (var i = 0; i < holders.Length; i++) {
-                var entity = entities[i];
-                var holder = holders[i];
-                var data = components[i];
-
-                if (HasComponent<CKegColor>(holder.HeldItem)) {
-
-                } else {
-
-                }
-            }
-
-            entities.Dispose();
-            holders.Dispose();
-            components.Dispose();
-        }
-    }
-    */
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class KegeratorDoorSystem : ItemInteractionSystem, IModSystem {

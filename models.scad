@@ -1,11 +1,11 @@
 $fn = 100;
 
 //scale([0.01, 0.01, 0.01]) keg();
-scale([0.01, 0.01, 0.01]) 
-//mug();
+//scale([0.01, 0.01, 0.01]) 
+mug();
 
 //keg();
-kegRack();
+//kegRack();
 //kegBand();
 //kegerator();
 //referenceCube();
@@ -66,8 +66,10 @@ module kegRack() {
 
 module mug() {
     //mugGlass();
-    mugContents();
+    //mugContents();
     //mugFoam();
+    translate([10, 0, 30])
+    sphere(d=20);
 }
 
 module mugGlass() {

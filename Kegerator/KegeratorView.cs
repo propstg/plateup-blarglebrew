@@ -1,4 +1,5 @@
-﻿using Kitchen;
+﻿using BlargleBrew;
+using Kitchen;
 using KitchenLib.Utils;
 using MessagePack;
 using Unity.Collections;
@@ -28,19 +29,13 @@ namespace KitchenBlargleBrew.kegerator {
 
             switch (viewData.colorId) {
                 case 1:
-                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
-                        MaterialUtils.GetExistingMaterial("Metal Black")
-                    });
+                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.ipaLabel);
                     break;
                 case 2:
-                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
-                        MaterialUtils.GetExistingMaterial("Paper - Postit Yellow")
-                    });
+                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.wheatLabel);
                     break;
                 default:
-                    MaterialUtils.ApplyMaterial(labelGdo, "", new Material[] {
-                        MaterialUtils.GetExistingMaterial("Metal - Dirty")
-                    });
+                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.emptyLabel);
                     break;
             }
         }

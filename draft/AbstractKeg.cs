@@ -11,7 +11,7 @@ namespace BlargleBrew.draft {
     public abstract class AbstractKeg : CustomItem {
 
         protected abstract string name { get; }
-        protected abstract string labelMaterial { get; }
+        protected abstract Material[] labelMaterial { get; }
         protected abstract string prefabName { get; }
         protected abstract int colorId { get; }
 
@@ -19,7 +19,7 @@ namespace BlargleBrew.draft {
         public override string UniqueNameID => $"BlargleBrew - {name} Keg";
         public override bool AllowSplitMerging => false;
         public override float SplitSpeed => 1f;
-        public override int SplitCount => 3;
+        public override int SplitCount => 5;
         public override Item DisposesTo => Refs.EmptyKeg;
         public override List<Item> SplitDepletedItems => new List<Item>() { Refs.EmptyKeg };
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
@@ -27,8 +27,8 @@ namespace BlargleBrew.draft {
         };
 
         public override void OnRegister(GameDataObject gdo) {
-            MaterialUtils.ApplyMaterial(Prefab, "keg", new Material[] { MaterialUtils.GetExistingMaterial("Metal- Shiny") });
-            MaterialUtils.ApplyMaterial(Prefab, "label", new Material[] { MaterialUtils.GetExistingMaterial(labelMaterial) });
+            MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.metal);
+            MaterialUtils.ApplyMaterial(Prefab, "label", labelMaterial);
         }
     }
 }

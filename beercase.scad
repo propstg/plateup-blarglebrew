@@ -1,13 +1,21 @@
 
 //referenceCube();
 //fakeCounter();
-translate([0, 0, 41]) closedBeerCan();
-translate([20, 0, 41]) openBeerCan();
-translate([0, 0, 41]) beerCanBox();
+scale([0.01, 0.01, 0.01])
+//translate([0, 0, 41]) 
 
-showCanOpened = false;
+scale([2, 2, 2])
+
+crushedCan();
+//closedBeerCan();
+//openBeerCan();
+//translate([20, 0, 41]) openBeerCan();
+
+//translate([0, 0, 41]) beerCanBox();
+
+showCanOpened = true;
 showCanClosed = false;
-showPaintedParts = false;
+showPaintedParts = true;
 showAluminumParts = false;
 showFoam = false;
 showCanBox = true;
@@ -26,23 +34,16 @@ module beerCanBox() {
             translate([22, 15, 27]) rotate([90, 0, 0]) closedBeerCan();
             translate([33, 15, 27]) rotate([90, 0, 0]) closedBeerCan();
         } else {
-            
+            color("white")
+            translate([-30, -19, -1])
+            difference() {
+                cube([70, 36, 45]);
+                translate([0.5, 0.5, 0])
+                cube([69, 35, 44]);
+                translate([46, -0.5, 30])
+                cube([25, 37, 44]);
+            }
         }
-        color("white")
-        translate([-30, -19, -1])
-        difference() {
-            cube([70, 36, 45]);
-            translate([0.5, 0.5, 0])
-            cube([69, 35, 44]);
-            translate([46, -0.5, 30])
-            cube([25, 37, 44]);
-        }
-        
-        
-        
-        
-        
-
 
     }
 }
@@ -124,10 +125,26 @@ module canOpenFoam() {
     }
 }
 
+module crushedCan() {
+    rotate([0, 0, 90])
+    if (showPaintedParts) {
+        translate([0, 0, 1]) cylinder(d=11, h=29.0/4, $fn=50);
+        translate([0, -1, 5]) rotate([-30, 0, 0]) cylinder(d=11, h=29.0/4, $fn=50);
+        translate([0, 3, 8]) rotate([15, 0, 0]) cylinder(d=11, h=29.0/4, $fn=50);
+        translate([0, 1, 12]) rotate([-20, 0, 0]) cylinder(d=11, h=29.0/4, $fn=50);
+    }
+    rotate([0, 0, 90])
+    if (showAluminumParts) {
+        canBottom();
+        translate([0, -7, -10])
+        rotate([-20, 0, 0])
+        canTopOpen();
+    }
+}
+
 module canSideWall() {
     if (showPaintedParts) {
-        translate([0, 0, 1])
-        cylinder(d=11, h=29.0, $fn=50);
+        translate([0, 0, 1]) cylinder(d=11, h=29.0, $fn=50);
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿using ApplianceLib.Api;
+using BlargleBrew.cards;
 using BlargleBrew.draft;
-using IngredientLib.Util;
 using Kitchen;
 using KitchenBlargleBrew.kegerator;
 using KitchenLib;
@@ -34,17 +34,23 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BeerCanOpen>();
             AddGameDataObject<BeerCanProvider>();
 
+            AddGameDataObject<BeerBottleEmpty>();
+            AddGameDataObject<BeerBottleClosed>();
+            AddGameDataObject<BeerBottleOpen>();
+            AddGameDataObject<BeerBottleProvider>();
+
             AddGameDataObject<BeerMugIpa>();
-            AddGameDataObject<BeerMugLight>();
+            AddGameDataObject<BeerMugWheat>();
             AddGameDataObject<EmptyMug>();
             AddGameDataObject<EmptyKeg>();
             AddGameDataObject<KegIpa>();
-            AddGameDataObject<KegLight>();
+            AddGameDataObject<KegWheat>();
             AddGameDataObject<KegProviderIpa>();
-            AddGameDataObject<KegProviderLight>();
+            AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
-            AddGameDataObject<BeerMugDish>();
+            AddGameDataObject<DraftBeerDish>();
+            AddGameDataObject<BoxedBeerDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegIpa);

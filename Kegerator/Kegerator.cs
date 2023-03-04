@@ -1,4 +1,5 @@
 ﻿using ApplianceLib.Api;
+using BlargleBrew;
 using Kitchen;
 using KitchenData;
 using KitchenLib.Customs;
@@ -46,18 +47,15 @@ namespace KitchenBlargleBrew.kegerator {
         }
 
         private void setupMaterials() {
-            var metal = MaterialUtils.GetExistingMaterial("Metal- Shiny");
-            var metalBlack = MaterialUtils.GetExistingMaterial("Metal Black");
-            var plasticRed = MaterialUtils.GetExistingMaterial("Plastic - Red");
-            var glass = MaterialUtils.GetExistingMaterial("IngredientLib - \"Glass\"");
-
-            MaterialUtils.ApplyMaterial(Prefab, "base", new Material[] { metal });
-            MaterialUtils.ApplyMaterial(Prefab, "tap column", new Material[] { metalBlack });
-            MaterialUtils.ApplyMaterial(Prefab, "tap label", new Material[] { plasticRed });
+            MaterialUtils.ApplyMaterial(Prefab, "base", CommonMaterials.metalShiny);
+            MaterialUtils.ApplyMaterial(Prefab, "tap column", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(Prefab, "tap label", CommonMaterials.metalDirty);
+            /*
             MaterialUtils.ApplyMaterial(Prefab, "door/open/frame", new Material[] { metal });
             MaterialUtils.ApplyMaterial(Prefab, "door/closed/frame", new Material[] { metal });
             MaterialUtils.ApplyMaterial(Prefab, "door/open/glass", new Material[] { glass });
             MaterialUtils.ApplyMaterial(Prefab, "door/closed/glass", new Material[] { glass });
+            */
         }
 
         private void setupHoldPoint() {
