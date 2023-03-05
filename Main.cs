@@ -39,13 +39,13 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BeerBottleOpen>();
             AddGameDataObject<BeerBottleProvider>();
 
-            AddGameDataObject<BeerMugIpa>();
+            AddGameDataObject<BeerMugStout>();
             AddGameDataObject<BeerMugWheat>();
             AddGameDataObject<EmptyMug>();
             AddGameDataObject<EmptyKeg>();
-            AddGameDataObject<KegIpa>();
+            AddGameDataObject<KegStout>();
             AddGameDataObject<KegWheat>();
-            AddGameDataObject<KegProviderIpa>();
+            AddGameDataObject<KegProviderStout>();
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
@@ -53,8 +53,8 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BoxedBeerDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
-                RestrictedItemSplits.BlacklistItem(Refs.KegIpa);
-                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegIpa);
+                RestrictedItemSplits.BlacklistItem(Refs.KegStout);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
                 RestrictedItemSplits.BlacklistItem(Refs.KegLight);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
             };

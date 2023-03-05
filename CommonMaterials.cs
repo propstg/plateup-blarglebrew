@@ -35,8 +35,8 @@ namespace BlargleBrew {
 
         public static class Mug {
             public static Material[] glass => bobaCup;
-            public static Material[] ipaBeer => woodDefault;
-            public static Material[] ipaFoam => woodCorkboard;
+            public static Material[] stoutBeer => woodDefault;
+            public static Material[] stoutFoam => woodCorkboard;
             public static Material[] wheatBeer => postitYellow;
             public static Material[] wheatFoam => uncookedBatter;
         }
@@ -45,7 +45,7 @@ namespace BlargleBrew {
             public static Material[] dirty => metalDirty;
             public static Material[] metal => metalShiny;
             public static Material[] rack => metalShiny;
-            public static Material[] ipaLabel => metalBlack;
+            public static Material[] stoutLabel => metalBlack;
             public static Material[] wheatLabel => postitYellow;
             public static Material[] emptyLabel => metalDirty;
 

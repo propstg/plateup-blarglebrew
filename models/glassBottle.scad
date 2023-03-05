@@ -1,10 +1,10 @@
 $fn=15;
 
 
-hasCap = false;
+hasCap = true;
 hasBottle = false;
 hasLiquid = false;
-hasCardboard = true;
+hasCardboard = false;
 showBox = true;
 
 scale([0.01, 0.01, 0.01])
@@ -46,6 +46,8 @@ module bottle() {
 }
 
 module bottleBox() {
+    translate([0, 0, 40])
+    scale([0.5, 0.5, 0.5])
     if (showBox) {
         if (hasCardboard) {
             color("blue")

@@ -29,7 +29,7 @@ namespace KitchenBlargleBrew.kegerator {
 
             switch (viewData.colorId) {
                 case 1:
-                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.ipaLabel);
+                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.stoutLabel);
                     break;
                 case 2:
                     MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.wheatLabel);

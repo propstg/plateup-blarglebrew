@@ -14,11 +14,12 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerBottleOpen");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerBottleOpen");
 
-        //public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeIncrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
-        public override List<string> StartingNameSet => new List<string> {
-            "Canned Beer"
+        public override bool IsUnlockable => true;
+
+        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
+            Refs.DraftBeerDish
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
@@ -47,7 +48,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Boxed Beer", "description", "flavor text") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Boxed Beer", "Serve beer out of boxes.", "How hard could it be?") )}
         };
     }
 }

@@ -12,11 +12,12 @@ namespace KitchenBlargleBrew {
         public override string ColourBlindTag => "Lt";
         public override string UniqueNameID => "BlargleBrew - Beer Can Open";
         public override Item DirtiesTo => Refs.BeerCanEmpty;
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
         public override void OnRegister(GameDataObject gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "metal", CommonMaterials.Can.metal);
             MaterialUtils.ApplyMaterial(Prefab, "painted", CommonMaterials.Can.paint);
-            MaterialUtils.ApplyMaterial(Prefab, "metal", CommonMaterials.Can.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.Can.foam);
         }
     }
 }

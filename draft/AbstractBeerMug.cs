@@ -13,6 +13,7 @@ namespace BlargleBrew.draft {
         protected abstract string name { get; }
         protected abstract string prefabName { get; }
 
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override Appliance DedicatedProvider => Refs.Kegerator;
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>(prefabName);
         public override string UniqueNameID => $"BlargleBrew - Mug {name}";

@@ -12,6 +12,7 @@ namespace KitchenBlargleBrew {
         public override string ColourBlindTag => "Pil";
         public override string UniqueNameID => "BlargleBrew - Beer Bottle Open";
         public override Item DirtiesTo => Refs.BeerBottleEmpty;
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
         public override void OnRegister(GameDataObject gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Bottle.glass);
