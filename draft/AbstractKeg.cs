@@ -1,4 +1,5 @@
-﻿using KitchenBlargleBrew;
+﻿using Kitchen;
+using KitchenBlargleBrew;
 using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
@@ -23,7 +24,7 @@ namespace BlargleBrew.draft {
         public override Item DisposesTo => Refs.EmptyKeg;
         public override List<Item> SplitDepletedItems => new List<Item>() { Refs.EmptyKeg };
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
-            new CKegColor { colorId = this.colorId }
+            new CKegColor { colorId = this.colorId },
         };
 
         public override void OnRegister(GameDataObject gdo) {

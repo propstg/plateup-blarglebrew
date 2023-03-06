@@ -1,4 +1,5 @@
-﻿using KitchenBlargleBrew;
+﻿using Kitchen;
+using KitchenBlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -21,9 +22,13 @@ namespace BlargleBrew.draft {
         public override bool SellOnlyAsDuplicate => true;
         public override string UniqueNameID => $"BlargleBrew - Keg {name}";
 
-        public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {
-            KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID)
-        };
+        public override List<IApplianceProperty> Properties { get {
+                var itemProvider = KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID);
+                itemProvider.PreventReturns = true;
+
+                return new List<IApplianceProperty> { itemProvider };
+            }
+        }
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {
