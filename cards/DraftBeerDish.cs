@@ -61,6 +61,9 @@ namespace BlargleBrew.cards {
         protected override void SetupDisplayPrefab(GameObject prefab) {
             MaterialUtils.ApplyMaterial(prefab, "keg", CommonMaterials.Keg.metal);
             MaterialUtils.ApplyMaterial(prefab, "label", CommonMaterials.Keg.stoutLabel);
+            MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);
+            MaterialUtils.ApplyMaterial(prefab, "mug/beer", CommonMaterials.Mug.stoutBeer);
+            MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
         }
     }
 }

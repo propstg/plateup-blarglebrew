@@ -10,7 +10,7 @@ namespace BlargleBrew.draft {
         protected override Material[] labelMaterial => CommonMaterials.Keg.stoutLabel;
         protected override string prefabName => "Keg";
         protected override int colorId => 1;
-        public override string ColourBlindTag => "St";
+        protected override string hackyColorblindLabel => "St";
         public override Appliance DedicatedProvider => Refs.KegStoutProvider;
         public override Item SplitSubItem => Refs.BeerStout;
     }

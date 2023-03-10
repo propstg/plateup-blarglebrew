@@ -1,6 +1,7 @@
 ﻿using ApplianceLib.Api;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using IngredientLib.Util;
 using Kitchen;
 using KitchenBlargleBrew.kegerator;
 using KitchenLib;
@@ -58,6 +59,15 @@ namespace KitchenBlargleBrew {
                 RestrictedItemSplits.BlacklistItem(Refs.KegLight);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
             };
+        }
+
+        private bool colorblindSetup = false;
+        protected override void OnUpdate() {
+            if (!colorblindSetup) {
+                //Refs.KegLightProvider.Prefab.GetChildFromPath("Colour Blind").AddApplianceColorblindLabel("Wh");
+                //Refs.KegStout.Prefab.GetChildFromPath("Colour Blind").AddApplianceColorblindLabel("St");
+                colorblindSetup = true;
+            }
         }
 
         protected override void OnInitialise() {

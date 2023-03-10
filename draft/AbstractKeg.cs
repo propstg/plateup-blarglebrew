@@ -1,7 +1,7 @@
-﻿using Kitchen;
-using KitchenBlargleBrew;
+﻿using KitchenBlargleBrew;
 using KitchenBlargleBrew.kegerator;
 using KitchenData;
+using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ namespace BlargleBrew.draft {
         protected abstract Material[] labelMaterial { get; }
         protected abstract string prefabName { get; }
         protected abstract int colorId { get; }
+        protected abstract string hackyColorblindLabel { get; }
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>(prefabName);
         public override string UniqueNameID => $"BlargleBrew - {name} Keg";
@@ -30,6 +31,10 @@ namespace BlargleBrew.draft {
         public override void OnRegister(GameDataObject gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.metal);
             MaterialUtils.ApplyMaterial(Prefab, "label", labelMaterial);
+
+            GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gdo as Item);
+            clonedColourBlind.transform.localPosition = new Vector3(0, 0.9f, 0);
+            ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = hackyColorblindLabel;
         }
     }
 }

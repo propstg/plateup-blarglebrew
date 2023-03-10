@@ -11,8 +11,8 @@ namespace BlargleBrew.cards {
 
         public override string UniqueNameID => "BlargleBrew - CannedBeer";
         public override DishType Type => DishType.Main;
-        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerBottleOpen");
-        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BeerBottleOpen");
+        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BoxedDisplay");
+        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BoxedDisplay");
 
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
@@ -50,5 +50,23 @@ namespace BlargleBrew.cards {
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
             { (Locale.English, LocalisationUtils.CreateUnlockInfo("Boxed Beer", "Serve beer out of boxes.", "How hard could it be?") )}
         };
+
+        protected override void SetupIconPrefab(GameObject prefab) {
+            MaterialUtils.ApplyMaterial(prefab, "box", CommonMaterials.Can.box);
+            MaterialUtils.ApplyMaterial(prefab, "metal", CommonMaterials.Can.metal);
+            MaterialUtils.ApplyMaterial(prefab, "painted", CommonMaterials.Can.paint);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/foam", CommonMaterials.Can.foam);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/metal", CommonMaterials.Can.metal);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/painted", CommonMaterials.Can.paint);
+        }
+
+        protected override void SetupDisplayPrefab(GameObject prefab) {
+            MaterialUtils.ApplyMaterial(prefab, "box", CommonMaterials.Can.box);
+            MaterialUtils.ApplyMaterial(prefab, "metal", CommonMaterials.Can.metal);
+            MaterialUtils.ApplyMaterial(prefab, "painted", CommonMaterials.Can.paint);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/foam", CommonMaterials.Can.foam);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/metal", CommonMaterials.Can.metal);
+            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/painted", CommonMaterials.Can.paint);
+        }
     }
 }
