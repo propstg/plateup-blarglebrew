@@ -18,7 +18,6 @@ namespace BlargleBrew.cards {
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
         public override List<string> StartingNameSet => new List<string> {
-            "Bottoms Up",
             "I'm Ok",
         };
 
