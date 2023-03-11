@@ -1,5 +1,4 @@
-﻿using KitchenLib.Customs;
-using KitchenLib.Utils;
+﻿using KitchenLib.Utils;
 using UnityEngine;
 
 namespace BlargleBrew {
@@ -7,7 +6,7 @@ namespace BlargleBrew {
     class CommonMaterials {
         private static Material[] wrap(Material material) => new Material[] { material };
 
-        public static Material[] bobaCup => wrap(MaterialUtils.GetExistingMaterial("BobaCup"));
+        public static Material[] glass => wrap(MaterialUtils.GetExistingMaterial("IngredientLib - \"Glass\""));
         public static Material[] cardboard => wrap(MaterialUtils.GetExistingMaterial("Cardboard"));
         public static Material[] metalBlack => wrap(MaterialUtils.GetExistingMaterial("Metal Black"));
         public static Material[] metalDirty => wrap(MaterialUtils.GetExistingMaterial("Metal - Dirty"));
@@ -22,7 +21,7 @@ namespace BlargleBrew {
 
         public static class Bottle {
             public static Material[] box => cardboard;
-            public static Material[] glass => bobaCup;
+            public static Material[] glass => CommonMaterials.glass;
             public static Material[] lid => metalBlack;
             public static Material[] liquid => postitYellow;
         }
@@ -35,7 +34,7 @@ namespace BlargleBrew {
         }
 
         public static class Mug {
-            public static Material[] glass => bobaCup;
+            public static Material[] glass => CommonMaterials.glass;
             public static Material[] stoutBeer => woodDefault;
             public static Material[] stoutFoam => woodCorkboard;
             public static Material[] wheatBeer => postitYellow;
@@ -49,11 +48,6 @@ namespace BlargleBrew {
             public static Material[] stoutLabel => metalBlack;
             public static Material[] wheatLabel => postitYellow;
             public static Material[] emptyLabel => metalDirty;
-
-        }
-
-        public static class Kegerator {
-
 
         }
     }
