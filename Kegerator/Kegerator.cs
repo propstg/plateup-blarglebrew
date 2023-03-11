@@ -11,7 +11,7 @@ namespace KitchenBlargleBrew.kegerator {
 
     public class Kegerator : CustomAppliance {
 
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("kegerator");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Kegerator2");
         public override PriceTier PriceTier => PriceTier.Medium;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking;
         public override bool IsNonInteractive => false;
@@ -47,9 +47,10 @@ namespace KitchenBlargleBrew.kegerator {
         }
 
         private void setupMaterials() {
-            MaterialUtils.ApplyMaterial(Prefab, "base", CommonMaterials.metalShiny);
-            MaterialUtils.ApplyMaterial(Prefab, "tap column", CommonMaterials.metalBlack);
-            MaterialUtils.ApplyMaterial(Prefab, "tap label", CommonMaterials.metalDirty);
+            MaterialUtils.ApplyMaterial(Prefab, "base", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(Prefab, "top", CommonMaterials.metalShiny);
+            MaterialUtils.ApplyMaterial(Prefab, "tap", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.metalDirty);
             /*
             MaterialUtils.ApplyMaterial(Prefab, "door/open/frame", new Material[] { metal });
             MaterialUtils.ApplyMaterial(Prefab, "door/closed/frame", new Material[] { metal });

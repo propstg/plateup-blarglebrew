@@ -7,45 +7,42 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class DraftBeerDish : ModDish {
+    public class DessertBeerDish : ModDish {
 
-        public override string UniqueNameID => "Blargle Beer";
-        public override DishType Type => DishType.Base;
+        public override string UniqueNameID => "Dessert Beer";
+        public override DishType Type => DishType.Dessert;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeIncrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-            "We Don't Card",
+        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
+            Refs.DraftBeerDish,
+            Refs.BoxedBeerDish,
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerStout,
             Refs.BeerWheat,
-            Refs.KegStout,
-            Refs.KegLight,
-            Refs.Mandarin
+            Refs.Mandarin,
+            Refs.BeerCanClosed,
+            Refs.BeerBottleClosed,
+            Refs.Lime,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerStout, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerWheat, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerStout, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerWheat, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.BeerStout, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.BeerWheat, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.MandarinSlice, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.BeerStout, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.BeerWheat, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.BeerCanOpen, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.BeerBottleOpen, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Load a keg into a kegerator, pour a beer, serve. Change the keg out when empty." }
+            { Locale.English, "Same recipe as the draft and boxed beers, just more of them." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Draft Beer", "Adds draft beer as a starter and main", "Offers two flavors, stout and wheat") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("One last round", "Customers order more beers for dessert.", "DRINK RESPONSIBLY") )}
         };
 
         protected override void SetupIconPrefab(GameObject prefab) {

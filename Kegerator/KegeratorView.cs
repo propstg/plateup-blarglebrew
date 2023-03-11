@@ -18,15 +18,10 @@ namespace KitchenBlargleBrew.kegerator {
         public GameObject labelGdo;
 
         public void Setup(GameObject prefab) {
-            openGdo = GameObjectUtils.GetChildObject(prefab, "door/open");
-            closedGdo = GameObjectUtils.GetChildObject(prefab, "door/closed");
-            labelGdo = GameObjectUtils.GetChildObject(prefab, "tap label");
+            labelGdo = GameObjectUtils.GetChildObject(prefab, "label");
         }
 
         protected override void UpdateData(ViewData viewData) {
-            openGdo.SetActive(false);
-            closedGdo.SetActive(false);
-
             switch (viewData.colorId) {
                 case 1:
                     MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.stoutLabel);

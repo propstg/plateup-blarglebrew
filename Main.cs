@@ -1,7 +1,6 @@
 ﻿using ApplianceLib.Api;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
-using IngredientLib.Util;
 using Kitchen;
 using KitchenBlargleBrew.kegerator;
 using KitchenLib;
@@ -52,6 +51,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<Kegerator>();
             AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BoxedBeerDish>();
+            AddGameDataObject<DessertBeerDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);
@@ -59,15 +59,6 @@ namespace KitchenBlargleBrew {
                 RestrictedItemSplits.BlacklistItem(Refs.KegLight);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
             };
-        }
-
-        private bool colorblindSetup = false;
-        protected override void OnUpdate() {
-            if (!colorblindSetup) {
-                //Refs.KegLightProvider.Prefab.GetChildFromPath("Colour Blind").AddApplianceColorblindLabel("Wh");
-                //Refs.KegStout.Prefab.GetChildFromPath("Colour Blind").AddApplianceColorblindLabel("St");
-                colorblindSetup = true;
-            }
         }
 
         protected override void OnInitialise() {

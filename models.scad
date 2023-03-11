@@ -2,12 +2,13 @@ $fn = 100;
 
 //scale([0.01, 0.01, 0.01]) keg();
 //scale([0.01, 0.01, 0.01]) 
-mug();
+//mug();
+
 
 //keg();
 //kegRack();
 //kegBand();
-//kegerator();
+kegerator();
 //referenceCube();
 
 
@@ -171,25 +172,33 @@ module keg() {
 module kegerator() {
     //translate([0, -10, 5]) keg();
     
-    kegBase();
     //kegDoorFrameClosed();
     //kegDoorGlassClosed();
     
     //kegDoorFrameOpen();
     //kegDoorGlassOpen();
+    scale([0.01, 0.01, 0.01])
+    //kegBase();
     //tapColumn();
     //tapLabel();
+    kegeratorTop();
+}
+
+module kegeratorTop() {
+    translate([-70/2, -50, height+5])
+    union() {
+        cube([70, 75, 5]);
+    }
 }
 
 
-
 module kegBase() {
-    translate([-50, -50, 0])
+    translate([-70/2, -50, 0])
     difference() {
-        cube([100, 70, height]);
+        cube([70, 70, height+5]);
         
         translate([2.5, 3, 7.5])
-        cube([95, 100, height - 10]);
+        cube([65, 100, height - 5]);
     }
 }
 
@@ -228,16 +237,16 @@ module kegDoorGlass() {
 }
 
 module tapColumn() {
-    translate([0, -15, height])
-    cylinder(d=5, h=25, $fn=30);
+    translate([0, -15, height+5])
+    cylinder(d=7, h=35, $fn=30);
     
-    translate([-2.5/2, -15, height+20])
-    cube([2.5, 10, 2.5]);
+    translate([-5/2, -15, height+35])
+    cube([5, 15, 5]);
 }
 
 module tapLabel() {
-    translate([-5, -18, height+20])
-    cube([10, 2.5, 20]);
+    translate([-15/2, -18, height+35])
+    cube([15, 2.5, 30]);
 }
 
 module referenceCube() {
