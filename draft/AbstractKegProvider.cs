@@ -1,4 +1,5 @@
 ﻿using KitchenBlargleBrew;
+using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -24,8 +25,8 @@ namespace BlargleBrew.draft {
         public override List<IApplianceProperty> Properties { get {
                 var itemProvider = KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID);
                 itemProvider.PreventReturns = true;
-
-                return new List<IApplianceProperty> { itemProvider };
+                
+                return new List<IApplianceProperty> { itemProvider, new CKegProvider() };
             }
         }
 
@@ -36,7 +37,7 @@ namespace BlargleBrew.draft {
             })
         };
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Appliance gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "kegs", CommonMaterials.Keg.metal);
             MaterialUtils.ApplyMaterial(Prefab, "labels", labelMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "rack", CommonMaterials.Keg.rack);

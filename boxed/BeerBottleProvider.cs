@@ -10,7 +10,7 @@ namespace KitchenBlargleBrew {
         protected override string prefabName => "TwelvePack";
         protected override int provides => GDOUtils.GetCustomGameDataObject<BeerBottleClosed>().GameDataObject.ID;
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Appliance gdo) {
             base.OnRegister(gdo);
             MaterialUtils.ApplyMaterial(Prefab, "box", CommonMaterials.Bottle.box);
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Bottle.glass);

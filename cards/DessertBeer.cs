@@ -1,13 +1,13 @@
-﻿using ApplianceLib.Customs.GDO;
-using KitchenBlargleBrew;
+﻿using KitchenBlargleBrew;
 using KitchenData;
+using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class DessertBeerDish : ModDish {
+    public class DessertBeerDish : CustomDish {
 
         public override string UniqueNameID => "Dessert Beer";
         public override DishType Type => DishType.Dessert;
@@ -45,15 +45,15 @@ namespace BlargleBrew.cards {
             { (Locale.English, LocalisationUtils.CreateUnlockInfo("One last round", "Customers order more beers for dessert.", "DRINK RESPONSIBLY") )}
         };
 
-        protected override void SetupIconPrefab(GameObject prefab) {
-            MaterialUtils.ApplyMaterial(prefab, "keg", CommonMaterials.Keg.metal);
-            MaterialUtils.ApplyMaterial(prefab, "label", CommonMaterials.Keg.stoutLabel);
-            MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);
-            MaterialUtils.ApplyMaterial(prefab, "mug/beer", CommonMaterials.Mug.stoutBeer);
-            MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
+        public override void SetupIconPrefab(GameObject prefab) {
+            setupCommonDisplayPrefab(prefab);
         }
 
-        protected override void SetupDisplayPrefab(GameObject prefab) {
+        public override void SetupDisplayPrefab(GameObject prefab) {
+            setupCommonDisplayPrefab(prefab);
+        }
+
+        private void setupCommonDisplayPrefab(GameObject prefab) {
             MaterialUtils.ApplyMaterial(prefab, "keg", CommonMaterials.Keg.metal);
             MaterialUtils.ApplyMaterial(prefab, "label", CommonMaterials.Keg.stoutLabel);
             MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);

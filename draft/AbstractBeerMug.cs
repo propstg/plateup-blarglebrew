@@ -22,7 +22,7 @@ namespace BlargleBrew.draft {
 
         public const string VFX_NAME = "Freezer Vapour";
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Mug.glass);
             MaterialUtils.ApplyMaterial(Prefab, "beer", beerMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "foam", foamMaterial);

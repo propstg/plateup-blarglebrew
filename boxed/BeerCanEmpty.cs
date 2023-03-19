@@ -12,7 +12,7 @@ namespace KitchenBlargleBrew {
         public override string ColourBlindTag => "";
         public override string UniqueNameID => "BlargleBrew - Beer Can Empty";
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "metal", CommonMaterials.Can.metal);
             MaterialUtils.ApplyMaterial(Prefab, "painted", CommonMaterials.Can.paint);
         }

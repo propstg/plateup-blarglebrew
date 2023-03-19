@@ -20,7 +20,7 @@ namespace KitchenBlargleBrew {
         public override bool SellOnlyAsDuplicate => true;
         public override string UniqueNameID => $"BlargleBrew - Beer {name} Provider";
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Appliance gdo) {
             Prefab.AttachCounter(CounterType.Drawers);
         }
 

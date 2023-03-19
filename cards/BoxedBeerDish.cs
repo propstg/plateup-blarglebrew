@@ -1,13 +1,13 @@
-﻿using ApplianceLib.Customs.GDO;
-using KitchenBlargleBrew;
+﻿using KitchenBlargleBrew;
 using KitchenData;
+using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class BoxedBeerDish : ModDish {
+    public class BoxedBeerDish : CustomDish {
 
         public override string UniqueNameID => "BlargleBrew - CannedBeer";
         public override DishType Type => DishType.Main;
@@ -15,7 +15,7 @@ namespace BlargleBrew.cards {
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BoxedDisplay");
 
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
+        public override bool IsAvailableAsLobbyOption => false;
         public override bool IsUnlockable => true;
 
         public override List<Unlock> HardcodedRequirements => new List<Unlock> {
@@ -51,16 +51,15 @@ namespace BlargleBrew.cards {
             { (Locale.English, LocalisationUtils.CreateUnlockInfo("Boxed Beer", "Serve beer out of boxes.", "How hard could it be?") )}
         };
 
-        protected override void SetupIconPrefab(GameObject prefab) {
-            MaterialUtils.ApplyMaterial(prefab, "box", CommonMaterials.Can.box);
-            MaterialUtils.ApplyMaterial(prefab, "metal", CommonMaterials.Can.metal);
-            MaterialUtils.ApplyMaterial(prefab, "painted", CommonMaterials.Can.paint);
-            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/foam", CommonMaterials.Can.foam);
-            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/metal", CommonMaterials.Can.metal);
-            MaterialUtils.ApplyMaterial(prefab, "BeerCanOpen/painted", CommonMaterials.Can.paint);
+        public override void SetupIconPrefab(GameObject prefab) {
+            setupCommonDisplayPrefab(prefab);
         }
 
-        protected override void SetupDisplayPrefab(GameObject prefab) {
+        public override void SetupDisplayPrefab(GameObject prefab) {
+            setupCommonDisplayPrefab(prefab);
+        }
+
+        private void setupCommonDisplayPrefab(GameObject prefab) {
             MaterialUtils.ApplyMaterial(prefab, "box", CommonMaterials.Can.box);
             MaterialUtils.ApplyMaterial(prefab, "metal", CommonMaterials.Can.metal);
             MaterialUtils.ApplyMaterial(prefab, "painted", CommonMaterials.Can.paint);

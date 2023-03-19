@@ -26,9 +26,10 @@ namespace BlargleBrew.draft {
         public override List<Item> SplitDepletedItems => new List<Item>() { Refs.EmptyKeg };
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
             new CKegColor { colorId = this.colorId },
+            new CKeg { },
         };
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.metal);
             MaterialUtils.ApplyMaterial(Prefab, "label", labelMaterial);
 

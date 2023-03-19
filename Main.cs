@@ -16,7 +16,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.0.0";
+        public const string MOD_VERSION = "0.1.0";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -52,6 +52,8 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<DessertBeerDish>();
+
+            //AddGameDataObject<Fermenter>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);

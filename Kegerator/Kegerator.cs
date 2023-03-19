@@ -34,16 +34,16 @@ namespace KitchenBlargleBrew.kegerator {
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {
                 Name = "Kegerator",
-                Description = "TODO"
+                Description = "Put kegs in it and pour drinks"
             })
         };
 
-        public override void OnRegister(GameDataObject gameDataObject) {
+        public override void OnRegister(Appliance appliance) {
             setupMaterials();
             setupHoldPoint();
             setupCustomView();
             Prefab.transform.localPosition += new Vector3(0, 0.1f, 0);
-            NotActuallyProviders.RemoveProvidersFrom(gameDataObject as Appliance);
+            NotActuallyProviders.RemoveProvidersFrom(appliance);
         }
 
         private void setupMaterials() {
@@ -51,12 +51,6 @@ namespace KitchenBlargleBrew.kegerator {
             MaterialUtils.ApplyMaterial(Prefab, "top", CommonMaterials.metalShiny);
             MaterialUtils.ApplyMaterial(Prefab, "tap", CommonMaterials.metalBlack);
             MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.metalDirty);
-            /*
-            MaterialUtils.ApplyMaterial(Prefab, "door/open/frame", new Material[] { metal });
-            MaterialUtils.ApplyMaterial(Prefab, "door/closed/frame", new Material[] { metal });
-            MaterialUtils.ApplyMaterial(Prefab, "door/open/glass", new Material[] { glass });
-            MaterialUtils.ApplyMaterial(Prefab, "door/closed/glass", new Material[] { glass });
-            */
         }
 
         private void setupHoldPoint() {
