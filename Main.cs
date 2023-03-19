@@ -21,7 +21,7 @@ namespace KitchenBlargleBrew {
 
         public static AssetBundle bundle;
 
-        public BlargleBrewMod() : base(MOD_ID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, "1.1.4", Assembly.GetExecutingAssembly()) { }
+        public BlargleBrewMod() : base(MOD_ID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, ">=1.1.5", Assembly.GetExecutingAssembly()) { }
 
         protected override void OnPostActivate(Mod mod) {
             Log($"v{MOD_VERSION} initialized");
