@@ -16,7 +16,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.1.0";
+        public const string MOD_VERSION = "0.1.1";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -41,6 +41,7 @@ namespace KitchenBlargleBrew {
 
             AddGameDataObject<BeerMugStout>();
             AddGameDataObject<BeerMugWheat>();
+            AddGameDataObject<WheatBeerWithOrange>();
             AddGameDataObject<EmptyMug>();
             AddGameDataObject<EmptyKeg>();
             AddGameDataObject<KegStout>();
@@ -49,6 +50,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+
             AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<DessertBeerDish>();

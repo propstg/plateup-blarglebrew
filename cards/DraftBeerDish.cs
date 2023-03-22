@@ -20,6 +20,7 @@ namespace BlargleBrew.cards {
         public override List<string> StartingNameSet => new List<string> {
             "I'm Ok",
             "We Don't Card",
+            "Buzzkill Jimmy's",
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
@@ -33,11 +34,11 @@ namespace BlargleBrew.cards {
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
             new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerStout, Weight = 1 },
             new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerWheat, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerStout, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerWheat, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerStout, Weight = 2 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerWheat, Weight = 2 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.WheatBeerWithOrange, Weight = 1 },
             new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.BeerStout, Weight = 1 },
             new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.BeerWheat, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.MandarinSlice, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {

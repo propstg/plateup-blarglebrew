@@ -17,6 +17,7 @@ namespace BlargleBrew {
         public static Material[] uncookedBatter => wrap(MaterialUtils.GetExistingMaterial("Uncooked Batter"));
         public static Material[] woodCorkboard => wrap(MaterialUtils.GetExistingMaterial("Wood - Corkboard"));
         public static Material[] woodDefault => wrap(MaterialUtils.GetExistingMaterial("Wood - Default"));
+        public static Material[] mandarinSkin => wrap(MaterialUtils.GetExistingMaterial("Mandarin Skin"));
 
 
         public static class Bottle {
@@ -39,6 +40,7 @@ namespace BlargleBrew {
             public static Material[] stoutFoam => woodCorkboard;
             public static Material[] wheatBeer => postitYellow;
             public static Material[] wheatFoam => uncookedBatter;
+            public static Material[] orange => mandarinSkin;
         }
 
         public static class Keg {

@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenBlargleBrew;
 using KitchenBlargleBrew.kegerator;
+using KitchenLib.References;
 using KitchenMods;
 using Unity.Entities;
 
@@ -29,6 +30,7 @@ namespace BlargleBrew.kegerator {
                 if (!hasSpawned) {
                     BlargleBrewMod.Log($"Found one kegerator. Spawning another");
                     PostHelpers.CreateApplianceParcel(EntityManager, GetFallbackTile(), Refs.Kegerator.ID);
+                    PostHelpers.CreateApplianceParcel(EntityManager, GetFallbackTile(), ApplianceReferences.BinExpanded);
                     hasSpawned = true;
                 }
             } else {

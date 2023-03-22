@@ -14,6 +14,7 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BoxedDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BoxedDisplay");
 
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => false;
         public override bool IsUnlockable => true;
@@ -38,9 +39,6 @@ namespace BlargleBrew.cards {
             new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Side, Weight = 1 },
             new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Side, Weight = 1 },
             new Dish.MenuItem() { Item = Refs.LimeChopped, Phase = MenuPhase.Side, Weight = 1 },
-
-            new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Dessert, Weight = 1 },
-            new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Dessert, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {

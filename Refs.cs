@@ -20,6 +20,7 @@ namespace KitchenBlargleBrew
         public static Item EmptyMug => GDOUtils.GetCastedGDO<Item, EmptyMug>();
         public static Item BeerStout => GDOUtils.GetCastedGDO<Item, BeerMugStout>();
         public static Item BeerWheat => GDOUtils.GetCastedGDO<Item, BeerMugWheat>();
+        public static ItemGroup WheatBeerWithOrange => GDOUtils.GetCastedGDO<ItemGroup, WheatBeerWithOrange>();
 
         public static Appliance BeerCanProvider => GDOUtils.GetCastedGDO<Appliance, BeerCanProvider>();
         public static Item BeerCanClosed => GDOUtils.GetCastedGDO<Item, BeerCanClosed>();
