@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenMods;
 using Unity.Entities;
+using UnityEngine;
 
 namespace KitchenBlargleBrew.kegerator {
 
@@ -17,7 +18,15 @@ namespace KitchenBlargleBrew.kegerator {
         protected override void Perform(ref InteractionData data) {
             BlargleBrewMod.Log("perform, current state = " + state.kegQuantity);
 
-            state.kegQuantity = (state.kegQuantity + 1) % 10;
+            if (!state.infinite) {
+                state.kegQuantity = (state.kegQuantity + 1) % 10;
+            }
+
+            if (Require(data.Interactor, out CItemHolder itemHolder) && Require(itemHolder.HeldItem, out CKegColor kegColor)) {
+                if (kegColor.colorId == 0) {
+                    EntityManager.DestroyEntity(itemHolder.HeldItem);
+                }
+            }
 
             BlargleBrewMod.Log("new state = " + state.kegQuantity);
             SetComponent(data.Target, state);

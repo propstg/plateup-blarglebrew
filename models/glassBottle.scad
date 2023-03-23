@@ -1,11 +1,12 @@
 $fn=15;
 
 
-hasCap = true;
+hasCap = false;
 hasBottle = false;
 hasLiquid = false;
 hasCardboard = false;
-showBox = true;
+showBox = false;
+showLime = true;
 
 scale([0.01, 0.01, 0.01])
 //referenceCube();
@@ -13,8 +14,8 @@ scale([0.01, 0.01, 0.01])
 //scale([0.01, 0.01, 0.01])
 //translate([0, 0, 41]) 
 
-bottleBox();
-//bottle();
+//bottleBox();
+bottle();
 
 
 module bottle() {
@@ -42,6 +43,15 @@ module bottle() {
         translate([0, 0, 1])
         scale([0.9, 0.9, 0.95])
         subBottle();
+    }
+    
+    if (showLime) {
+        translate([0, 00, 80])
+        intersection() {
+            sphere(d=20);
+            translate([0, 0, -10])
+            cube([20, 20, 30]);
+        }
     }
 }
 

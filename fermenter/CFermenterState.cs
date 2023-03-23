@@ -8,5 +8,6 @@ namespace KitchenBlargleBrew.kegerator {
         public int colorId;
         public bool doneFermenting;
         public int kegQuantity;
+        public bool infinite;
     }
 }

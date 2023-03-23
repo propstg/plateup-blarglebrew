@@ -37,6 +37,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BeerBottleEmpty>();
             AddGameDataObject<BeerBottleClosed>();
             AddGameDataObject<BeerBottleOpen>();
+            AddGameDataObject<BeerBottleWithLime>();
             AddGameDataObject<BeerBottleProvider>();
 
             AddGameDataObject<BeerMugStout>();
@@ -55,7 +56,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<DessertBeerDish>();
 
-            //AddGameDataObject<Fermenter>();
+            //AddGameDataObject<InfiniteFermenterWheat>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);

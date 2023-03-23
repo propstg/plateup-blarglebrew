@@ -18,6 +18,7 @@ namespace BlargleBrew {
         public static Material[] woodCorkboard => wrap(MaterialUtils.GetExistingMaterial("Wood - Corkboard"));
         public static Material[] woodDefault => wrap(MaterialUtils.GetExistingMaterial("Wood - Default"));
         public static Material[] mandarinSkin => wrap(MaterialUtils.GetExistingMaterial("Mandarin Skin"));
+        public static Material[] lime => wrap(MaterialUtils.GetExistingMaterial("IngredientLib - \"Lime\""));
 
 
         public static class Bottle {
@@ -25,6 +26,7 @@ namespace BlargleBrew {
             public static Material[] glass => CommonMaterials.glass;
             public static Material[] lid => metalBlack;
             public static Material[] liquid => postitYellow;
+            public static Material[] lime => CommonMaterials.lime;
         }
 
         public static class Can {

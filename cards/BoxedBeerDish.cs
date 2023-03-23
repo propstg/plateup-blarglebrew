@@ -33,12 +33,12 @@ namespace BlargleBrew.cards {
             new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Starter, Weight = 1 },
             new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Starter, Weight = 1 },
 
-            new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Main, Weight = 1 },
-            new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Main, Weight = 1 },
+            new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Main, Weight = 2 },
+            new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Main, Weight = 2 },
+            new Dish.MenuItem() { Item = Refs.BeerBottleWithLime, Phase = MenuPhase.Main, Weight = 1 },
 
             new Dish.MenuItem() { Item = Refs.BeerCanOpen, Phase = MenuPhase.Side, Weight = 1 },
             new Dish.MenuItem() { Item = Refs.BeerBottleOpen, Phase = MenuPhase.Side, Weight = 1 },
-            new Dish.MenuItem() { Item = Refs.LimeChopped, Phase = MenuPhase.Side, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {

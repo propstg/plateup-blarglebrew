@@ -21,6 +21,9 @@ namespace BlargleBrew.cards {
             "I'm Ok",
             "We Don't Card",
             "Buzzkill Jimmy's",
+            "The Parting Glass",
+            "The Leaky Barrel",
+            "Hole in the Wall",
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {

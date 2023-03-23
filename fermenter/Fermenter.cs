@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace KitchenBlargleBrew.kegerator {
 
-    public class Fermenter : CustomAppliance {
+    public class InfiniteFermenterWheat : CustomAppliance {
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Fermenter");
         public override PriceTier PriceTier => PriceTier.Medium;
@@ -17,10 +17,15 @@ namespace KitchenBlargleBrew.kegerator {
         public override bool IsNonInteractive => false;
         public override bool IsPurchasable => true;
         public override bool SellOnlyAsDuplicate => true;
-        public override string UniqueNameID => "BlargleBrew - Fermenter";
+        public override string UniqueNameID => "BlargleBrew - Infinite Fermenter Wheat";
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>() {
-            new CFermenterState(),
+            new CFermenterState() {
+                infinite = true,
+                kegQuantity = 10,
+                colorId = 2,
+                doneFermenting = true,
+            },
         };
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
@@ -38,7 +43,7 @@ namespace KitchenBlargleBrew.kegerator {
         private void setupMaterials() {
             MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.metalShiny);
             MaterialUtils.ApplyMaterial(Prefab, "spigot", CommonMaterials.metalBlack);
-            MaterialUtils.ApplyMaterial(Prefab, "gauge", CommonMaterials.cardboard);
+            MaterialUtils.ApplyMaterial(Prefab, "gauge", CommonMaterials.Keg.wheatLabel);
         }
 
         private void setupCustomView() {
