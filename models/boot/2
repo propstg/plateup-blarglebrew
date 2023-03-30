@@ -1,0 +1,12 @@
+body();
+
+module body() {
+    scale([scale, scale, scale])
+    union() {
+	    translate([0, 0, 15]) cylinder(d1=15, d2=15, h=10);
+	    translate([0, 0, 25]) cylinder(d1=15, d2=20, h=10);
+	    translate([0, 0, 35]) cylinder(d1=20, d2=22, h=10);
+	    translate([0, 0, 45]) cylinder(d1=22, d2=20, h=5);
+    }
+}
+

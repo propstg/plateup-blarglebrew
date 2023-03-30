@@ -1,7 +1,9 @@
 ﻿using ApplianceLib.Api;
+using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
 using Kitchen;
+using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
 using KitchenLib;
 using KitchenLib.Event;
@@ -57,6 +59,14 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<DessertBeerDish>();
 
             //AddGameDataObject<InfiniteFermenterWheat>();
+
+            AddGameDataObject<EmptyBoot>();
+            AddGameDataObject<EmptyBootProvider>();
+            AddGameDataObject<StoutBoot>();
+            AddGameDataObject<BootDish>();
+
+            AddGameDataObject<PickledEgg>();
+            AddGameDataObject<PickledEggDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);

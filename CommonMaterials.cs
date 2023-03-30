@@ -19,6 +19,7 @@ namespace BlargleBrew {
         public static Material[] woodDefault => wrap(MaterialUtils.GetExistingMaterial("Wood - Default"));
         public static Material[] mandarinSkin => wrap(MaterialUtils.GetExistingMaterial("Mandarin Skin"));
         public static Material[] lime => wrap(MaterialUtils.GetExistingMaterial("IngredientLib - \"Lime\""));
+        public static Material[] eggWhite => wrap(MaterialUtils.GetExistingMaterial("Egg - White"));
 
 
         public static class Bottle {
@@ -52,7 +53,11 @@ namespace BlargleBrew {
             public static Material[] stoutLabel => metalBlack;
             public static Material[] wheatLabel => postitYellow;
             public static Material[] emptyLabel => metalDirty;
+        }
 
+        public static class PickledEgg {
+            public static Material[] egg => CommonMaterials.eggWhite;
+            public static Material[] glass => CommonMaterials.glass;
         }
     }
 }

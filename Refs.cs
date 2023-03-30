@@ -1,6 +1,8 @@
-﻿using BlargleBrew.cards;
+﻿using BlargleBrew.boot;
+using BlargleBrew.cards;
 using BlargleBrew.draft;
 using IngredientLib.Ingredient.Items;
+using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.References;
@@ -41,5 +43,16 @@ namespace KitchenBlargleBrew
         public static Dish DraftBeerDish => GDOUtils.GetCastedGDO<Dish, DraftBeerDish>();
         public static Dish BoxedBeerDish => GDOUtils.GetCastedGDO<Dish, BoxedBeerDish>();
         public static Dish DessertBeerDish => GDOUtils.GetCastedGDO<Dish, DessertBeerDish>();
+        public static Dish BootDish => GDOUtils.GetCastedGDO<Dish, BootDish>();
+        public static Dish PickledEggDish => GDOUtils.GetCastedGDO<Dish, PickledEggDish>();
+
+        public static Item EmptyBoot => GDOUtils.GetCastedGDO<Item, EmptyBoot>();
+        public static Item StoutBoot => GDOUtils.GetCastedGDO<Item, StoutBoot>();
+        public static Appliance EmptyBootProvider => GDOUtils.GetCastedGDO<Appliance, EmptyBootProvider>();
+
+
+        public static Item Egg => (Item) GDOUtils.GetExistingGDO(ItemReferences.Egg);
+        public static Item Vinegar => GDOUtils.GetCastedGDO<Item, VinegarIngredient>();
+        public static Item PickledEgg => GDOUtils.GetCastedGDO<Item, PickledEgg>();
     }
 }
