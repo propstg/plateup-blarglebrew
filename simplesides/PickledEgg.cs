@@ -44,8 +44,8 @@ namespace BlargleBrew.boot {
 
 
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Mug.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "eggs", CommonMaterials.snow);
+            MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.PickledEgg.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "eggs", CommonMaterials.PickledEgg.egg);
 
             Prefab.GetComponent<PickledEggItemGroupView>()?.Setup(Prefab);
 

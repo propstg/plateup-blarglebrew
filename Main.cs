@@ -2,9 +2,11 @@
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
+using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
 using KitchenMods;
@@ -68,6 +70,8 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<PickledEgg>();
             AddGameDataObject<PickledEggDish>();
 
+            AddGameDataObject<PeanutBowlDish>();
+
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
@@ -82,6 +86,23 @@ namespace KitchenBlargleBrew {
 
         public static void Log(object message) {
             Debug.Log($"[{MOD_ID}] {message}");
+        }
+    }
+
+
+    [HarmonyPatch(typeof(MenuBackgroundItemScroller), "CreateItem")]
+    public class MenuBackgroundItemScroller_CreateItem_Patch {
+
+        public static void Postfix(ref GameObject __result) {
+            Debug.Log(__result);
+            if (__result.name.Contains("Beer") || __result.name.Contains("mug") || __result.name.Contains("MugWithOrange")) {
+                changeRotationSoItemsAreNotTopDown(__result);
+                __result.transform.localPosition += new Vector3(0, -0.3f, 0);
+            }
+        }
+
+        private static void changeRotationSoItemsAreNotTopDown(GameObject item) {
+            item.transform.localRotation = Quaternion.Euler(new Vector3(-35, 0, 0));
         }
     }
 }

@@ -56,7 +56,7 @@ namespace BlargleBrew {
         }
 
         public static class PickledEgg {
-            public static Material[] egg => CommonMaterials.eggWhite;
+            public static Material[] egg => eggWhite;
             public static Material[] glass => CommonMaterials.glass;
         }
     }

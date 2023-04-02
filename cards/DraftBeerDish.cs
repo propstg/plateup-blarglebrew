@@ -26,6 +26,10 @@ namespace BlargleBrew.cards {
             "Hole in the Wall",
         };
 
+        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
+            Refs.DraftBeerDish,
+        };
+
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerStout,
             Refs.BeerWheat,
