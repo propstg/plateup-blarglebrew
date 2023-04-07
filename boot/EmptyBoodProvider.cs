@@ -1,4 +1,5 @@
-﻿using BlargleBrew;
+﻿using ApplianceLib.Api.Prefab;
+using BlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -6,9 +7,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace KitchenBlargleBrew.boot {
+
     public class EmptyBootProvider : CustomAppliance {
 
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("empty mug");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("BootProvider");
         public override PriceTier PriceTier => PriceTier.Medium;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking | ShoppingTags.Misc;
         public override bool IsPurchasable => true;
@@ -16,7 +18,9 @@ namespace KitchenBlargleBrew.boot {
         public override string UniqueNameID => "BlargleBrew - Empty Boot Provider";
 
         public override void OnRegister(Appliance gdo) {
-            MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Mug.glass);
+            Prefab.AttachCounter(CounterType.Drawers);
+            MaterialUtils.ApplyMaterial(Prefab, "Boot/glass", CommonMaterials.Mug.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "Boot2/glass", CommonMaterials.Mug.glass);
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {

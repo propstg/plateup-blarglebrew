@@ -70,7 +70,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<PickledEgg>();
             AddGameDataObject<PickledEggDish>();
 
-            AddGameDataObject<PeanutBowlDish>();
+            //AddGameDataObject<PeanutBowlDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);

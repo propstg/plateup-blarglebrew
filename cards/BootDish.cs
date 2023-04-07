@@ -16,16 +16,12 @@ namespace BlargleBrew.cards {
 
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-        };
+        public override bool IsAvailableAsLobbyOption => false;
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerStout,
             Refs.KegStout,
             Refs.EmptyBoot,
-
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
@@ -33,11 +29,11 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Grab a boot, fill it three times with stout, and serve." }
+            { Locale.English, "Grab a boot, fill it three times with stout, and serve. Serves up to 4 customers." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bierstiefel", "Adds a boot to serve groups", "TODO") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bierstiefel", "Adds a boot to serve groups", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {
