@@ -72,6 +72,8 @@ namespace KitchenBlargleBrew {
 
             //AddGameDataObject<PeanutBowlDish>();
 
+            AddGameDataObject<Michelada>();
+
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);

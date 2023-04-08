@@ -40,6 +40,7 @@ namespace KitchenBlargleBrew
         public static Item MandarinSlice => (Item) GDOUtils.GetExistingGDO(ItemReferences.MandarinSlice);
         public static Item Lime => GDOUtils.GetCastedGDO<Item, Lime>();
         public static Item LimeChopped => GDOUtils.GetCastedGDO<Item, ChoppedLime>();
+        public static Item LimeJuice => GDOUtils.GetCastedGDO<Item, LimeJuice>();
 
         public static Dish DraftBeerDish => GDOUtils.GetCastedGDO<Dish, DraftBeerDish>();
         public static Dish BoxedBeerDish => GDOUtils.GetCastedGDO<Dish, BoxedBeerDish>();
