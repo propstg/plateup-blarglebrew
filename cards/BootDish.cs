@@ -16,7 +16,7 @@ namespace BlargleBrew.cards {
 
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => false;
+        public override bool IsAvailableAsLobbyOption => true;
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerStout,

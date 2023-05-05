@@ -47,7 +47,7 @@ namespace KitchenBlargleBrew
         public static Dish DessertBeerDish => GDOUtils.GetCastedGDO<Dish, DessertBeerDish>();
         public static Dish BootDish => GDOUtils.GetCastedGDO<Dish, BootDish>();
         public static Dish PickledEggDish => GDOUtils.GetCastedGDO<Dish, PickledEggDish>();
-        public static Dish PeanutBowlDish => GDOUtils.GetCastedGDO<Dish, PeanutBowlDish>();
+        //public static Dish PeanutBowlDish => GDOUtils.GetCastedGDO<Dish, PeanutBowlDish>();
 
         public static Item EmptyBoot => GDOUtils.GetCastedGDO<Item, EmptyBoot>();
         public static Item StoutBoot => GDOUtils.GetCastedGDO<Item, StoutBoot>();

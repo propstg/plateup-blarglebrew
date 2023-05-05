@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
+    /*
     public class PeanutBowlDish : CustomDish {
 
         public override string UniqueNameID => "Blargle Beer - Peanut Bowl Dish";
@@ -56,4 +57,5 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
         }
     }
+    */
 }
