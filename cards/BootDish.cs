@@ -1,4 +1,5 @@
 ﻿using KitchenBlargleBrew;
+using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -16,7 +17,14 @@ namespace BlargleBrew.cards {
 
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
+        public override bool IsAvailableAsLobbyOption =>
+            #if DEBUG
+                true;
+            #else
+                false;
+            #endif
+
+        public override bool RequiredNoDishItem => true;
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerStout,

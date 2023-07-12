@@ -17,6 +17,7 @@ namespace BlargleBrew.cards {
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeIncrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
+        public override bool RequiredNoDishItem => true;
         public override List<string> StartingNameSet => new List<string> {
             "I'm Ok",
             "We Don't Card",

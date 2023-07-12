@@ -7,12 +7,12 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class PickledEggDish : CustomDish {
+    public class MicheladaDish : CustomDish {
 
-        public override string UniqueNameID => "Blargle Beer - Pickled Egg Dish";
-        public override DishType Type => DishType.Starter;
-        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
-        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
+        public override string UniqueNameID => "Blargle Beer - Michelada";
+        public override DishType Type => DishType.Main;
+        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Michelada");
+        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Michelada");
 
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool RequiredNoDishItem => true;
@@ -24,12 +24,12 @@ namespace BlargleBrew.cards {
             #endif
 
         public override List<Unlock> HardcodedRequirements => new List<Unlock> {
-            Refs.DraftBeerDish,
+            Refs.BoxedBeerDish,
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.Vinegar,
-            Refs.Egg,
+            Refs.BeerBottleClosed,
+            Refs.Lime,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
