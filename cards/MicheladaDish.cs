@@ -30,18 +30,19 @@ namespace BlargleBrew.cards {
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.BeerBottleClosed,
             Refs.Lime,
+            Refs.Tomato,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.PickledEgg, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.Michelada, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add a whole egg to a serving of vinegar. Enjoy!" }
+            { Locale.English, "Mix an opened bottle beer, lime juice, tomato sauce, and chopped peppers." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Pickled Egg", "Adds pickled egg as a side.", "Who even enjoys any of this?") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Michelada", "Adds a Michelada as a main.", "This one is vegetarian :D") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

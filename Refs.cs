@@ -59,5 +59,10 @@ namespace KitchenBlargleBrew
         public static Item PickledEgg => GDOUtils.GetCastedGDO<Item, PickledEgg>();
 
         public static Item Nuts => (Item) GDOUtils.GetExistingGDO(ItemReferences.NutsIngredient);
+        public static Item Tomato => (Item) GDOUtils.GetExistingGDO(ItemReferences.Tomato);
+        public static Item TomatoSauce => (Item) GDOUtils.GetExistingGDO(ItemReferences.TomatoSauce);
+
+        public static Item Michelada => GDOUtils.GetCastedGDO<Item, Michelada>();
+        public static Item MicheladaDish => GDOUtils.GetCastedGDO<Item, MicheladaDish>();
     }
 }

@@ -38,6 +38,13 @@ namespace BlargleBrew.boot {
                     Refs.LimeJuice,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>() {
+                    Refs.TomatoSauce,
+                }
+            },
         };
 
 
@@ -45,6 +52,7 @@ namespace BlargleBrew.boot {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Michelada.glass);
             MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Michelada.beer);
             MaterialUtils.ApplyMaterial(Prefab, "lime", CommonMaterials.Michelada.limeJuice);
+            MaterialUtils.ApplyMaterial(Prefab, "sauce", CommonMaterials.tomatoFlesh);
             MaterialUtils.ApplyMaterial(Prefab, "rim", CommonMaterials.snow);
 
             Prefab.GetComponent<MicheladaItemGroupView>()?.Setup(Prefab);
@@ -71,11 +79,16 @@ namespace BlargleBrew.boot {
                         Item = Refs.LimeJuice,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "lime"),
                     },
+                    new ComponentGroup() {
+                        Item = Refs.TomatoSauce,
+                        GameObject = GameObjectUtils.GetChildObject(prefab, "sauce"),
+                    },
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
                     new ColourBlindLabel() { Text = "Pil", Item = Refs.BeerBottleOpen },
-                    new ColourBlindLabel() { Text = "Li", Item = Refs.LimeJuice }
+                    new ColourBlindLabel() { Text = "Li", Item = Refs.LimeJuice },
+                    new ColourBlindLabel() { Text = "T", Item = Refs.TomatoSauce }
                 };
             }
         }
