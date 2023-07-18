@@ -20,7 +20,7 @@ namespace KitchenBlargleBrew {
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.Can.foam);
 
             GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gdo as Item);
-            clonedColourBlind.transform.localPosition = new Vector3(0, 0.9f, 0);
+            clonedColourBlind.transform.localPosition = new Vector3(0, 0.6f, 0);
             ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "Lt";
         }
     }

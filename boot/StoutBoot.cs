@@ -84,9 +84,8 @@ namespace BlargleBrew.boot {
             Prefab.GetComponent<WheatBeerWithOrangeItemGroupView>()?.Setup(Prefab);
 
             if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView)) {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gameDataObject);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
-                clonedColourBlind.transform.localPosition = new Vector3(0, 0.4f, 0);
+                Transform transform = itemGroupView.gameObject.transform.Find("Colour Blind");
+                transform.localPosition = new Vector3(0, 0.6f, 0);
             }
         }
 

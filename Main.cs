@@ -98,7 +98,10 @@ namespace KitchenBlargleBrew {
 
         public static void Postfix(ref GameObject __result) {
             Debug.Log(__result);
-            if (__result.name.Contains("Beer") || __result.name.Contains("mug") || __result.name.Contains("MugWithOrange")) {
+            if (__result.name.Contains("Beer") || 
+                __result.name.Contains("mug") || 
+                __result.name.Contains("MugWithOrange") ||
+                __result.name.Contains("Michelada")) {
                 changeRotationSoItemsAreNotTopDown(__result);
                 __result.transform.localPosition += new Vector3(0, -0.3f, 0);
             }

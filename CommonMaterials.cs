@@ -22,7 +22,9 @@ namespace BlargleBrew {
         public static Material[] limeJuice => wrap(MaterialUtils.GetExistingMaterial("IngredientLib - \"Lime Juice\""));
         public static Material[] eggWhite => wrap(MaterialUtils.GetExistingMaterial("Egg - White"));
         public static Material[] tomatoFlesh => wrap(MaterialUtils.GetExistingMaterial("Tomato Flesh"));
-
+        public static Material[] rugGreen => wrap(MaterialUtils.GetExistingMaterial("Rug - Green"));
+        public static Material[] tomato => wrap(MaterialUtils.GetExistingMaterial("Tomato"));
+        public static Material[] plasticGreen => wrap(MaterialUtils.GetExistingMaterial("Plastic - Green"));
 
         public static class Bottle {
             public static Material[] box => cardboard;
@@ -67,6 +69,8 @@ namespace BlargleBrew {
             public static Material[] beer => postitYellow;
             public static Material[] limeJuice => CommonMaterials.limeJuice;
             public static Material[] rim => CommonMaterials.tomatoFlesh;
+            public static Material[] pepperBody => CommonMaterials.plasticGreen;
+            public static Material[] pepperStem => CommonMaterials.rugGreen;
         }
     }
 }

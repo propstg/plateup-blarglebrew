@@ -45,21 +45,30 @@ namespace BlargleBrew.boot {
                     Refs.TomatoSauce,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 0,
+                Items = new List<Item>() {
+                    Refs.Pepper,
+                }
+            },
         };
 
 
         public override void OnRegister(ItemGroup gameDataObject) {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Michelada.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Michelada.beer);
-            MaterialUtils.ApplyMaterial(Prefab, "lime", CommonMaterials.Michelada.limeJuice);
+            MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Michelada.limeJuice);
+            MaterialUtils.ApplyMaterial(Prefab, "lime", CommonMaterials.Michelada.beer);
             MaterialUtils.ApplyMaterial(Prefab, "sauce", CommonMaterials.tomatoFlesh);
             MaterialUtils.ApplyMaterial(Prefab, "rim", CommonMaterials.snow);
+            MaterialUtils.ApplyMaterial(Prefab, "pepper-body", CommonMaterials.Michelada.pepperBody);
+            MaterialUtils.ApplyMaterial(Prefab, "pepper-stem", CommonMaterials.Michelada.pepperStem);
 
             Prefab.GetComponent<MicheladaItemGroupView>()?.Setup(Prefab);
 
             if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView)) {
-                GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gameDataObject);
-                ColorblindUtils.setColourBlindLabelObjectOnItemGroupView(itemGroupView, clonedColourBlind);
+                Transform transform = itemGroupView.gameObject.transform.Find("Colour Blind");
+                transform.localPosition = new Vector3(0, 0.6f, 0);
             }
         }
 
@@ -83,12 +92,21 @@ namespace BlargleBrew.boot {
                         Item = Refs.TomatoSauce,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "sauce"),
                     },
+                    new ComponentGroup() {
+                        Item = Refs.Pepper,
+                        Objects = new List<GameObject> {
+                            GameObjectUtils.GetChildObject(prefab, "pepper-body"),
+                            GameObjectUtils.GetChildObject(prefab, "pepper-stem"),
+                        },
+                        DrawAll = true,
+                    },
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "Pil", Item = Refs.BeerBottleOpen },
+                    new ColourBlindLabel() { Text = "Pi", Item = Refs.BeerBottleOpen },
                     new ColourBlindLabel() { Text = "Li", Item = Refs.LimeJuice },
-                    new ColourBlindLabel() { Text = "T", Item = Refs.TomatoSauce }
+                    new ColourBlindLabel() { Text = "T", Item = Refs.TomatoSauce },
+                    new ColourBlindLabel() { Text = "C", Item = Refs.Pepper }
                 };
             }
         }
