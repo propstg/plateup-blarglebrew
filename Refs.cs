@@ -1,11 +1,12 @@
 ﻿using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.michelada;
 using IngredientLib.Ingredient.Items;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
+using KitchenBlargleBrew.michelada;
 using KitchenData;
-using KitchenLib.Customs;
 using KitchenLib.References;
 using KitchenLib.Utils;
 
@@ -65,5 +66,10 @@ namespace KitchenBlargleBrew
 
         public static Item Michelada => GDOUtils.GetCastedGDO<Item, Michelada>();
         public static Item MicheladaDish => GDOUtils.GetCastedGDO<Item, MicheladaDish>();
+
+        public static Item Water => (Item) GDOUtils.GetExistingGDO(ItemReferences.Water);
+        public static Item TomatoJuice => GDOUtils.GetCastedGDO<Item, TomatoJuice>();
+        public static Item TomatoJuiceUnmixed => GDOUtils.GetCastedGDO<Item, TomatoJuiceUnmixed>();
+        public static Item TomatoJuicePitcher => GDOUtils.GetCastedGDO<Item, TomatoJuicePitcher>();
     }
 }

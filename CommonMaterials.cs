@@ -72,5 +72,10 @@ namespace BlargleBrew {
             public static Material[] pepperBody => CommonMaterials.plasticGreen;
             public static Material[] pepperStem => CommonMaterials.rugGreen;
         }
+
+        public static class TomatoJuice {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] contents => CommonMaterials.tomato;
+        }
     }
 }

@@ -1,14 +1,13 @@
 ﻿using Kitchen;
 using KitchenBlargleBrew;
 using KitchenData;
-using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
-namespace BlargleBrew.boot {
+namespace BlargleBrew.michelada {
 
     class Michelada : CustomItemGroup<Michelada.MicheladaItemGroupView> {
 
@@ -42,7 +41,7 @@ namespace BlargleBrew.boot {
                 Max = 1,
                 Min = 1,
                 Items = new List<Item>() {
-                    Refs.TomatoSauce,
+                    Refs.TomatoJuice,
                 }
             },
             new ItemSet() {
@@ -89,7 +88,7 @@ namespace BlargleBrew.boot {
                         GameObject = GameObjectUtils.GetChildObject(prefab, "lime"),
                     },
                     new ComponentGroup() {
-                        Item = Refs.TomatoSauce,
+                        Item = Refs.TomatoJuice,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "sauce"),
                     },
                     new ComponentGroup() {
@@ -105,7 +104,7 @@ namespace BlargleBrew.boot {
                 ComponentLabels = new List<ColourBlindLabel>() {
                     new ColourBlindLabel() { Text = "Pi", Item = Refs.BeerBottleOpen },
                     new ColourBlindLabel() { Text = "Li", Item = Refs.LimeJuice },
-                    new ColourBlindLabel() { Text = "T", Item = Refs.TomatoSauce },
+                    new ColourBlindLabel() { Text = "Tj", Item = Refs.TomatoJuice },
                     new ColourBlindLabel() { Text = "C", Item = Refs.Pepper }
                 };
             }

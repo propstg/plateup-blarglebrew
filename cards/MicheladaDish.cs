@@ -31,6 +31,7 @@ namespace BlargleBrew.cards {
             Refs.BeerBottleClosed,
             Refs.Lime,
             Refs.Tomato,
+            Refs.Water,
             Refs.Pepper,
         };
 
@@ -39,7 +40,7 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Mix an opened bottle beer, lime juice, tomato sauce, and (optionally) chopped peppers." }
+            { Locale.English, "Mix an opened bottle beer, lime juice, tomato juice (tomato sauce + water), and (optionally) chopped peppers." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

@@ -2,10 +2,12 @@
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.michelada;
 using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
+using KitchenBlargleBrew.michelada;
 using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
@@ -55,7 +57,11 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+
             AddGameDataObject<Michelada>();
+            AddGameDataObject<TomatoJuice>();
+            AddGameDataObject<TomatoJuicePitcher>();
+            AddGameDataObject<TomatoJuiceUnmixed>();
 
             AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BoxedBeerDish>();
