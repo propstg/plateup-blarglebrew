@@ -71,5 +71,10 @@ namespace KitchenBlargleBrew
         public static Item TomatoJuice => GDOUtils.GetCastedGDO<Item, TomatoJuice>();
         public static Item TomatoJuiceUnmixed => GDOUtils.GetCastedGDO<Item, TomatoJuiceUnmixed>();
         public static Item TomatoJuicePitcher => GDOUtils.GetCastedGDO<Item, TomatoJuicePitcher>();
+
+        public static Item OrangeJuice => GDOUtils.GetCastedGDO<Item, OrangeJuiceIngredient>();
+        public static Item Beermosa => GDOUtils.GetCastedGDO<Item, Beermosa>();
+        public static Item BottomlessBeermosasDish => GDOUtils.GetCastedGDO<Item, BottomlessBeermosasDish>();
+        
     }
 }

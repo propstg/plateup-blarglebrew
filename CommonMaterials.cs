@@ -77,5 +77,11 @@ namespace BlargleBrew {
             public static Material[] glass => CommonMaterials.glass;
             public static Material[] contents => CommonMaterials.tomato;
         }
+
+        public static class Beermosa {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] wheatBeer => postitYellow;
+            public static Material[] orangeJuice => mandarinSkin;
+        }
     }
 }

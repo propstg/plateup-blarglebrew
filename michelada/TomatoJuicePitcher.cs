@@ -39,6 +39,11 @@ namespace BlargleBrew.michelada {
                 };
                 ReflectionUtils.GetField<ObjectsSplittableView>("Objects").SetValue(splittable, items);
             }
+
+            if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView)) {
+                Transform transform = itemGroupView.gameObject.transform.Find("Colour Blind");
+                transform.localPosition = new Vector3(0, 0.6f, 0);
+            }
         }
     }
 }

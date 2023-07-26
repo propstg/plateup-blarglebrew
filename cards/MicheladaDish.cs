@@ -14,6 +14,7 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Michelada");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Michelada");
 
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool RequiredNoDishItem => true;
         public override bool IsAvailableAsLobbyOption =>
@@ -40,7 +41,7 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Mix an opened bottle beer, lime juice, tomato juice (tomato sauce + water), and (optionally) chopped peppers." }
+            { Locale.English, "Mix an opened bottle beer, lime juice, tomato juice (tomato sauce + water), and (optionally) whole peppers." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

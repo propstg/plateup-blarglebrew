@@ -8,14 +8,14 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class BootDish : CustomDish {
+    public class BottomlessBeermosasDish : CustomDish {
 
-        public override string UniqueNameID => "Blargle Beer - bierstiefel";
+        public override string UniqueNameID => "Blargle Beer - bottomless beermosas";
         public override DishType Type => DishType.Base;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.None;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption =>
             #if DEBUG
@@ -31,21 +31,23 @@ namespace BlargleBrew.cards {
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.BeerStout,
-            Refs.KegStout,
-            Refs.EmptyBoot,
+            Refs.BeerWheat,
+            Refs.KegLight,
+            Refs.OrangeJuice
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.StoutBoot, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.Beermosa, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.Beermosa, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.Beermosa, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Grab a boot, fill it three times with stout, and serve. Serves up to 4 customers." }
+            { Locale.English, "Add orange juice to a wheat beer." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bierstiefel", "Adds a boot to serve groups", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bottomless Beermosas", ":D", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

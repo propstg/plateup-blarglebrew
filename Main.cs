@@ -8,7 +8,6 @@ using Kitchen;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
-using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
 using KitchenMods;
@@ -22,7 +21,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.1.1";
+        public const string MOD_VERSION = "0.3.0";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -77,6 +76,9 @@ namespace KitchenBlargleBrew {
 
             AddGameDataObject<PickledEgg>();
             AddGameDataObject<PickledEggDish>();
+
+            AddGameDataObject<Beermosa>();
+            AddGameDataObject<BottomlessBeermosasDish>();
 
             //AddGameDataObject<PeanutBowlDish>();
 
