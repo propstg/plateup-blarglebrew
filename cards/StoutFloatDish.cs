@@ -1,5 +1,4 @@
 ﻿using KitchenBlargleBrew;
-using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -8,10 +7,10 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class BottomlessBeermosasDish : CustomDish {
+    public class StoutFloatDish : CustomDish {
 
-        public override string UniqueNameID => "Blargle Beer - bottomless beermosas";
-        public override DishType Type => DishType.Base;
+        public override string UniqueNameID => "Blargle Beer - stout float";
+        public override DishType Type => DishType.Dessert;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
@@ -31,24 +30,21 @@ namespace BlargleBrew.cards {
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.BeerWheat,
-            Refs.KegLight,
-            Refs.OrangeJuice
+            Refs.BeerStout,
+            Refs.KegStout,
+            Refs.VanillaIceCream
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.Beermosa, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.Beermosa, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Side, Item = Refs.Beermosa, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.Beermosa, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Dessert, Item = Refs.StoutFloat, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add orange juice to a wheat beer." }
+            { Locale.English, "Add a scoop of ice cream to a stout beer." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bottomless Beermosas", ":D", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Stout Float", ":D", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

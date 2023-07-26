@@ -80,6 +80,9 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<Beermosa>();
             AddGameDataObject<BottomlessBeermosasDish>();
 
+            AddGameDataObject<StoutFloat>();
+            AddGameDataObject<StoutFloatDish>();
+
             //AddGameDataObject<PeanutBowlDish>();
 
 
@@ -109,6 +112,7 @@ namespace KitchenBlargleBrew {
             if (__result.name.Contains("Beer") || 
                 __result.name.Contains("mug") || 
                 __result.name.Contains("MugWithOrange") ||
+                __result.name.Contains("Stout") ||
                 __result.name.Contains("Michelada")) {
                 changeRotationSoItemsAreNotTopDown(__result);
                 __result.transform.localPosition += new Vector3(0, -0.3f, 0);

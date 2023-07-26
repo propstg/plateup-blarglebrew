@@ -9,11 +9,10 @@ using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft {
 
-    class Beermosa : CustomItemGroup<Beermosa.BeermosaItemGroupView> {
+    class StoutFloat : CustomItemGroup<StoutFloat.StoutFloatItemGroupView> {
 
-        private const string VFX_NAME = "Freezer Vapour";
-        public override string UniqueNameID => "BlargleBrew - Beermosa";
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("Beermosa");
+        public override string UniqueNameID => "BlargleBrew - Stout FLaot";
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("StoutFloat");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.Small;
@@ -27,7 +26,7 @@ namespace BlargleBrew.draft {
                 Min = 1,
                 IsMandatory = true,
                 Items = new List<Item>() {
-                    Refs.BeerWheat
+                    Refs.BeerStout
                 }
             },
             new ItemSet() {
@@ -35,47 +34,54 @@ namespace BlargleBrew.draft {
                 Min = 1,
                 IsMandatory = true,
                 Items = new List<Item>() {
-                    Refs.OrangeJuice,
+                    Refs.VanillaIceCream,
                 }
             },
         };
 
 
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Beermosa.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Beermosa.wheatBeer);
-            MaterialUtils.ApplyMaterial(Prefab, "lime", CommonMaterials.Beermosa.wheatBeer);
-            MaterialUtils.ApplyMaterial(Prefab, "sauce", CommonMaterials.Beermosa.orangeJuice);
+            MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.StoutFloat.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.StoutFloat.beer);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.StoutFloat.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "icecream-1", CommonMaterials.StoutFloat.iceCream);
+            MaterialUtils.ApplyMaterial(Prefab, "icecream-2", CommonMaterials.StoutFloat.iceCream);
+            MaterialUtils.ApplyMaterial(Prefab, "icecream-3", CommonMaterials.StoutFloat.iceCream);
 
-            Prefab.GetComponent<BeermosaItemGroupView>()?.Setup(Prefab);
+            Prefab.GetComponent<StoutFloatItemGroupView>()?.Setup(Prefab);
 
             if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView)) {
                 Transform transform = itemGroupView.gameObject.transform.Find("Colour Blind");
-                transform.localPosition = new Vector3(0, 0.4f, 0);
+                transform.localPosition = new Vector3(0, 0.3f, 0);
             }
         }
 
-        public class BeermosaItemGroupView : ItemGroupView {
+        public class StoutFloatItemGroupView : ItemGroupView {
             internal void Setup(GameObject prefab) {
                 ComponentGroups = new List<ComponentGroup>() {
                     new ComponentGroup() {
-                        Item = Refs.BeerWheat,
+                        Item = Refs.BeerStout,
                         Objects = new List<GameObject> {
                             GameObjectUtils.GetChildObject(prefab, "glass"),
                             GameObjectUtils.GetChildObject(prefab, "beer"),
-                            GameObjectUtils.GetChildObject(prefab, "lime"),
+                            GameObjectUtils.GetChildObject(prefab, "foam"),
                         },
                         DrawAll = true,
                     },
                     new ComponentGroup() {
-                        Item = Refs.OrangeJuice,
-                        GameObject = GameObjectUtils.GetChildObject(prefab, "sauce"),
+                        Item = Refs.VanillaIceCream,
+                        Objects = new List<GameObject> {
+                            GameObjectUtils.GetChildObject(prefab, "icecream-1"),
+                            GameObjectUtils.GetChildObject(prefab, "icecream-2"),
+                            GameObjectUtils.GetChildObject(prefab, "icecream-3"),
+                        },
+                        DrawAll = true,
                     },
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "Wh", Item = Refs.BeerWheat },
-                    new ColourBlindLabel() { Text = "Oj", Item = Refs.OrangeJuice },
+                    new ColourBlindLabel() { Text = "St", Item = Refs.BeerStout },
+                    new ColourBlindLabel() { Text = "V", Item = Refs.VanillaIceCream },
                 };
             }
         }
