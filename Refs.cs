@@ -1,7 +1,9 @@
-﻿using BlargleBrew.boot;
+﻿using BlargleBrew.beergarita;
+using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
 using BlargleBrew.michelada;
+using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.kegerator;
@@ -79,6 +81,12 @@ namespace KitchenBlargleBrew
         public static Item VanillaIceCream => (Item) GDOUtils.GetExistingGDO(ItemReferences.IceCreamVanilla);
         public static Item StoutFloat => GDOUtils.GetCastedGDO<Item, StoutFloat>();
         public static Item StoutFloatDish => GDOUtils.GetCastedGDO<Item, StoutFloatDish>();
+
+        public static Item TequilaShot => GDOUtils.GetCastedGDO<Item, TequilaShot>();
+        public static Item Tequila => GDOUtils.GetCastedGDO<Item, TequilaBottle>();
+        public static Item TequilaProvider => GDOUtils.GetCastedGDO<Item, TequilaBottleProvider>();
+        public static Item TequilaAndLime => GDOUtils.GetCastedGDO<Item, TequilaAndLime>();
+        public static Item Beergarita => GDOUtils.GetCastedGDO<Item, Beergarita>();
         
     }
 }

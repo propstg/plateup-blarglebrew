@@ -1,8 +1,10 @@
 ﻿using ApplianceLib.Api;
+using BlargleBrew.beergarita;
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
 using BlargleBrew.michelada;
+using BlargleBrew.tequila;
 using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.boot;
@@ -10,6 +12,8 @@ using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenLib;
 using KitchenLib.Event;
+using KitchenLib.References;
+using KitchenLib.Utils;
 using KitchenMods;
 using System.Linq;
 using System.Reflection;
@@ -83,8 +87,14 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<StoutFloat>();
             AddGameDataObject<StoutFloatDish>();
 
-            //AddGameDataObject<PeanutBowlDish>();
+            AddGameDataObject<TequilaShot>();
+            AddGameDataObject<TequilaBottle>();
+            AddGameDataObject<TequilaBottleProvider>();
+            AddGameDataObject<TequilaAndLime>();
+            AddGameDataObject<Beergarita>();
+            AddGameDataObject<BeergaritaDish>();
 
+            //AddGameDataObject<PeanutBowlDish>();
 
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 RestrictedItemSplits.BlacklistItem(Refs.KegStout);

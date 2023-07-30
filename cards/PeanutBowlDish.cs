@@ -15,11 +15,13 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
-        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-        };
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Small;
+        public override bool IsAvailableAsLobbyOption =>
+            #if DEBUG
+                true;
+            #else
+                false;
+            #endif
 
         public override List<Unlock> HardcodedRequirements => new List<Unlock> {
             Refs.DraftBeerDish,
@@ -40,22 +42,6 @@ namespace BlargleBrew.cards {
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
             { (Locale.English, LocalisationUtils.CreateUnlockInfo("Peanut Bowl", "Adds a peanut bowl as a side.", "Mmm. Salt.") )}
         };
-
-        public override void SetupIconPrefab(GameObject prefab) {
-            setupCommonDisplayPrefab(prefab);
-        }
-
-        public override void SetupDisplayPrefab(GameObject prefab) {
-            setupCommonDisplayPrefab(prefab);
-        }
-        
-        private void setupCommonDisplayPrefab(GameObject prefab) {
-            MaterialUtils.ApplyMaterial(prefab, "keg", CommonMaterials.Keg.metal);
-            MaterialUtils.ApplyMaterial(prefab, "label", CommonMaterials.Keg.stoutLabel);
-            MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);
-            MaterialUtils.ApplyMaterial(prefab, "mug/beer", CommonMaterials.Mug.stoutBeer);
-            MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
-        }
     }
     */
 }

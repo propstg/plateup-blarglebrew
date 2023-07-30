@@ -27,11 +27,15 @@ namespace BlargleBrew {
         public static Material[] plasticGreen => wrap(MaterialUtils.GetExistingMaterial("Plastic - Green"));
         public static Material[] vanilla => wrap(MaterialUtils.GetExistingMaterial("Vanilla"));
 
+        public static Material[] tequila => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Tequila", 0xF9D1A7, 0.5f));
+        public static Material[] pilsner => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pilsner", 0xFFD15E, 0.5f));
+        public static Material[] wheat => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Wheat", 0xFFD15E, 0.75f));
+
         public static class Bottle {
             public static Material[] box => cardboard;
             public static Material[] glass => CommonMaterials.glass;
             public static Material[] lid => metalBlack;
-            public static Material[] liquid => postitYellow;
+            public static Material[] liquid => pilsner;
             public static Material[] lime => CommonMaterials.lime;
         }
 
@@ -46,7 +50,7 @@ namespace BlargleBrew {
             public static Material[] glass => CommonMaterials.glass;
             public static Material[] stoutBeer => woodDefault;
             public static Material[] stoutFoam => woodCorkboard;
-            public static Material[] wheatBeer => postitYellow;
+            public static Material[] wheatBeer => wheat;
             public static Material[] wheatFoam => uncookedBatter;
             public static Material[] orange => mandarinSkin;
         }
@@ -74,7 +78,7 @@ namespace BlargleBrew {
 
         public static class Michelada {
             public static Material[] glass => CommonMaterials.glass;
-            public static Material[] beer => postitYellow;
+            public static Material[] beer => pilsner;
             public static Material[] limeJuice => CommonMaterials.limeJuice;
             public static Material[] rim => CommonMaterials.tomatoFlesh;
             public static Material[] pepperBody => CommonMaterials.plasticGreen;
@@ -88,8 +92,34 @@ namespace BlargleBrew {
 
         public static class Beermosa {
             public static Material[] glass => CommonMaterials.glass;
-            public static Material[] wheatBeer => postitYellow;
+            public static Material[] wheatBeer => wheat;
             public static Material[] orangeJuice => mandarinSkin;
+        }
+
+        public static class Tequila {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] liquid => CommonMaterials.tequila;
+            public static Material[] lid => CommonMaterials.metalBlack;
+            public static Material[] logo => CommonMaterials.lime;
+
+        }
+
+        public static class TequilaAndLime {
+
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] limeJuice => CommonMaterials.limeJuice;
+            public static Material[] straw => CommonMaterials.metalBlack;
+            public static Material[] tequila => CommonMaterials.tequila;
+
+        }
+
+        public static class Beergarita {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] limeJuice => CommonMaterials.limeJuice;
+            public static Material[] straw => CommonMaterials.metalBlack;
+            public static Material[] tequila => CommonMaterials.tequila;
+            public static Material[] bottleHolder => CommonMaterials.plasticGreen;
+
         }
     }
 }
