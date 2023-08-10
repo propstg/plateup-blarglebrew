@@ -22,7 +22,7 @@ namespace KitchenBlargleBrew {
         };
         */
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item item) {
             var glass = MaterialUtils.GetExistingMaterial("BobaCup");
             MaterialUtils.ApplyMaterial(Prefab, "glass", new Material[] { glass });
         }

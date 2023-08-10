@@ -14,7 +14,7 @@ namespace KitchenBlargleBrew {
         public override bool SellOnlyAsDuplicate => true;
         public override string UniqueNameID => "BlargleBrew - Empty Mug Provider";
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Appliance appliance) {
             var glass = MaterialUtils.GetExistingMaterial("BobaCup");
             MaterialUtils.ApplyMaterial(Prefab, "glass", new Material[] { glass });
         }

@@ -67,7 +67,7 @@ namespace KitchenBlargleBrew
         public static Item Pepper => GDOUtils.GetCastedGDO<Item, Pepper>();
 
         public static Item Michelada => GDOUtils.GetCastedGDO<Item, Michelada>();
-        public static Item MicheladaDish => GDOUtils.GetCastedGDO<Item, MicheladaDish>();
+        public static Dish MicheladaDish => GDOUtils.GetCastedGDO<Dish, MicheladaDish>();
 
         public static Item Water => (Item) GDOUtils.GetExistingGDO(ItemReferences.Water);
         public static Item TomatoJuice => GDOUtils.GetCastedGDO<Item, TomatoJuice>();
@@ -76,17 +76,19 @@ namespace KitchenBlargleBrew
 
         public static Item OrangeJuice => GDOUtils.GetCastedGDO<Item, OrangeJuiceIngredient>();
         public static Item Beermosa => GDOUtils.GetCastedGDO<Item, Beermosa>();
-        public static Item BottomlessBeermosasDish => GDOUtils.GetCastedGDO<Item, BottomlessBeermosasDish>();
+        public static Dish BottomlessBeermosasDish => GDOUtils.GetCastedGDO<Dish, BottomlessBeermosasDish>();
 
         public static Item VanillaIceCream => (Item) GDOUtils.GetExistingGDO(ItemReferences.IceCreamVanilla);
         public static Item StoutFloat => GDOUtils.GetCastedGDO<Item, StoutFloat>();
-        public static Item StoutFloatDish => GDOUtils.GetCastedGDO<Item, StoutFloatDish>();
+        public static Dish StoutFloatDish => GDOUtils.GetCastedGDO<Dish, StoutFloatDish>();
 
         public static Item TequilaShot => GDOUtils.GetCastedGDO<Item, TequilaShot>();
         public static Item Tequila => GDOUtils.GetCastedGDO<Item, TequilaBottle>();
         public static Item TequilaProvider => GDOUtils.GetCastedGDO<Item, TequilaBottleProvider>();
         public static Item TequilaAndLime => GDOUtils.GetCastedGDO<Item, TequilaAndLime>();
         public static Item Beergarita => GDOUtils.GetCastedGDO<Item, Beergarita>();
+        public static Dish BeergaritaDish => GDOUtils.GetCastedGDO<Dish, BeergaritaDish>();
+        public static Dish TequilaAndLimeDish => GDOUtils.GetCastedGDO<Dish, TequilaAndLimeDish>();
         
     }
 }

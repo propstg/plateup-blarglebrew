@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class BeergaritaDish : CustomDish {
+    public class TequilaAndLimeDish : CustomDish {
 
-        public override string UniqueNameID => "Blargle Beer - Beergarita Dish";
+        public override string UniqueNameID => "Blargle Beer - Tequila and Lime Dish";
         public override DishType Type => DishType.Main;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
-        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Small;
         public override bool RequiredNoDishItem => true;
         public override bool IsAvailableAsLobbyOption =>
             #if DEBUG
@@ -25,25 +25,23 @@ namespace BlargleBrew.cards {
 
         public override List<Unlock> HardcodedRequirements => new List<Unlock> {
             Refs.BoxedBeerDish,
-            Refs.TequilaAndLimeDish,
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.Tequila,
             Refs.Lime,
-            Refs.BeerBottleClosed,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.Beergarita, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.TequilaAndLime, Weight = 1 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add an open bottle of beer to a tequila and lime." }
+            { Locale.English, "Add a shot of tequila to lime juice." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Beergarita", "", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Tequila and Lime", "", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

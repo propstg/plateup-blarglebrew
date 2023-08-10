@@ -17,7 +17,7 @@ namespace BlargleBrew.draft {
             new CKegColor { colorId = 0 }
         };
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.dirty);
         }
     }

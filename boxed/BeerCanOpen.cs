@@ -14,12 +14,12 @@ namespace KitchenBlargleBrew {
         public override Item DirtiesTo => Refs.BeerCanEmpty;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
 
-        public override void OnRegister(GameDataObject gdo) {
+        public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "metal", CommonMaterials.Can.metal);
             MaterialUtils.ApplyMaterial(Prefab, "painted", CommonMaterials.Can.paint);
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.Can.foam);
 
-            GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gdo as Item);
+            GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(item);
             clonedColourBlind.transform.localPosition = new Vector3(0, 0.6f, 0);
             ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "Lt";
         }

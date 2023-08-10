@@ -91,6 +91,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<TequilaBottle>();
             AddGameDataObject<TequilaBottleProvider>();
             AddGameDataObject<TequilaAndLime>();
+            AddGameDataObject<TequilaAndLimeDish>();
             AddGameDataObject<Beergarita>();
             AddGameDataObject<BeergaritaDish>();
 
