@@ -1,41 +1,40 @@
-body();
+scale([scale, scale, scale]) briteBody();
 
-module body() {
-    scale([scale, scale, scale])
+module briteBody() {
+    translate([0, 100, 0])
     difference() {
         union() {
-            translate([0, 0, 70]) mainBody();
-            translate([0, 0, 30]) bottomCone();
-            legs();
-            translate([0, 0, 20]) legBraces();
-            translate([0, 0, 170]) top();
+            translate([0, 0, 40]) briteMainBody();
+            briteLegs();
+            translate([0, 0, 20]) briteLegBraces();
+            translate([0, 0, 140]) briteTop();
 
-            color("red") outputShaft();
+            color("red") briteOutputShaft();
         }
-        translate([0, 0, 105]) gaugeCutouts();
+        translate([0, 0, 105]) briteGaugeCutouts();
     }
 }
 
-module mainBody() {
+module briteMainBody() {
     cylinder(d=90, h=100);
 }
 
-module bottomCone() {
+module briteBottomCOne() {
     cylinder(d1=20, d2=90, h=40);
 }
 
-module legs() {
-    translate([-27, 27, 0]) leg();
-    translate([-27, -27, 0]) leg();
-    translate([27, 27, 0]) leg();
-    translate([27, -27, 0]) leg();
+module briteLegs() {
+    translate([-27, 27, 0]) briteLeg();
+    translate([-27, -27, 0]) briteLeg();
+    translate([27, 27, 0]) briteLeg();
+    translate([27, -27, 0]) briteLeg();
 }
 
-module leg() {
+module briteLeg() {
     cylinder(d=10, h=70);
 }
 
-module legBraces() {
+module briteLegBraces() {
     legSpacing = 25 * 2;
     diffSpacing = 23 * 2;
 
@@ -48,7 +47,7 @@ module legBraces() {
     }
 }
 
-module top() {
+module briteTop() {
     intersection() {
         translate([0, 0, -56])
         sphere(d=150);
@@ -56,7 +55,7 @@ module top() {
     }
 }
 
-module gaugeCutouts() {
+module briteGaugeCutouts() {
     translate([-50, 0, 0]) gaugeCutout();
     /*
     translate([50, 0, 0]) gaugeCutout();
@@ -69,7 +68,7 @@ module gaugeCutout() {
     sphere(d=40);
 }
 
-module outputShaft() {
+module briteOutputShaft() {
     translate([-40, 0, 50])
     rotate([0, 90, 0])
     cylinder(d=5, h=30);

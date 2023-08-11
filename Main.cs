@@ -12,8 +12,6 @@ using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenLib;
 using KitchenLib.Event;
-using KitchenLib.References;
-using KitchenLib.Utils;
 using KitchenMods;
 using System.Linq;
 using System.Reflection;
