@@ -18,9 +18,11 @@ namespace KitchenBlargleBrew
 
         public static Appliance KegStoutProvider => GDOUtils.GetCastedGDO<Appliance, KegProviderStout>();
         public static Appliance KegLightProvider => GDOUtils.GetCastedGDO<Appliance, KegProviderWheat>();
+        public static Appliance KegEmptyProvider => GDOUtils.GetCastedGDO<Appliance, KegProviderEmpty>();
         public static Appliance EmptyMugProvider => GDOUtils.GetCastedGDO<Appliance, EmptyMugProvider>();
         public static Appliance Kegerator => GDOUtils.GetCastedGDO<Appliance, Kegerator>();
         public static Item EmptyKeg => GDOUtils.GetCastedGDO<Item, EmptyKeg>();
+        public static Item CleanEmptyKeg => GDOUtils.GetCastedGDO<Item, CleanEmptyKeg>();
         public static Item KegStout => GDOUtils.GetCastedGDO<Item, KegStout>();
         public static Item KegLight => GDOUtils.GetCastedGDO<Item, KegWheat>();
         public static Item EmptyMug => GDOUtils.GetCastedGDO<Item, EmptyMug>();
@@ -84,7 +86,7 @@ namespace KitchenBlargleBrew
 
         public static Item TequilaShot => GDOUtils.GetCastedGDO<Item, TequilaShot>();
         public static Item Tequila => GDOUtils.GetCastedGDO<Item, TequilaBottle>();
-        public static Item TequilaProvider => GDOUtils.GetCastedGDO<Item, TequilaBottleProvider>();
+        public static Appliance TequilaProvider => GDOUtils.GetCastedGDO<Appliance, TequilaBottleProvider>();
         public static Item TequilaAndLime => GDOUtils.GetCastedGDO<Item, TequilaAndLime>();
         public static Item Beergarita => GDOUtils.GetCastedGDO<Item, Beergarita>();
         public static Dish BeergaritaDish => GDOUtils.GetCastedGDO<Dish, BeergaritaDish>();

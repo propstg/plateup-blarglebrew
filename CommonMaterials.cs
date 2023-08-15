@@ -30,6 +30,7 @@ namespace BlargleBrew {
         public static Material[] tequila => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Tequila", 0xF9D1A7, 0.75f));
         public static Material[] pilsner => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pilsner", 0xFFD15E, 0.75f));
         public static Material[] wheat => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Wheat", 0xFFD15E, 0.75f));
+        public static Material[] thinGlass => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Thin Glass", 0xF6FEFF, 0.1f));
 
         public static class Bottle {
             public static Material[] box => cardboard;

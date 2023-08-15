@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using KitchenBlargleBrew;
+using KitchenData;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace BlargleBrew.draft {
 
@@ -7,5 +10,9 @@ namespace BlargleBrew.draft {
         protected override string prefabName => "KegRackIpa";
         protected override string name => "Stout";
         protected override Material[] labelMaterial => CommonMaterials.Keg.stoutLabel;
+        protected override bool preventReturns => true;
+        public override List<Appliance> Upgrades => new List<Appliance>() {
+            Refs.KegEmptyProvider
+        };
     }
 }

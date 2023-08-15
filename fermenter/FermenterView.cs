@@ -11,14 +11,66 @@ namespace KitchenBlargleBrew.kegerator {
     public class FermenterView : UpdatableObjectView<FermenterView.ViewData> {
 
         [SerializeField]
-        public GameObject gaugeGdo;
+        public GameObject[] fermentingGauge;
+        [SerializeField]
+        public GameObject[] finishedGauge;
 
         public void Setup(GameObject prefab) {
-            gaugeGdo = GameObjectUtils.GetChildObject(prefab, "gauge");
+            fermentingGauge = new GameObject[] {
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-0"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-1"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-2"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-3"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-4"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-5"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-6"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-7"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-8"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-9"),
+            };
+            finishedGauge = new GameObject[] {
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-0"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-1"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-2"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-3"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-4"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-5"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-6"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-7"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-8"),
+                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-9"),
+            };
         }
 
         protected override void UpdateData(ViewData viewData) {
-            gaugeGdo.transform.rotation = Quaternion.AngleAxis(-25f * viewData.kegQuantity + 100, Vector3.forward);
+            for (int i = 0; i < 10; i++) {
+                fermentingGauge[i].SetActive(viewData.fermentingQuantity > i);
+                switch (viewData.colorId) {
+                    case 1:
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.stoutLabel);
+                        break;
+                    case 2:
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        break;
+                    default:
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.emptyLabel);
+                        break;
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                finishedGauge[i].SetActive(viewData.finishedQuantity > i);
+                switch (viewData.colorId) {
+                    case 1:
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.stoutLabel);
+                        break;
+                    case 2:
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        break;
+                    default:
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.emptyLabel);
+                        break;
+                }
+            }
         }
 
         public class UpdateView : IncrementalViewSystemBase<VariableProviderView.ViewData> {
@@ -40,7 +92,7 @@ namespace KitchenBlargleBrew.kegerator {
                     var view = views[i];
                     var fermenterState = components[i];
 
-                    SendUpdate(view, new ViewData {doneFermenting = fermenterState.doneFermenting, kegQuantity = fermenterState.kegQuantity}, MessageType.SpecificViewUpdate);
+                    SendUpdate(view, new ViewData {fermentingQuantity = fermenterState.fermentingQuantity, finishedQuantity = fermenterState.finishedQuantity, colorId = fermenterState.colorId}, MessageType.SpecificViewUpdate);
                 }
 
                 entities.Dispose();
@@ -52,14 +104,18 @@ namespace KitchenBlargleBrew.kegerator {
         [MessagePackObject(false)]
         public struct ViewData : ISpecificViewData, IViewData, IViewResponseData, IViewData.ICheckForChanges<ViewData> {
 
-            [Key(0)]
-            public bool doneFermenting;
             [Key(1)]
-            public int kegQuantity;
+            public int fermentingQuantity;
+            [Key(2)]
+            public int finishedQuantity;
+            [Key(2)]
+            public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
-                BlargleBrewMod.Log($"checking if changed. doneFermenting = {doneFermenting} = {check.doneFermenting}, kegQuantity = {kegQuantity} = {check.kegQuantity}");
-                return doneFermenting == check.doneFermenting && kegQuantity == check.kegQuantity;
+                BlargleBrewMod.Log($"checking if changed. fermentingQuantity = {fermentingQuantity} = {check.finishedQuantity}, finishedQuantity = {finishedQuantity} = {check.finishedQuantity}, colorId = {colorId} = {check.colorId} ");
+                return fermentingQuantity == check.fermentingQuantity
+                    && finishedQuantity == check.finishedQuantity
+                    && colorId == check.colorId;
             }
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) {

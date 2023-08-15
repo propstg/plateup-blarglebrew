@@ -6,8 +6,7 @@ namespace KitchenBlargleBrew.kegerator {
     public struct CFermenterState : IApplianceProperty, IModComponent {
         
         public int colorId;
-        public bool doneFermenting;
-        public int kegQuantity;
-        public bool infinite;
+        public int finishedQuantity;
+        public int fermentingQuantity;
     }
 }

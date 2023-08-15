@@ -7,6 +7,7 @@ using Unity.Entities;
 using UnityEngine;
 
 namespace KitchenBlargleBrew.kegerator {
+    /*
 
     public class InfiniteFermenterView : UpdatableObjectView<InfiniteFermenterView.ViewData> {
 
@@ -90,4 +91,5 @@ namespace KitchenBlargleBrew.kegerator {
             }
         }
     }
+    */
 }

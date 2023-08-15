@@ -5,7 +5,7 @@ module body() {
     difference() {
         union() {
             translate([0, 0, 70]) mainBody();
-            translate([0, 0, 30]) bottomCone();
+            translate([0, 0, 10]) bottomCone();
             legs();
             translate([0, 0, 20]) legBraces();
             translate([0, 0, 170]) top();
@@ -21,7 +21,7 @@ module mainBody() {
 }
 
 module bottomCone() {
-    cylinder(d1=20, d2=90, h=40);
+    cylinder(d1=20, d2=90, h=60);
 }
 
 module legs() {

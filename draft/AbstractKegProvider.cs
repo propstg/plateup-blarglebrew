@@ -13,6 +13,8 @@ namespace BlargleBrew.draft {
         protected abstract string name { get; }
         protected abstract Material[] labelMaterial { get; }
         protected abstract string prefabName { get; }
+        protected abstract bool preventReturns { get; }
+        protected virtual Material[] kegMaterial => CommonMaterials.Keg.metal;
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>(prefabName);
 
@@ -24,7 +26,7 @@ namespace BlargleBrew.draft {
 
         public override List<IApplianceProperty> Properties { get {
                 var itemProvider = KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID);
-                itemProvider.PreventReturns = true;
+                itemProvider.PreventReturns = preventReturns;
                 
                 return new List<IApplianceProperty> { itemProvider, new CKegProvider() };
             }
@@ -38,7 +40,7 @@ namespace BlargleBrew.draft {
         };
 
         public override void OnRegister(Appliance gdo) {
-            MaterialUtils.ApplyMaterial(Prefab, "kegs", CommonMaterials.Keg.metal);
+            MaterialUtils.ApplyMaterial(Prefab, "kegs", kegMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "labels", labelMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "rack", CommonMaterials.Keg.rack);
         }

@@ -15,6 +15,7 @@ namespace BlargleBrew.tequila {
         public override int SplitCount => 999;
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("TequilaBottle");
         public override string ColourBlindTag => "Te";
+        public override Appliance DedicatedProvider => Refs.TequilaProvider;
 
         public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "bottle", CommonMaterials.Tequila.glass);
