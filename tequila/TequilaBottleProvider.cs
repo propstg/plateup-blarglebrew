@@ -29,19 +29,19 @@ namespace BlargleBrew.tequila {
 
         public override void SetupPrefab(GameObject prefab) {
             prefab.AttachCounter(CounterType.DoubleDoors);
-
-            prefab.ApplyMaterialToChild("HoldPoint/HoldPoint/Bottle/bottle", CommonMaterials.glass);
-            prefab.ApplyMaterialToChild("HoldPoint/HoldPoint/Bottle/lid", CommonMaterials.cardboard);
-            prefab.ApplyMaterialToChild("HoldPoint/HoldPoint/Bottle/liquid", CommonMaterials.cardboard);
-            prefab.ApplyMaterialToChild("HoldPoint/HoldPoint/Bottle/logo", CommonMaterials.cardboard);
-
             var holdTransform = prefab.GetChild("HoldPoint").transform;
+
+            prefab.ApplyMaterialToChild("HoldPoint/Bottle/bottle", CommonMaterials.glass);
+            prefab.ApplyMaterialToChild("HoldPoint/Bottle/lid", CommonMaterials.cardboard);
+            prefab.ApplyMaterialToChild("HoldPoint/Bottle/liquid", CommonMaterials.cardboard);
+            prefab.ApplyMaterialToChild("HoldPoint/Bottle/logo", CommonMaterials.cardboard);
+
             var holdPoint = prefab.AddComponent<HoldPointContainer>();
             holdPoint.HoldPoint = holdTransform;
             var sourceView = prefab.AddComponent<LimitedItemSourceView>();
             sourceView.HeldItemPosition = holdTransform;
             ReflectionUtils.GetField<LimitedItemSourceView>("Items").SetValue(sourceView, new List<GameObject>() {
-                GameObjectUtils.GetChildObject(prefab, "HoldPoint/HoldPoint/Bottle")
+                GameObjectUtils.GetChildObject(prefab, "HoldPoint/Bottle")
             });
         }
     }
