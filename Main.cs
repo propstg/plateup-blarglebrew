@@ -71,6 +71,7 @@ namespace KitchenBlargleBrew {
 
 #if DEBUG
             AddGameDataObject<InfiniteFermenterWheat>();
+            AddGameDataObject<HomebrewStoutDish>();
 #endif
             AddGameDataObject<KegProviderEmpty>();
 
