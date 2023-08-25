@@ -23,7 +23,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.3.0";
+        public const string MOD_VERSION = "0.3.1";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -121,7 +121,6 @@ namespace KitchenBlargleBrew {
     public class MenuBackgroundItemScroller_CreateItem_Patch {
 
         public static void Postfix(ref GameObject __result) {
-            Debug.Log(__result);
             if (__result.name.Contains("Beer") || 
                 __result.name.Contains("mug") || 
                 __result.name.Contains("MugWithOrange") ||
