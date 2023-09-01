@@ -122,5 +122,21 @@ namespace BlargleBrew {
             public static Material[] bottleHolder => CommonMaterials.plasticGreen;
 
         }
+
+        public static class Hops {
+            public static Material[] bag => CommonMaterials.wheat;
+            public static Material[] hops => limeJuice;
+            public static Material[] clip => metalBlack;
+        }
+
+        public static class ExtractStout {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] extractUndiluted => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Undiluted", 0x3B2814, 0.9f));
+            public static Material[] extractDiluted => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Diluted", 0x3B2814, 0.6f));
+            public static Material[] label => CommonMaterials.Keg.stoutLabel;
+            public static Material[] lid => label;
+            public static Material[] pot => CommonMaterials.metalShiny;
+            public static Material[] foam => CommonMaterials.Mug.stoutFoam;
+        }
     }
 }

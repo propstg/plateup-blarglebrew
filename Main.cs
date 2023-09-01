@@ -3,11 +3,13 @@ using BlargleBrew.beergarita;
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
 using BlargleBrew.tequila;
 using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.boot;
+using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenLib;
@@ -23,7 +25,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.3.0";
+        public const string MOD_VERSION = "0.4.0";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -72,6 +74,14 @@ namespace KitchenBlargleBrew {
 #if DEBUG
             AddGameDataObject<InfiniteFermenterWheat>();
             AddGameDataObject<HomebrewStoutDish>();
+            AddGameDataObject<HopsBag>();
+            AddGameDataObject<ExtractCanClosed>();
+            AddGameDataObject<ExtractCanOpen>();
+            AddGameDataObject<ExtractUncooked>();
+            AddGameDataObject<ExtractHeated>();
+            AddGameDataObject<ExtractBoiling>();
+            AddGameDataObject<ExtractBoiledWithTrash>();
+            AddGameDataObject<ExtractBoiled>();
 #endif
             AddGameDataObject<KegProviderEmpty>();
 

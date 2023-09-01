@@ -1,8 +1,5 @@
 include <./body.scad>
-include <./label.scad>
-include <./lid.scad>
-include <./extract.scad>
-
+include <./hops.scad>
 
 include <./reference-cube.scad>
 

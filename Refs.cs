@@ -2,10 +2,12 @@
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
 using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
 using KitchenBlargleBrew.boot;
+using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenData;
@@ -91,6 +93,20 @@ namespace KitchenBlargleBrew
         public static Item Beergarita => GDOUtils.GetCastedGDO<Item, Beergarita>();
         public static Dish BeergaritaDish => GDOUtils.GetCastedGDO<Dish, BeergaritaDish>();
         public static Dish TequilaAndLimeDish => GDOUtils.GetCastedGDO<Dish, TequilaAndLimeDish>();
-        
+
+
+        public static Item HopsBag => GDOUtils.GetCastedGDO<Item, HopsBag>();
+        public static Item Pot => (Item) GDOUtils.GetExistingGDO(ItemReferences.Pot);
+        public static Item ExtractCanClosed => GDOUtils.GetCastedGDO<Item, ExtractCanClosed>();
+        public static Item ExtractCanOpen => GDOUtils.GetCastedGDO<Item, ExtractCanOpen>();
+        public static Item ExtractUncooked => GDOUtils.GetCastedGDO<Item, ExtractUncooked>();
+        public static Item ExtractHeated => GDOUtils.GetCastedGDO<Item, ExtractHeated>();
+        public static Item ExtractBoiling => GDOUtils.GetCastedGDO<Item, ExtractBoiling>();
+        public static Item ExtractBoiledWithTrash => GDOUtils.GetCastedGDO<Item, ExtractBoiledWithTrash>();
+        public static Item ExtractBoiled => GDOUtils.GetCastedGDO<Item, ExtractBoiled>();
+
+
+        public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
+        public static Process CookProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook);
     }
 }

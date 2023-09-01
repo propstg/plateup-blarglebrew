@@ -1,9 +1,18 @@
 scale([scale, scale, scale])
 difference() {
 	union() {
-		cylinder(d1=15, d2=18, h=3);
-		translate([0, 0, 3]) cylinder(d=18, h=25);
-		translate([0, 0, 28]) cylinder(d=17, h=2);
+		hull() {
+			sphere(d=15);
+			translate([0, 0, 35])
+			sphere(d=2);
+		}
+		translate([0, 0, 35]) sphere(d=5);
+		translate([0, 0, 35]) cylinder(d1=1, d2=3, h=5);
 	}
-	translate([0, 0, 2]) cylinder(d=15, h=30);
+	translate([0, 0, 1])
+	hull() {
+		sphere(d=14);
+		translate([0, 0, 36])
+		sphere(d=1);
+	}
 }
