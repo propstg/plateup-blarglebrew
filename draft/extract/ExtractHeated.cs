@@ -12,6 +12,7 @@ namespace KitchenBlargleBrew.draft.extract {
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractHeated");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.None;
+        public override Item DisposesTo => Refs.Pot;
         public override string ColourBlindTag => "Ex";
 
         public override void OnRegister(Item item) {

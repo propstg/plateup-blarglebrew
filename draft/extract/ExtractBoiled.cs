@@ -14,6 +14,7 @@ namespace KitchenBlargleBrew.draft.extract {
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "ExH";
+        public override Item DisposesTo => Refs.Pot;
 
         public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);

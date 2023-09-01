@@ -16,7 +16,6 @@ namespace KitchenBlargleBrew.draft.extract {
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "ExH";
 
-
         public override float SplitSpeed => 1f;
         public override int SplitCount => 1;
         public override Item DisposesTo => Refs.Pot;

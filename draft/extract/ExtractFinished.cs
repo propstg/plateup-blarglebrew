@@ -16,6 +16,7 @@ namespace KitchenBlargleBrew.draft.extract {
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "ExH";
+        public override Item DisposesTo => Refs.Pot;
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
             new CFinishedFerment { colorId = 1 },
         };
