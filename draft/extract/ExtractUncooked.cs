@@ -46,7 +46,6 @@ namespace BlargleBrew.draft.extract {
             }
         };
 
-
         public override void OnRegister(ItemGroup gameDataObject) {
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
             MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);

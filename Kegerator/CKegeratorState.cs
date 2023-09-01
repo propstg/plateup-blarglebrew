@@ -8,6 +8,11 @@ namespace KitchenBlargleBrew.kegerator {
         public int colorId;
     }
 
+    public struct CFinishedFerment : IItemProperty, IModComponent {
+        
+        public int colorId;
+    }
+
     public struct CKegeratorState : IApplianceProperty, IModComponent {
         
         public bool open;

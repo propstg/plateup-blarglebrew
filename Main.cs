@@ -5,6 +5,7 @@ using BlargleBrew.cards;
 using BlargleBrew.draft;
 using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
+using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using HarmonyLib;
 using Kitchen;
@@ -12,8 +13,10 @@ using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
+using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
+using KitchenLib.References;
 using KitchenMods;
 using System.Linq;
 using System.Reflection;
@@ -82,6 +85,21 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<ExtractBoiling>();
             AddGameDataObject<ExtractBoiledWithTrash>();
             AddGameDataObject<ExtractBoiled>();
+            AddGameDataObject<ExtractFinished>();
+            AddGameDataObject<Cool>();
+
+            Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
+                if (args.gamedata.TryGet(ApplianceReferences.Freezer, out Appliance freezer)) {
+                    if (!freezer.Processes.Select(x => x.GetType()).Contains(typeof(Cool))) {
+                        freezer.Processes.Add(new Appliance.ApplianceProcesses() {
+                            Process = Refs.CoolProcess,
+                            IsAutomatic = true,
+                            Speed = 1f,
+                            Validity = ProcessValidity.Generic
+                        });
+                    }
+                }
+            };
 #endif
             AddGameDataObject<KegProviderEmpty>();
 

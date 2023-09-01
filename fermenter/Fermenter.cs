@@ -21,7 +21,7 @@ namespace KitchenBlargleBrew.kegerator {
             new CFermenterState() {
                 finishedQuantity = 5,
                 fermentingQuantity = 0,
-                colorId = 2,
+                colorId = 1,
             },
         };
 
