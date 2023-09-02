@@ -129,6 +129,11 @@ namespace BlargleBrew {
             public static Material[] clip => metalBlack;
         }
 
+        public static class Yeast {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] yeast => CommonMaterials.uncookedBatter;
+        }
+
         public static class ExtractStout {
             public static Material[] glass => CommonMaterials.glass;
             public static Material[] extractUndiluted => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Undiluted", 0x964b00, 1.0f));

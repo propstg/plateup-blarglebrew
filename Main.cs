@@ -11,6 +11,7 @@ using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.extract;
+using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenData;
@@ -78,6 +79,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<InfiniteFermenterWheat>();
             AddGameDataObject<HomebrewStoutDish>();
             AddGameDataObject<HopsBag>();
+            AddGameDataObject<YeastFull>();
             AddGameDataObject<ExtractCanClosed>();
             AddGameDataObject<ExtractCanOpen>();
             AddGameDataObject<ExtractUncooked>();
@@ -85,6 +87,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<ExtractBoiling>();
             AddGameDataObject<ExtractBoiledWithTrash>();
             AddGameDataObject<ExtractBoiled>();
+            AddGameDataObject<ExtractCooled>();
             AddGameDataObject<ExtractFinished>();
             AddGameDataObject<Cool>();
 

@@ -9,6 +9,7 @@ using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.extract;
+using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenData;
@@ -97,6 +98,8 @@ namespace KitchenBlargleBrew
 
 
         public static Item HopsBag => GDOUtils.GetCastedGDO<Item, HopsBag>();
+        public static Item YeastFull => GDOUtils.GetCastedGDO<Item, YeastFull>();
+
         public static Item Pot => (Item) GDOUtils.GetExistingGDO(ItemReferences.Pot);
         public static Item ExtractCanClosed => GDOUtils.GetCastedGDO<Item, ExtractCanClosed>();
         public static Item ExtractCanOpen => GDOUtils.GetCastedGDO<Item, ExtractCanOpen>();
@@ -105,6 +108,7 @@ namespace KitchenBlargleBrew
         public static Item ExtractBoiling => GDOUtils.GetCastedGDO<Item, ExtractBoiling>();
         public static Item ExtractBoiledWithTrash => GDOUtils.GetCastedGDO<Item, ExtractBoiledWithTrash>();
         public static Item ExtractBoiled => GDOUtils.GetCastedGDO<Item, ExtractBoiled>();
+        public static Item ExtractCooled => GDOUtils.GetCastedGDO<Item, ExtractCooled>();
         public static Item ExtractFinished => GDOUtils.GetCastedGDO<Item, ExtractFinished>();
 
 

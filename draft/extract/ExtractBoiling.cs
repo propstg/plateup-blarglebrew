@@ -38,7 +38,7 @@ namespace BlargleBrew.draft.extract {
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             new Item.ItemProcess {
-                Duration = 10f,
+                Duration = 1f,
                 IsBad = false,
                 Process = Refs.CookProcess,
                 Result = Refs.ExtractBoiledWithTrash,

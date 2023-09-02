@@ -40,6 +40,7 @@ namespace BlargleBrew.cards {
             Refs.Pot,
             Refs.Water,
             Refs.HopsBag,
+            Refs.YeastFull,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
