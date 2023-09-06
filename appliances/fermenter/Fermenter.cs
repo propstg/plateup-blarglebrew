@@ -5,9 +5,10 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DO NOT CHANGE NAMESPACE
 namespace KitchenBlargleBrew.kegerator {
 
-    public class InfiniteFermenterWheat : CustomAppliance {
+    public class Fermenter : CustomAppliance {
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("FermenterBrite");
         public override PriceTier PriceTier => PriceTier.Medium;

@@ -2,7 +2,9 @@
 using KitchenMods;
 using Unity.Entities;
 
-namespace KitchenBlargleBrew.kegerator {
+// DO NOT CHANGE NAMESPACE
+namespace KitchenBlargleBrew.kegerator
+{
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class KegeratorDoorSystem : ItemInteractionSystem, IModSystem {

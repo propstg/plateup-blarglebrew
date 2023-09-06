@@ -7,6 +7,7 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DO NOT CHANGE NAMESPACE
 namespace KitchenBlargleBrew.kegerator {
 
     public class Kegerator : CustomAppliance {

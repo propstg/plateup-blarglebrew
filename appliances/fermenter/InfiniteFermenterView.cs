@@ -6,7 +6,7 @@ using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 
-namespace KitchenBlargleBrew.kegerator {
+namespace KitchenBlargleBrew.appliances.fermenter {
     /*
 
     public class InfiniteFermenterView : UpdatableObjectView<InfiniteFermenterView.ViewData> {

@@ -23,7 +23,7 @@ namespace KitchenBlargleBrew.draft.extract {
         }
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             new Item.ItemProcess {
-                Duration = 1f,
+                Duration = 10f,
                 IsBad = false,
                 Process = Refs.CoolProcess,
                 Result = Refs.ExtractCooled,

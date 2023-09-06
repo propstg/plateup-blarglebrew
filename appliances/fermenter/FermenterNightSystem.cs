@@ -4,7 +4,7 @@ using KitchenMods;
 using Unity.Collections;
 using Unity.Entities;
 
-namespace BlargleBrew.kegerator {
+namespace BlargleBrew.appliances.fermenter {
 
     public class FermenterNightSystem : StartOfNightSystem, IModSystem {
 

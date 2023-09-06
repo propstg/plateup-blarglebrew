@@ -1,11 +1,11 @@
 ﻿using Kitchen;
-using KitchenBlargleBrew;
 using KitchenBlargleBrew.kegerator;
 using KitchenLib.References;
 using KitchenMods;
 using Unity.Entities;
 
-namespace BlargleBrew.kegerator {
+namespace KitchenBlargleBrew.appliances.kegerator
+{
 
     [UpdateAfter(typeof(ProvideStartingEnvelopes))]
     [UpdateInGroup(typeof(ChangeModeGroup))]

@@ -11,8 +11,8 @@ namespace BlargleBrew.cards {
 
         public override string UniqueNameID => "BlargleBrew - Homebrew Stout";
         public override DishType Type => DishType.Base;
-        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
-        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
+        public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
+        public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
@@ -70,11 +70,15 @@ namespace BlargleBrew.cards {
         }
         
         private void setupCommonDisplayPrefab(GameObject prefab) {
-            MaterialUtils.ApplyMaterial(prefab, "keg", CommonMaterials.Keg.metal);
-            MaterialUtils.ApplyMaterial(prefab, "label", CommonMaterials.Keg.stoutLabel);
-            MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);
-            MaterialUtils.ApplyMaterial(prefab, "mug/beer", CommonMaterials.Mug.stoutBeer);
-            MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
+            MaterialUtils.ApplyMaterial(prefab, "body", CommonMaterials.metalShiny);
+            MaterialUtils.ApplyMaterial(prefab, "spigot", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(prefab, "body-hose", CommonMaterials.metalDirty);
+            MaterialUtils.ApplyMaterial(prefab, "body-hose-clamps", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(prefab, "brite-body", CommonMaterials.metalShiny);
+            MaterialUtils.ApplyMaterial(prefab, "brite-gauge", CommonMaterials.thinGlass);
+            MaterialUtils.ApplyMaterial(prefab, "brite-gauge-holder", CommonMaterials.metalBlack);
+            MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge", CommonMaterials.thinGlass);
+            MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge-holder", CommonMaterials.metalBlack);
         }
     }
 }

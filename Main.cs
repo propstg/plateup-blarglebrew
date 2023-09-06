@@ -18,12 +18,31 @@ using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
 using KitchenLib.References;
+using KitchenLib.Utils;
 using KitchenMods;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace KitchenBlargleBrew {
+namespace KitchenBlargleBrew
+{
+    /*
+     * Custom appliance view:
+
+https://github.com/UrFriendKen/PlateUpIceCreamParlour/blob/master/Customs/Appliances/IceCreamStation.cs
+https://github.com/UrFriendKen/PlateUpIceCreamParlour/blob/master/LimitedVariableProviderView.cs
+
+
+
+Goal:
+
+x 1. Show coins above the keg provider always
+2. Only show coins above keg providers when homebrew card equipped
+3. Subtract coins when taking a provider
+4. Subtract coins when taking from a provider only when homebrew card equipped
+5. Prevent taking from a provider when coins are no 
+    */
 
     public class BlargleBrewMod : BaseMod {
 
@@ -76,7 +95,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<DessertBeerDish>();
 
 #if DEBUG
-            AddGameDataObject<InfiniteFermenterWheat>();
+            AddGameDataObject<Fermenter>();
             AddGameDataObject<HomebrewStoutDish>();
             AddGameDataObject<HopsBag>();
             AddGameDataObject<YeastFull>();
@@ -141,6 +160,24 @@ namespace KitchenBlargleBrew {
 
         protected override void OnInitialise() {
             base.OnInitialise();
+        }
+
+        private bool colorblindSetup = false;
+        protected override void OnUpdate() {
+            if (!colorblindSetup) {
+                colorblindSetup = true;
+                new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider }
+                    .Select(appliance => appliance.Prefab)
+                    .ForEach(prefab => {
+                        Object.Destroy(GameObjectUtils.GetChild(prefab, "Colour Blind"));
+                        prefab.AddApplianceColorblindLabel("10 <sprite name=\"coin\" color=\"#ffcb00\">");
+                        var newColorBlindPrefab = GameObjectUtils.GetChild(prefab, "Colour Blind");
+                        newColorBlindPrefab.transform.localPosition = new Vector3(0.0f, 2.5f, 0.0f);
+                        newColorBlindPrefab.name = "CostDisplay";
+                        newColorBlindPrefab.GetChild("Title").SetActive(true);
+                        Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
+                    });
+            }
         }
 
         public static void Log(object message) {

@@ -6,6 +6,7 @@ using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 
+// DO NO CHANGE NAMESPACE
 namespace KitchenBlargleBrew.kegerator {
 
     public class KegeratorView : UpdatableObjectView<KegeratorView.ViewData> {

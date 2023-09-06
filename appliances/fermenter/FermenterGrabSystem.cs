@@ -1,9 +1,11 @@
 ﻿using Kitchen;
+using KitchenBlargleBrew.kegerator;
 using KitchenMods;
 using Unity.Entities;
 using UnityEngine;
 
-namespace KitchenBlargleBrew.kegerator {
+namespace KitchenBlargleBrew.appliances.fermenter
+{
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class FermenterGrabSystem : ItemInteractionSystem, IModSystem {
@@ -12,7 +14,7 @@ namespace KitchenBlargleBrew.kegerator {
         private CItemHolder itemHolder;
         private CKegColor kegColor;
 
-        protected override InteractionType RequiredType => InteractionType.Act;
+        protected override InteractionType RequiredType => InteractionType.Grab;
 
         protected override bool IsPossible(ref InteractionData data) {
             if (Require(data.Target, out state) &&

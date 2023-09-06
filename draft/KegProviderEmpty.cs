@@ -1,5 +1,4 @@
 ﻿using KitchenBlargleBrew;
-using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +13,7 @@ namespace BlargleBrew.draft {
         protected override Material[] kegMaterial => CommonMaterials.Keg.metal;
         protected override bool preventReturns => false;
         public override List<Appliance> Upgrades => new List<Appliance>() {
-            Refs.KegEmptyProvider
+            Refs.KegLightProvider, Refs.KegStoutProvider
         };
     }
 }

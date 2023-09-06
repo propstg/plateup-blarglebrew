@@ -1,29 +1,26 @@
 ﻿using Kitchen;
+using KitchenBlargleBrew.kegerator;
 using KitchenMods;
 using Unity.Entities;
-using UnityEngine;
 
-namespace KitchenBlargleBrew.kegerator {
+namespace KitchenBlargleBrew.appliances.fermenter
+{
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class FermenterAddSystem : ItemInteractionSystem, IModSystem {
         private CFermenterState state;
         private CItemProvider itemProvider;
         private CItemHolder itemHolder;
-        private CFinishedFerment kegColor;
+        private CFinishedFerment finishedFerment;
 
-        protected override InteractionType RequiredType => InteractionType.Act;
+        protected override InteractionType RequiredType => InteractionType.Grab;
 
         protected override bool IsPossible(ref InteractionData data) {
             if (Require(data.Target, out state) &&
                 Require(data.Interactor, out itemHolder) &&
-                Require(itemHolder.HeldItem, out kegColor)) {
+                Require(itemHolder.HeldItem, out finishedFerment)) {
 
-                Debug.Log("Here");
-                Debug.Log(kegColor.colorId == state.colorId);
-
-                // TODO change to CFinishedFerment.colorId
-                return kegColor.colorId == state.colorId;
+                return finishedFerment.colorId == state.colorId;
             }
 
             return false;
