@@ -1,5 +1,6 @@
 ﻿using ApplianceLib.Api;
 using BlargleBrew;
+using BlargleBrew.appliances;
 using Kitchen;
 using KitchenData;
 using KitchenLib.Customs;

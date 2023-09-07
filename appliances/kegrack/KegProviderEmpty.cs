@@ -12,6 +12,7 @@ namespace BlargleBrew.draft {
         protected override Material[] labelMaterial => CommonMaterials.Keg.emptyLabel;
         protected override Material[] kegMaterial => CommonMaterials.Keg.metal;
         protected override bool preventReturns => false;
+        protected override bool conditionalProvider => false;
         public override List<Appliance> Upgrades => new List<Appliance>() {
             Refs.KegLightProvider, Refs.KegStoutProvider
         };

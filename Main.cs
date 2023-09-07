@@ -169,12 +169,13 @@ x 1. Show coins above the keg provider always
                 new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider }
                     .Select(appliance => appliance.Prefab)
                     .ForEach(prefab => {
-                        Object.Destroy(GameObjectUtils.GetChild(prefab, "Colour Blind"));
+                        GameObjectUtils.GetChild(prefab, "Colour Blind").name = "asdf";
                         prefab.AddApplianceColorblindLabel("10 <sprite name=\"coin\" color=\"#ffcb00\">");
                         var newColorBlindPrefab = GameObjectUtils.GetChild(prefab, "Colour Blind");
                         newColorBlindPrefab.transform.localPosition = new Vector3(0.0f, 2.5f, 0.0f);
                         newColorBlindPrefab.name = "CostDisplay";
                         newColorBlindPrefab.GetChild("Title").SetActive(true);
+                        newColorBlindPrefab.SetActive(false);
                         Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
                     });
             }

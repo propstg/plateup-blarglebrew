@@ -1,4 +1,6 @@
-﻿using KitchenBlargleBrew;
+﻿using BlargleBrew.appliances;
+using KitchenBlargleBrew;
+using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
@@ -15,6 +17,7 @@ namespace BlargleBrew.draft {
         protected abstract string prefabName { get; }
         protected abstract bool preventReturns { get; }
         protected virtual Material[] kegMaterial => CommonMaterials.Keg.metal;
+        protected virtual bool conditionalProvider { get; }
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>(prefabName);
 
@@ -27,8 +30,18 @@ namespace BlargleBrew.draft {
         public override List<IApplianceProperty> Properties { get {
                 var itemProvider = KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID);
                 itemProvider.PreventReturns = preventReturns;
+
+                var applianceProperties = new List<IApplianceProperty> { itemProvider, new CKegProvider() };
                 
-                return new List<IApplianceProperty> { itemProvider, new CKegProvider() };
+                if (conditionalProvider) {
+                    applianceProperties.Add(new CConditionallyPaidProvider() {
+                        requiredCardId = Refs.HomebrewDish.ID,
+                        price = 10,
+                        preventBuyingOnCredit = true,
+                    });
+                }
+
+                return applianceProperties;
             }
         }
 
@@ -43,6 +56,7 @@ namespace BlargleBrew.draft {
             MaterialUtils.ApplyMaterial(Prefab, "kegs", kegMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "labels", labelMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "rack", CommonMaterials.Keg.rack);
+            Prefab.AddComponent<ConditionallyPaidProviderView>().Setup(Prefab);
         }
     }
 }
