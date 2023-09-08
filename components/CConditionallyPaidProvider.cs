@@ -8,5 +8,7 @@ namespace KitchenBlargleBrew.components {
         public int requiredCardId;
         public int price;
         public bool preventBuyingOnCredit;
+        public int idForAccounting;
+        public bool paidConditionMet;
     }
 }

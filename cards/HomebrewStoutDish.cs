@@ -18,7 +18,7 @@ namespace BlargleBrew.cards {
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
         public override bool RequiredNoDishItem => true;
-        public override bool IsUnlockable => true;
+        public override bool IsUnlockable => false;
         public override bool BlocksAllOtherFood => true;
         public override List<Unlock> AllowedFoods => new List<Unlock>() {
             Refs.BoxedBeerDish, Refs.DraftBeerDish

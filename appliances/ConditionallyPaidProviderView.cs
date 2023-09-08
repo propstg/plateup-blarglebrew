@@ -1,4 +1,5 @@
 ﻿using Kitchen;
+using KitchenBlargleBrew;
 using KitchenBlargleBrew.components;
 using KitchenLib.Utils;
 using KitchenMods;
@@ -13,31 +14,44 @@ namespace BlargleBrew.appliances {
 
     public class ConditionallyPaidProviderView : UpdatableObjectView<ConditionallyPaidProviderView.ViewData> {
         public class UpdateView : IncrementalViewSystemBase<ViewData>, IModSystem {
-            EntityQuery Views;
+            EntityQuery viewsQuery;
             protected override void Initialise() {
                 base.Initialise();
-                Views = GetEntityQuery(typeof(CConditionallyPaidProvider), typeof(CLinkedView));
+                viewsQuery = GetEntityQuery(typeof(CConditionallyPaidProvider), typeof(CLinkedView), typeof(CItemProvider));
             }
 
             protected override void OnUpdate() {
-                NativeArray<CConditionallyPaidProvider> conditionallyPaidProviders = Views.ToComponentDataArray<CConditionallyPaidProvider>(Allocator.Temp);
-                NativeArray<CLinkedView> views = Views.ToComponentDataArray<CLinkedView>(Allocator.Temp);
-                Debug.Log($"asdf - {views.Length}");
+                var entities = viewsQuery.ToEntityArray(Allocator.TempJob);
+                var conditionallyPaidProviders = viewsQuery.ToComponentDataArray<CConditionallyPaidProvider>(Allocator.Temp);
+                var views = viewsQuery.ToComponentDataArray<CLinkedView>(Allocator.Temp);
+                var itemProviders = viewsQuery.ToComponentDataArray<CItemProvider>(Allocator.Temp);
 
+                SMoney money = GetSingleton<SMoney>();
                 for (int i = 0; i < views.Length; i++) {
                     CLinkedView view = views[i];
                     CConditionallyPaidProvider conditionallyPaidProvider = conditionallyPaidProviders[i];
+                    CItemProvider itemProvider = itemProviders[i];
 
-                    bool active = GameInfo.AllCurrentCards
+                    bool paidConditionMet = GameInfo.AllCurrentCards
                         .Select(card => card.CardID)
                         .Any(cardId => cardId == conditionallyPaidProvider.requiredCardId);
-                    Debug.Log(GameInfo.AllCurrentCards);
-                    Debug.Log(active);
+                    
+                    if (paidConditionMet != conditionallyPaidProvider.paidConditionMet) {
+                        conditionallyPaidProvider.paidConditionMet = paidConditionMet;
+                        SetComponent<CConditionallyPaidProvider>(entities[i], conditionallyPaidProvider);
+                    }
+
+                    if (conditionallyPaidProvider.preventBuyingOnCredit && (GetSingleton<SMoney>() - conditionallyPaidProvider.price) < 0) {
+                        BlargleBrewMod.Log("Attempting to disable?");
+                        EntityManager.AddComponent<CPreventItemTransfer>(entities[i]);
+                    } else if (Has<CPreventItemTransfer>(entities[i])) {
+                        BlargleBrewMod.Log("Attempting to re-enable?");
+                        EntityManager.RemoveComponent<CPreventItemTransfer>(entities[i]);
+                    }
 
                     SendUpdate(view, new ViewData() {
-                        enabled = active,
+                        paidConditionMet = paidConditionMet,
                         price = conditionallyPaidProvider.price,
-                        preventBuyingOnCredit = conditionallyPaidProvider.preventBuyingOnCredit,
                     }, MessageType.SpecificViewUpdate);
                 }
 
@@ -49,13 +63,12 @@ namespace BlargleBrew.appliances {
         [MessagePackObject(false)]
         public class ViewData : ISpecificViewData, IViewData.ICheckForChanges<ViewData> {
             [Key(0)] public int price;
-            [Key(1)] public bool enabled;
-            [Key(2)] public bool preventBuyingOnCredit;
+            [Key(1)] public bool paidConditionMet;
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) => view.GetSubView<ConditionallyPaidProviderView>();
 
             public bool IsChangedFrom(ViewData check) {
-                return price != check.price || enabled != check.enabled || preventBuyingOnCredit != check.preventBuyingOnCredit;
+                return price != check.price || paidConditionMet != check.paidConditionMet;
             }
         }
 
@@ -69,16 +82,14 @@ namespace BlargleBrew.appliances {
                 textMeshPro = price.GetChild("Title").GetComponent<TextMeshPro>();
             }
 
-            Debug.Log("update data");
-            price.SetActive(data.enabled);
-            if (data.enabled) {
+            price.SetActive(data.paidConditionMet);
+            if (data.paidConditionMet) {
                 textMeshPro.text = $"{data.price} <sprite name=\"coin\" color=\"#ffcb00\">";
             }
         }
 
 
         public void Setup(GameObject prefab) {
-            Debug.Log("ASDF registered");
             this.prefab = prefab;
         }
     }

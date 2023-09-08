@@ -25,24 +25,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace KitchenBlargleBrew
-{
-    /*
-     * Custom appliance view:
-
-https://github.com/UrFriendKen/PlateUpIceCreamParlour/blob/master/Customs/Appliances/IceCreamStation.cs
-https://github.com/UrFriendKen/PlateUpIceCreamParlour/blob/master/LimitedVariableProviderView.cs
-
-
-
-Goal:
-
-x 1. Show coins above the keg provider always
-2. Only show coins above keg providers when homebrew card equipped
-3. Subtract coins when taking a provider
-4. Subtract coins when taking from a provider only when homebrew card equipped
-5. Prevent taking from a provider when coins are no 
-    */
+namespace KitchenBlargleBrew {
 
     public class BlargleBrewMod : BaseMod {
 

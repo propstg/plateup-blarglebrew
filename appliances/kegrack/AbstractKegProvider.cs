@@ -1,4 +1,5 @@
 ﻿using BlargleBrew.appliances;
+using Kitchen;
 using KitchenBlargleBrew;
 using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;
@@ -38,6 +39,7 @@ namespace BlargleBrew.draft {
                         requiredCardId = Refs.HomebrewDish.ID,
                         price = 10,
                         preventBuyingOnCredit = true,
+                        idForAccounting = GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID,
                     });
                 }
 
