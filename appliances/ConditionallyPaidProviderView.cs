@@ -41,11 +41,9 @@ namespace BlargleBrew.appliances {
                         SetComponent<CConditionallyPaidProvider>(entities[i], conditionallyPaidProvider);
                     }
 
-                    if (conditionallyPaidProvider.preventBuyingOnCredit && (GetSingleton<SMoney>() - conditionallyPaidProvider.price) < 0) {
-                        BlargleBrewMod.Log("Attempting to disable?");
+                    if (paidConditionMet && conditionallyPaidProvider.preventBuyingOnCredit && (GetSingleton<SMoney>() - conditionallyPaidProvider.price) < 0) {
                         EntityManager.AddComponent<CPreventItemTransfer>(entities[i]);
                     } else if (Has<CPreventItemTransfer>(entities[i])) {
-                        BlargleBrewMod.Log("Attempting to re-enable?");
                         EntityManager.RemoveComponent<CPreventItemTransfer>(entities[i]);
                     }
 

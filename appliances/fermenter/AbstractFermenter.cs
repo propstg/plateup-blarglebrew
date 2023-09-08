@@ -1,14 +1,19 @@
-﻿using BlargleBrew;
+﻿using ApplianceLib.Api;
+using BlargleBrew;
+using KitchenBlargleBrew.components;
+using KitchenBlargleBrew.kegerator;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-// DO NOT CHANGE NAMESPACE
-namespace KitchenBlargleBrew.kegerator {
+namespace KitchenBlargleBrew.appliances.fermenter {
 
-    public class Fermenter : CustomAppliance {
+    public abstract class AbstractFermenter : CustomAppliance {
+
+        public abstract int colorId { get; }
+        public abstract string beerName { get; }
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("FermenterBrite");
         public override PriceTier PriceTier => PriceTier.Medium;
@@ -16,13 +21,13 @@ namespace KitchenBlargleBrew.kegerator {
         public override bool IsNonInteractive => false;
         public override bool IsPurchasable => true;
         public override bool SellOnlyAsDuplicate => true;
-        public override string UniqueNameID => "BlargleBrew - Fermenter";
+        public override string UniqueNameID => $"BlargleBrew - Fermenter {beerName}";
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>() {
             new CFermenterState() {
                 finishedQuantity = 5,
                 fermentingQuantity = 0,
-                colorId = 1,
+                colorId = colorId,
             },
         };
 
@@ -40,14 +45,15 @@ namespace KitchenBlargleBrew.kegerator {
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {
-                Name = "Fermenter",
-                Description = "Put wort in it and wait a day. Fill kegs from it the next day."
+                Name = $"{beerName} Fermenter",
+                Description = $"Put {beerName} wort in it and wait a day. Fill kegs from it the next day."
             })
         };
 
         public override void OnRegister(Appliance appliance) {
             setupMaterials();
             setupCustomView();
+            NotActuallyProviders.RemoveProvidersFrom(appliance);
         }
 
         private void setupMaterials() {

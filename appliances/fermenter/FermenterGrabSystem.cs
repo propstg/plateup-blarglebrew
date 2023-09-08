@@ -1,11 +1,11 @@
 ﻿using Kitchen;
+using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;
 using KitchenMods;
 using Unity.Entities;
 using UnityEngine;
 
-namespace KitchenBlargleBrew.appliances.fermenter
-{
+namespace KitchenBlargleBrew.appliances.fermenter {
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class FermenterGrabSystem : ItemInteractionSystem, IModSystem {

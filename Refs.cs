@@ -7,6 +7,7 @@ using BlargleBrew.michelada;
 using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
+using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.draft.yeast;
@@ -111,6 +112,7 @@ namespace KitchenBlargleBrew
         public static Item ExtractBoiled => GDOUtils.GetCastedGDO<Item, ExtractBoiled>();
         public static Item ExtractCooled => GDOUtils.GetCastedGDO<Item, ExtractCooled>();
         public static Item ExtractFinished => GDOUtils.GetCastedGDO<Item, ExtractFinished>();
+        public static Appliance ExtractFermenter => GDOUtils.GetCastedGDO<Appliance, ExtractFermenter>();
 
 
         public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);

@@ -36,11 +36,12 @@ namespace BlargleBrew.cards {
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.ExtractCanClosed,
             Refs.BeerStout,
-            Refs.KegStout,
             Refs.Pot,
             Refs.Water,
             Refs.HopsBag,
             Refs.YeastFull,
+            Refs.ExtractFinished,
+            Refs.KegStout
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {

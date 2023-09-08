@@ -9,6 +9,7 @@ using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using HarmonyLib;
 using Kitchen;
+using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.draft.yeast;
@@ -78,7 +79,7 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<DessertBeerDish>();
 
 #if DEBUG
-            AddGameDataObject<Fermenter>();
+            AddGameDataObject<ExtractFermenter>();
             AddGameDataObject<HomebrewStoutDish>();
             AddGameDataObject<HopsBag>();
             AddGameDataObject<YeastFull>();

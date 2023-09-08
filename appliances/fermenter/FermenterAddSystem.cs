@@ -1,4 +1,5 @@
 ﻿using Kitchen;
+using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;
 using KitchenMods;
 using Unity.Entities;

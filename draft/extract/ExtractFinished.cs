@@ -17,6 +17,7 @@ namespace BlargleBrew.draft.extract {
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
         public override Item DisposesTo => Refs.Pot;
+        public override Appliance DedicatedProvider => Refs.ExtractFermenter;
 
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
             new CFinishedFerment { colorId = 1 },

@@ -2,7 +2,7 @@
 using KitchenMods;
 
 // DO NOT CHANGE NAMESPACE
-namespace KitchenBlargleBrew.kegerator {
+namespace KitchenBlargleBrew.components {
 
     public struct CFermenterState : IApplianceProperty, IModComponent {
 
