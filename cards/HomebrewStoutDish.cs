@@ -14,7 +14,7 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallIncrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
         public override bool RequiredNoDishItem => true;
@@ -41,7 +41,8 @@ namespace BlargleBrew.cards {
             Refs.HopsBag,
             Refs.YeastFull,
             Refs.ExtractFinished,
-            Refs.KegStout
+            Refs.KegStout,
+            Refs.CleanEmptyKeg,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
@@ -51,11 +52,12 @@ namespace BlargleBrew.cards {
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
+            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerStout, Weight = 1 },
             new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerStout, Weight = 2 },
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "TODO" }
+            { Locale.English, "Add extract to pot of water.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

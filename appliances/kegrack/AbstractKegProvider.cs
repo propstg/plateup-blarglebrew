@@ -37,7 +37,7 @@ namespace BlargleBrew.draft {
                 if (conditionalProvider) {
                     applianceProperties.Add(new CConditionallyPaidProvider() {
                         requiredCardId = Refs.HomebrewDish.ID,
-                        price = 10,
+                        price = 20,
                         preventBuyingOnCredit = true,
                         idForAccounting = GDOUtils.GetCustomGameDataObject<T>().GameDataObject.ID,
                     });
