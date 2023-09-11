@@ -21,6 +21,7 @@ using KitchenLib.Event;
 using KitchenLib.References;
 using KitchenLib.Utils;
 using KitchenMods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -153,14 +154,18 @@ namespace KitchenBlargleBrew {
                 new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider }
                     .Select(appliance => appliance.Prefab)
                     .ForEach(prefab => {
-                        GameObjectUtils.GetChild(prefab, "Colour Blind").name = "asdf";
+                        var existingColourBlindChild = GameObjectUtils.GetChild(prefab, "Colour Blind");
+                        if (existingColourBlindChild != null) {
+                            existingColourBlindChild.name = "asdf";
+                        }
+
                         prefab.AddApplianceColorblindLabel("10 <sprite name=\"coin\" color=\"#ffcb00\">");
                         var newColorBlindPrefab = GameObjectUtils.GetChild(prefab, "Colour Blind");
                         newColorBlindPrefab.transform.localPosition = new Vector3(0.0f, 2.5f, 0.0f);
                         newColorBlindPrefab.name = "CostDisplay";
                         newColorBlindPrefab.GetChild("Title").SetActive(true);
                         newColorBlindPrefab.SetActive(false);
-                        Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
+                        UnityEngine.Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
                     });
             }
         }

@@ -109,7 +109,7 @@ namespace KitchenBlargleBrew.kegerator {
             public int fermentingQuantity;
             [Key(2)]
             public int finishedQuantity;
-            [Key(2)]
+            [Key(3)]
             public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
