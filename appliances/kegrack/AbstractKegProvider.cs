@@ -1,5 +1,4 @@
 ﻿using BlargleBrew.appliances;
-using Kitchen;
 using KitchenBlargleBrew;
 using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;

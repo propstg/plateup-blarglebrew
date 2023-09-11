@@ -4,8 +4,7 @@ using KitchenLib.References;
 using KitchenMods;
 using Unity.Entities;
 
-namespace KitchenBlargleBrew.appliances.kegerator
-{
+namespace KitchenBlargleBrew.appliances.kegerator {
 
     [UpdateAfter(typeof(ProvideStartingEnvelopes))]
     [UpdateInGroup(typeof(ChangeModeGroup))]

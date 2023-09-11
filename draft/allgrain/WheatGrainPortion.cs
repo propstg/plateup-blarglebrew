@@ -5,11 +5,11 @@ using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KitchenBlargleBrew.draft.extract {
+namespace KitchenBlargleBrew.draft.allgrain {
 
-    public class ExtractCanClosed : CustomItem {
+    public class WheatGrainPortion : CustomItem {
 
-        public override string UniqueNameID => "ExtractCanClosed";
+        public override string UniqueNameID => "WheatGrainPortion";
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractClosed");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;

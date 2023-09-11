@@ -17,6 +17,7 @@ namespace BlargleBrew.appliances {
             EntityQuery viewsQuery;
             protected override void Initialise() {
                 base.Initialise();
+                RequireSingletonForUpdate<SMoney>();
                 viewsQuery = GetEntityQuery(typeof(CConditionallyPaidProvider), typeof(CLinkedView), typeof(CItemProvider));
             }
 
@@ -53,8 +54,10 @@ namespace BlargleBrew.appliances {
                     }, MessageType.SpecificViewUpdate);
                 }
 
+                entities.Dispose();
                 conditionallyPaidProviders.Dispose();
                 views.Dispose();
+                itemProviders.Dispose();
             }
         }
 
