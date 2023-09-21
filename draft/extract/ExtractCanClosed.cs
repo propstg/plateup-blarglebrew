@@ -15,6 +15,7 @@ namespace KitchenBlargleBrew.draft.extract {
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "Ex";
+        public override Appliance DedicatedProvider => Refs.ExtractCanProvider;
 
         public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.ExtractStout.glass);

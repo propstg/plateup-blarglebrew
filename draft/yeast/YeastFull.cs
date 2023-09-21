@@ -14,10 +14,11 @@ namespace KitchenBlargleBrew.draft.yeast {
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "Y";
+        public override Appliance DedicatedProvider => Refs.YeastProvider;
 
         public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.Yeast.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "hops", CommonMaterials.Yeast.yeast);
+            MaterialUtils.ApplyMaterial(Prefab, "yeast", CommonMaterials.Yeast.yeast);
         }
     }
 }
