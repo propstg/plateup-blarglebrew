@@ -102,8 +102,8 @@ namespace KitchenBlargleBrew
 
 
         public static Dish HomebrewDish = GDOUtils.GetCastedGDO<Dish, HomebrewStoutDish>();
-        public static Dish HomebrewWheatDish = GDOUtils.GetCastedGDO<Dish, HomebrewWheatDish>();
         public static Item HopsBag => GDOUtils.GetCastedGDO<Item, HopsBag>();
+        public static Item HopsBagEmpty => GDOUtils.GetCastedGDO<Item, HopsBagEmpty>();
         public static Appliance HopsBagProvider => GDOUtils.GetCastedGDO<Appliance, HopsBagProvider>();
         public static Item YeastFull => GDOUtils.GetCastedGDO<Item, YeastFull>();
         public static Appliance YeastProvider => GDOUtils.GetCastedGDO<Appliance, YeastProvider>();
@@ -121,7 +121,10 @@ namespace KitchenBlargleBrew
         public static Item ExtractFinished => GDOUtils.GetCastedGDO<Item, ExtractFinished>();
         public static Appliance ExtractFermenter => GDOUtils.GetCastedGDO<Appliance, ExtractFermenter>();
 
+#if DEBUG
+        public static Dish HomebrewWheatDish = GDOUtils.GetCastedGDO<Dish, HomebrewWheatDish>();
         public static Item WheatGrainPortion => GDOUtils.GetCastedGDO<Item, WheatGrainPortion>();
+        public static Appliance WheatGrainProvider => GDOUtils.GetCastedGDO<Appliance, WheatGrainProvider>();
         public static Item WheatGrainMilled => GDOUtils.GetCastedGDO<Item, WheatGrainMilled>();
         public static Item WheatUncooked => GDOUtils.GetCastedGDO<Item, WheatUncooked>();
         public static Item WheatHeated => GDOUtils.GetCastedGDO<Item, WheatHeated>();
@@ -131,6 +134,7 @@ namespace KitchenBlargleBrew
         public static Item WheatCooled => GDOUtils.GetCastedGDO<Item, WheatCooled>();
         public static Item WheatFinished => GDOUtils.GetCastedGDO<Item, WheatFinished>();
         public static Appliance WheatFermenter => GDOUtils.GetCastedGDO<Appliance, WheatFermenter>();
+#endif
 
 
         public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);

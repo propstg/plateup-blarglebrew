@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.allgrain {
 
+#if DEBUG
+
     public class WheatBoiledWithTrash : CustomItem {
 
         public override string UniqueNameID => "WheatBoiledWithTrash";
@@ -33,4 +35,5 @@ namespace KitchenBlargleBrew.draft.allgrain {
             MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
         }
     }
+#endif
 }

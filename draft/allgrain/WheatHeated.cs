@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.allgrain {
 
+#if DEBUG
     public class WheatHeated : CustomItem {
 
         public override string UniqueNameID => "WheatHeated";
@@ -20,4 +21,5 @@ namespace KitchenBlargleBrew.draft.allgrain {
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
         }
     }
+#endif
 }

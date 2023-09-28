@@ -16,7 +16,7 @@ namespace KitchenBlargleBrew.appliances.fermenter {
         public abstract string beerName { get; }
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("FermenterBrite");
-        public override PriceTier PriceTier => PriceTier.Medium;
+        public override PriceTier PriceTier => PriceTier.ExtremelyExpensive;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking;
         public override bool IsNonInteractive => false;
         public override bool IsPurchasable => true;
@@ -30,18 +30,6 @@ namespace KitchenBlargleBrew.appliances.fermenter {
                 colorId = colorId,
             },
         };
-
-        /*
-        public override List<IApplianceProperty> Properties { get {
-                var itemProvider = KitchenPropertiesUtils.GetCItemProvider(Refs.KegLight.ID, 5, 999, false, false, true, false, false, false, false);
-                
-                return new List<IApplianceProperty> { itemProvider, new CFermenterState() {
-                    colorId = 2,
-                    fermentingQuantity = 0,
-                }};
-            }
-        }
-        */
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {

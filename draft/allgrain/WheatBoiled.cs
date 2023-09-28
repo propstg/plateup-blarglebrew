@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.allgrain {
 
+#if DEBUG
     public class WheatBoiled : CustomItem {
 
         public override string UniqueNameID => "WheatBoiled";
@@ -30,4 +31,5 @@ namespace KitchenBlargleBrew.draft.allgrain {
             }
         };
     }
+#endif
 }

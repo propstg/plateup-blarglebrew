@@ -9,6 +9,7 @@ using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.allgrain {
 
+#if DEBUG
     class WheatBoiling : CustomItemGroup<WheatBoiling.WheatBoilingItemGroupView> {
 
         public override string UniqueNameID => "WheatBoiling";
@@ -93,4 +94,5 @@ namespace BlargleBrew.draft.allgrain {
             }
         }
     }
+#endif
 }

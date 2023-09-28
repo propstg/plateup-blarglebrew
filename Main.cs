@@ -11,6 +11,7 @@ using HarmonyLib;
 using Kitchen;
 using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
+using KitchenBlargleBrew.draft.allgrain;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.draft.hops;
 using KitchenBlargleBrew.draft.yeast;
@@ -80,9 +81,13 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<DessertBeerDish>();
 
-#if DEBUG
+            AddGameDataObject<WheatGrainPortion>();
+            AddGameDataObject<WheatGrainMilled>();
+            AddGameDataObject<WheatGrainProvider>();
+
             AddGameDataObject<ExtractFermenter>();
             AddGameDataObject<HomebrewStoutDish>();
+            AddGameDataObject<HopsBagEmpty>();
             AddGameDataObject<HopsBag>();
             AddGameDataObject<HopsBagProvider>();
             AddGameDataObject<YeastFull>();
@@ -111,7 +116,6 @@ namespace KitchenBlargleBrew {
                     }
                 }
             };
-#endif
             AddGameDataObject<KegProviderEmpty>();
 
             AddGameDataObject<EmptyBoot>();

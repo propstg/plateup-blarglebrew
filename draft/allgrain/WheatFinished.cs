@@ -10,6 +10,7 @@ using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.allgrain {
 
+#if DEBUG
     class WheatFinished : CustomItemGroup<WheatFinished.WheatFinishedItemGroupView> {
 
         public override string UniqueNameID => "WheatFinished";
@@ -76,4 +77,5 @@ namespace BlargleBrew.draft.allgrain {
             }
         }
     }
+#endif
 }

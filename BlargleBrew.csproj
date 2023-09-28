@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <LangTarget>latest</LangTarget>
+    <LangTarget>8</LangTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,8 +18,5 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="draft\asdf\" />
-  </ItemGroup>
 
 </Project>

@@ -1,8 +1,9 @@
 scale([scale, scale, scale])
+translate([0, 0, 10])
 difference() {
 	union() {
 		hull() {
-			sphere(d=15);
+			sphere(d=30);
 			translate([0, 0, 35])
 			sphere(d=2);
 		}
@@ -11,8 +12,8 @@ difference() {
 	}
 	translate([0, 0, 1])
 	hull() {
-		sphere(d=14);
-		translate([0, 0, 36])
+		sphere(d=29);
+		translate([0, 0, 34])
 		sphere(d=1);
 	}
 }

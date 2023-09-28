@@ -6,19 +6,19 @@ using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.allgrain {
 
+#if DEBUG
     public class WheatGrainMilled : CustomItem {
 
         public override string UniqueNameID => "WheatGrainMilled";
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractOpen");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("GrainBag");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
-        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.None;
-        public override string ColourBlindTag => "Ex";
+        public override string ColourBlindTag => "Wh";
 
         public override void OnRegister(Item item) {
-            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.ExtractStout.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.ExtractStout.extractUndiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.ExtractStout.label);
+            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.Hops.bag);
+            MaterialUtils.ApplyMaterial(Prefab, "wheat", CommonMaterials.wheat);
         }
     }
+#endif
 }

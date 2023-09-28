@@ -10,7 +10,7 @@ namespace BlargleBrew.cards {
     public class BottomlessBeermosasDish : CustomDish {
 
         public override string UniqueNameID => "Blargle Beer - bottomless beermosas";
-        public override DishType Type => DishType.Base;
+        public override DishType Type => DishType.Main;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 

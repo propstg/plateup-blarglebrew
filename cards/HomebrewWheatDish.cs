@@ -6,17 +6,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlargleBrew.cards {
+#if DEBUG
 
     public class HomebrewWheatDish : CustomDish {
 
         public override string UniqueNameID => "BlargleBrew - Homebrew Wheat";
-        public override DishType Type => DishType.Base;
+        public override DishType Type => DishType.Main;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.None;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => false;
+        public override bool IsAvailableAsLobbyOption =>
+            #if DEBUG
+                true;
+            #else
+                false;
+            #endif
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => false; // TODO add a system to flip this to true when Homebrew Stout is taken?
         public override List<Unlock> AllowedFoods => new List<Unlock>() {
@@ -83,4 +89,5 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge-holder", CommonMaterials.metalBlack);
         }
     }
-}
+#endif
+    }

@@ -20,7 +20,7 @@ namespace KitchenBlargleBrew.draft.extract {
         public override int SplitCount => 1;
         public override Item DisposesTo => Refs.Pot;
         public override List<Item> SplitDepletedItems => new List<Item>() { Refs.ExtractBoiled };
-        public override Item SplitSubItem => Refs.HopsBag; // TODO empty hops bag
+        public override Item SplitSubItem => Refs.HopsBagEmpty;
         public override bool AllowSplitMerging => false;
 
 
