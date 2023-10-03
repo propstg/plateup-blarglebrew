@@ -3,7 +3,6 @@ using KitchenBlargleBrew.components;
 using KitchenBlargleBrew.kegerator;
 using KitchenMods;
 using Unity.Entities;
-using UnityEngine;
 
 namespace KitchenBlargleBrew.appliances.fermenter {
 
@@ -21,8 +20,6 @@ namespace KitchenBlargleBrew.appliances.fermenter {
                 Require(data.Interactor, out itemHolder) &&
                 Require(itemHolder.HeldItem, out kegColor)) {
 
-                Debug.Log(kegColor.colorId == 0 && state.finishedQuantity > 0);
-
                 return kegColor.colorId == 0 && state.finishedQuantity > 0;
             }
 
@@ -35,10 +32,17 @@ namespace KitchenBlargleBrew.appliances.fermenter {
             state.finishedQuantity--;
             EntityManager.DestroyEntity(itemHolder.HeldItem);
             Entity createdKeg = EntityManager.CreateEntity((ComponentType) typeof (CCreateItem), (ComponentType) typeof (CHeldBy), (ComponentType) typeof (CKeg));
-            Context.Set<CCreateItem>(createdKeg, (CCreateItem) Refs.KegStout.ID);
+            Context.Set<CCreateItem>(createdKeg, getJankyKegTypeByColor(state));
             Context.Set<CHeldBy>(createdKeg, (CHeldBy) data.Interactor);
             Context.Set<CItemHolder>(data.Interactor, (CItemHolder) createdKeg);
             SetComponent(data.Target, state);
+        }
+
+        private CCreateItem getJankyKegTypeByColor(CFermenterState state) {
+            if (state.colorId == 1) {
+                return Refs.KegStout.ID;
+            }
+            return Refs.KegLight.ID;
         }
     }
 }

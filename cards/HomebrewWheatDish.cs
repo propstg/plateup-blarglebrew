@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlargleBrew.cards {
-#if DEBUG
 
     public class HomebrewWheatDish : CustomDish {
 
@@ -25,9 +24,6 @@ namespace BlargleBrew.cards {
             #endif
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => false; // TODO add a system to flip this to true when Homebrew Stout is taken?
-        public override List<Unlock> AllowedFoods => new List<Unlock>() {
-            Refs.BoxedBeerDish, Refs.DraftBeerDish
-        };
 
         public override List<string> StartingNameSet => new List<string> {
             "I'm Ok",
@@ -89,5 +85,4 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge-holder", CommonMaterials.metalBlack);
         }
     }
-#endif
-    }
+}

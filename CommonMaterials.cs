@@ -26,6 +26,7 @@ namespace BlargleBrew {
         public static Material[] tomato => wrap(MaterialUtils.GetExistingMaterial("Tomato"));
         public static Material[] plasticGreen => wrap(MaterialUtils.GetExistingMaterial("Plastic - Green"));
         public static Material[] vanilla => wrap(MaterialUtils.GetExistingMaterial("Vanilla"));
+        public static Material[] sinkWater => wrap(MaterialUtils.GetExistingMaterial("Sink Water"));
 
         public static Material[] tequila => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Tequila", 0xF9D1A7, 0.75f));
         public static Material[] pilsner => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pilsner", 0xFFD15E, 0.75f));
@@ -143,6 +144,14 @@ namespace BlargleBrew {
             public static Material[] lid => label;
             public static Material[] pot => CommonMaterials.metalShiny;
             public static Material[] foam => CommonMaterials.Mug.stoutFoam;
+        }
+
+        public static class WheatBrew {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] water => CommonMaterials.sinkWater;
+            public static Material[] wheatBrew => CommonMaterials.wheat;
+            public static Material[] pot => CommonMaterials.metalShiny;
+            public static Material[] foam => CommonMaterials.Mug.wheatFoam;
         }
     }
 }

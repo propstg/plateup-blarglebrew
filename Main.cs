@@ -3,6 +3,7 @@ using BlargleBrew.beergarita;
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.draft.allgrain;
 using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
 using BlargleBrew.processes;
@@ -48,6 +49,35 @@ namespace KitchenBlargleBrew {
             bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
             Log($"Asset bundle loaded.");
 
+            registerBoxedItems();
+            registerDraftItems();
+            registerDessertItems();
+            registerMicheladaItems();
+            registerBootItems();
+            registerBeermosaItems();
+            registerPickledEggItems();
+            registerStoutFloatItems();
+            registerTequilaBottle();
+            registerTequilaAndLimeDish();
+            registerBeergaritaDish();
+
+            registerCoolProcess();
+            registerCommonHomebrewItems();
+            registerWheatHomebrewItems();
+            registerStoutHomebrewItems();
+
+            //AddGameDataObject<PeanutBowlDish>();
+
+            Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
+                RestrictedItemSplits.BlacklistItem(Refs.KegStout);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
+                RestrictedItemSplits.BlacklistItem(Refs.KegLight);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
+            };
+        }
+
+        private void registerBoxedItems() {
+            AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<BeerCanEmpty>();
             AddGameDataObject<BeerCanClosed>();
             AddGameDataObject<BeerCanOpen>();
@@ -58,7 +88,10 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BeerBottleOpen>();
             AddGameDataObject<BeerBottleWithLime>();
             AddGameDataObject<BeerBottleProvider>();
+        }
 
+        private void registerDraftItems() {
+            AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BeerMugStout>();
             AddGameDataObject<BeerMugWheat>();
             AddGameDataObject<WheatBeerWithOrange>();
@@ -71,39 +104,69 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+        }
 
+        private void registerDessertItems() {
+            AddGameDataObject<DessertBeerDish>();
+        }
+
+        private void registerMicheladaItems() {
+            AddGameDataObject<MicheladaDish>();
             AddGameDataObject<Michelada>();
             AddGameDataObject<TomatoJuice>();
             AddGameDataObject<TomatoJuicePitcher>();
             AddGameDataObject<TomatoJuiceUnmixed>();
+        }
 
-            AddGameDataObject<DraftBeerDish>();
-            AddGameDataObject<BoxedBeerDish>();
-            AddGameDataObject<DessertBeerDish>();
+        private void registerBootItems() {
+            AddGameDataObject<BootDish>();
+            AddGameDataObject<EmptyBoot>();
+            AddGameDataObject<EmptyBootProvider>();
+            AddGameDataObject<StoutBoot>();
+        }
 
-            AddGameDataObject<WheatGrainPortion>();
-            AddGameDataObject<WheatGrainMilled>();
-            AddGameDataObject<WheatGrainProvider>();
+        private void registerBeermosaItems() {
+            AddGameDataObject<BottomlessBeermosasDish>();
+            AddGameDataObject<Beermosa>();
+        }
 
-            AddGameDataObject<ExtractFermenter>();
-            AddGameDataObject<HomebrewStoutDish>();
+        private void registerPickledEggItems() {
+            AddGameDataObject<PickledEggDish>();
+            AddGameDataObject<PickledEgg>();
+        }
+
+        private void registerStoutFloatItems() {
+            AddGameDataObject<StoutFloatDish>();
+            AddGameDataObject<StoutFloat>();
+        }
+
+        private void registerTequilaBottle() {
+            AddGameDataObject<TequilaBottle>();
+            AddGameDataObject<TequilaBottleProvider>();
+            AddGameDataObject<TequilaShot>();
+        }
+
+        private void registerTequilaAndLimeDish() {
+            AddGameDataObject<TequilaAndLime>();
+            AddGameDataObject<TequilaAndLimeDish>();
+        }
+
+        private void registerBeergaritaDish() {
+            AddGameDataObject<Beergarita>();
+            AddGameDataObject<BeergaritaDish>();
+        }
+
+        private void registerCommonHomebrewItems() {
             AddGameDataObject<HopsBagEmpty>();
             AddGameDataObject<HopsBag>();
             AddGameDataObject<HopsBagProvider>();
             AddGameDataObject<YeastFull>();
             AddGameDataObject<YeastProvider>();
-            AddGameDataObject<ExtractCanClosed>();
-            AddGameDataObject<ExtractCanOpen>();
-            AddGameDataObject<ExtractCanProvider>();
-            AddGameDataObject<ExtractUncooked>();
-            AddGameDataObject<ExtractHeated>();
-            AddGameDataObject<ExtractBoiling>();
-            AddGameDataObject<ExtractBoiledWithTrash>();
-            AddGameDataObject<ExtractBoiled>();
-            AddGameDataObject<ExtractCooled>();
-            AddGameDataObject<ExtractFinished>();
-            AddGameDataObject<Cool>();
+            AddGameDataObject<KegProviderEmpty>();
+        }
 
+        private void registerCoolProcess() {
+            AddGameDataObject<Cool>();
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
                 if (args.gamedata.TryGet(ApplianceReferences.Freezer, out Appliance freezer)) {
                     if (!freezer.Processes.Select(x => x.GetType()).Contains(typeof(Cool))) {
@@ -116,39 +179,39 @@ namespace KitchenBlargleBrew {
                     }
                 }
             };
-            AddGameDataObject<KegProviderEmpty>();
+        }
 
-            AddGameDataObject<EmptyBoot>();
-            AddGameDataObject<EmptyBootProvider>();
-            AddGameDataObject<StoutBoot>();
-            AddGameDataObject<BootDish>();
-            AddGameDataObject<MicheladaDish>();
+        private void registerWheatHomebrewItems() {
+            AddGameDataObject<HomebrewWheatDish>();
+            AddGameDataObject<WheatFermenter>();
+            AddGameDataObject<WheatGrainPortion>();
+            AddGameDataObject<WheatGrainMilled>();
+            AddGameDataObject<WheatGrainProvider>();
+            AddGameDataObject<WheatGrainEmptyBag>();
 
-            AddGameDataObject<PickledEgg>();
-            AddGameDataObject<PickledEggDish>();
+            AddGameDataObject<WheatMashUnheated>();
+            AddGameDataObject<WheatMashWithTrash>();
+            AddGameDataObject<WheatHeated>();
+            AddGameDataObject<WheatBoiling>();
+            AddGameDataObject<WheatBoiledWithTrash>();
+            AddGameDataObject<WheatBoiled>();
+            AddGameDataObject<WheatCooled>();
+            AddGameDataObject<WheatFinished>();
+        }
 
-            AddGameDataObject<Beermosa>();
-            AddGameDataObject<BottomlessBeermosasDish>();
-
-            AddGameDataObject<StoutFloat>();
-            AddGameDataObject<StoutFloatDish>();
-
-            AddGameDataObject<TequilaBottle>();
-            AddGameDataObject<TequilaBottleProvider>();
-            AddGameDataObject<TequilaShot>();
-            AddGameDataObject<TequilaAndLime>();
-            AddGameDataObject<TequilaAndLimeDish>();
-            AddGameDataObject<Beergarita>();
-            AddGameDataObject<BeergaritaDish>();
-
-            //AddGameDataObject<PeanutBowlDish>();
-
-            Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
-                RestrictedItemSplits.BlacklistItem(Refs.KegStout);
-                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
-                RestrictedItemSplits.BlacklistItem(Refs.KegLight);
-                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
-            };
+        private void registerStoutHomebrewItems() {
+            AddGameDataObject<HomebrewStoutDish>();
+            AddGameDataObject<ExtractFermenter>();
+            AddGameDataObject<ExtractCanClosed>();
+            AddGameDataObject<ExtractCanOpen>();
+            AddGameDataObject<ExtractCanProvider>();
+            AddGameDataObject<ExtractUncooked>();
+            AddGameDataObject<ExtractHeated>();
+            AddGameDataObject<ExtractBoiling>();
+            AddGameDataObject<ExtractBoiledWithTrash>();
+            AddGameDataObject<ExtractBoiled>();
+            AddGameDataObject<ExtractCooled>();
+            AddGameDataObject<ExtractFinished>();
         }
 
         protected override void OnInitialise() {

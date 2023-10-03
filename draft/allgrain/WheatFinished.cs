@@ -10,18 +10,17 @@ using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.allgrain {
 
-#if DEBUG
     class WheatFinished : CustomItemGroup<WheatFinished.WheatFinishedItemGroupView> {
 
         public override string UniqueNameID => "WheatFinished";
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractFinished");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("WheatFinished");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
         public override Item DisposesTo => Refs.Pot;
         public override Appliance DedicatedProvider => Refs.WheatFermenter;
 
         public override List<IItemProperty> Properties => new List<IItemProperty>() {
-            new CFinishedFerment { colorId = 1 },
+            new CFinishedFerment { colorId = 2 },
         };
 
         public override List<ItemSet> Sets => new List<ItemSet>() {
@@ -44,9 +43,9 @@ namespace BlargleBrew.draft.allgrain {
         };
 
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.wheatBrew);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.WheatBrew.foam);
 
             Prefab.GetComponent<WheatFinishedItemGroupView>()?.Setup(Prefab);
 
@@ -71,11 +70,10 @@ namespace BlargleBrew.draft.allgrain {
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "ExH", Item = Refs.WheatCooled },
+                    new ColourBlindLabel() { Text = "WhH", Item = Refs.WheatCooled },
                     new ColourBlindLabel() { Text = "Y", Item = Refs.YeastFull },
                 };
             }
         }
     }
-#endif
 }

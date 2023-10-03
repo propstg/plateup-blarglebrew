@@ -9,11 +9,10 @@ using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.allgrain {
 
-#if DEBUG
-    class WheatUncooked : CustomItemGroup<WheatUncooked.UncookedWheatItemGroupView> {
+    class WheatMashUnheated : CustomItemGroup<WheatMashUnheated.WheatMashUnheatedItemGroupView> {
 
-        public override string UniqueNameID => "WheatUncooked";
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractUncooked");
+        public override string UniqueNameID => "WheatMashUnheated";
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("MashUncooked");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
         public override Item DisposesTo => Refs.Pot;
@@ -43,15 +42,18 @@ namespace BlargleBrew.draft.allgrain {
                 Duration = 10f,
                 IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.WheatHeated,
+                Result = Refs.WheatMashWithTrash,
             }
         };
 
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.water);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Keg.wheatLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Keg.wheatLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
 
-            Prefab.GetComponent<UncookedWheatItemGroupView>()?.Setup(Prefab);
+            Prefab.GetComponent<WheatMashUnheatedItemGroupView>()?.Setup(Prefab);
 
             if (Prefab.TryGetComponent<ItemGroupView>(out var itemGroupView)) {
                 Transform transform = itemGroupView.gameObject.transform.Find("Colour Blind");
@@ -59,7 +61,7 @@ namespace BlargleBrew.draft.allgrain {
             }
         }
 
-        public class UncookedWheatItemGroupView : ItemGroupView {
+        public class WheatMashUnheatedItemGroupView : ItemGroupView {
             internal void Setup(GameObject prefab) {
                 ComponentGroups = new List<ComponentGroup>() {
                     new ComponentGroup() {
@@ -72,15 +74,19 @@ namespace BlargleBrew.draft.allgrain {
                     },
                     new ComponentGroup() {
                         Item = Refs.WheatGrainMilled,
-                        GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
+                        Objects = new List<GameObject> {
+                            GameObjectUtils.GetChildObject(prefab, "bag/contents"),
+                            GameObjectUtils.GetChildObject(prefab, "bag/clip"),
+                            GameObjectUtils.GetChildObject(prefab, "bag/bag"),
+                        },
+                        DrawAll = true,
                     },
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "Ex", Item = Refs.Water }
+                    new ColourBlindLabel() { Text = "Wh", Item = Refs.WheatGrainMilled }
                 };
             }
         }
     }
-#endif
 }
