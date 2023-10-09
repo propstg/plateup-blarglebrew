@@ -1,7 +1,6 @@
 ﻿using Kitchen;
 using KitchenBlargleBrew;
 using KitchenData;
-using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
 using System.Collections.Generic;

@@ -23,7 +23,7 @@ namespace BlargleBrew.cards {
                 false;
             #endif
         public override bool RequiredNoDishItem => true;
-        public override bool IsUnlockable => false; // TODO add a system to flip this to true when Homebrew Stout is taken?
+        public override bool IsUnlockable => true;
 
         public override List<string> StartingNameSet => new List<string> {
             "I'm Ok",
@@ -57,8 +57,12 @@ namespace BlargleBrew.cards {
             new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerWheat, Weight = 2 },
         };
 
+        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
+            Refs.HomebrewDish,
+        };
+
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Chop/grind grains. Add to pot of water.\nCook.\nAdd hops.\nCook.\nRemove hops and grains.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Chop/grind grains. Add to pot of water.\nCook.\nRemove grains.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

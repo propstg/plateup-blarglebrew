@@ -19,12 +19,12 @@ namespace BlargleBrew.cards {
         public override bool IsAvailableAsLobbyOption => true;
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => false;
-        public override bool BlocksAllOtherFood => true;
         public override List<Unlock> AllowedFoods => new List<Unlock>() {
             Refs.BoxedBeerDish, Refs.DraftBeerDish
         };
 
         public override List<string> StartingNameSet => new List<string> {
+            "Don't Panic",
             "I'm Ok",
             "We Don't Card",
             "Buzzkill Jimmy's",
