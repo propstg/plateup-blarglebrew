@@ -26,10 +26,12 @@ namespace BlargleBrew {
         public static Material[] tomato => wrap(MaterialUtils.GetExistingMaterial("Tomato"));
         public static Material[] plasticGreen => wrap(MaterialUtils.GetExistingMaterial("Plastic - Green"));
         public static Material[] vanilla => wrap(MaterialUtils.GetExistingMaterial("Vanilla"));
+        public static Material[] sinkWater => wrap(MaterialUtils.GetExistingMaterial("Sink Water"));
 
         public static Material[] tequila => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Tequila", 0xF9D1A7, 0.75f));
         public static Material[] pilsner => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pilsner", 0xFFD15E, 0.75f));
         public static Material[] wheat => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Wheat", 0xFFD15E, 0.75f));
+        public static Material[] wheatSack => new Material[] { MaterialUtils.GetExistingMaterial("Sack - Brown"), MaterialUtils.CreateFlat("BlargleBrew - Wheat Sack", 0xAB8C3E) };
         public static Material[] thinGlass => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Thin Glass", 0xF6FEFF, 0.1f));
 
         public static class Bottle {
@@ -121,6 +123,35 @@ namespace BlargleBrew {
             public static Material[] tequila => CommonMaterials.tequila;
             public static Material[] bottleHolder => CommonMaterials.plasticGreen;
 
+        }
+
+        public static class Hops {
+            public static Material[] bag => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Undiluted", 0xFFFFFF, 0.4f));
+            public static Material[] hops => limeJuice;
+            public static Material[] clip => metalBlack;
+        }
+
+        public static class Yeast {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] yeast => CommonMaterials.uncookedBatter;
+        }
+
+        public static class ExtractStout {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] extractUndiluted => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Undiluted", 0x964b00, 1.0f));
+            public static Material[] extractDiluted => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Stout Diluted", 0x964b00, 0.6f));
+            public static Material[] label => CommonMaterials.Keg.stoutLabel;
+            public static Material[] lid => label;
+            public static Material[] pot => CommonMaterials.metalShiny;
+            public static Material[] foam => CommonMaterials.Mug.stoutFoam;
+        }
+
+        public static class WheatBrew {
+            public static Material[] glass => CommonMaterials.glass;
+            public static Material[] water => CommonMaterials.sinkWater;
+            public static Material[] wheatBrew => CommonMaterials.wheat;
+            public static Material[] pot => CommonMaterials.metalShiny;
+            public static Material[] foam => CommonMaterials.Mug.wheatFoam;
         }
     }
 }

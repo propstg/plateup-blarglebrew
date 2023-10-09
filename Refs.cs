@@ -2,10 +2,18 @@
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.draft.allgrain;
+using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
+using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
+using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
+using KitchenBlargleBrew.draft.allgrain;
+using KitchenBlargleBrew.draft.extract;
+using KitchenBlargleBrew.draft.hops;
+using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
 using KitchenData;
@@ -91,6 +99,46 @@ namespace KitchenBlargleBrew
         public static Item Beergarita => GDOUtils.GetCastedGDO<Item, Beergarita>();
         public static Dish BeergaritaDish => GDOUtils.GetCastedGDO<Dish, BeergaritaDish>();
         public static Dish TequilaAndLimeDish => GDOUtils.GetCastedGDO<Dish, TequilaAndLimeDish>();
-        
+
+
+        public static Dish HomebrewDish = GDOUtils.GetCastedGDO<Dish, HomebrewStoutDish>();
+        public static Item HopsBag => GDOUtils.GetCastedGDO<Item, HopsBag>();
+        public static Item HopsBagEmpty => GDOUtils.GetCastedGDO<Item, HopsBagEmpty>();
+        public static Appliance HopsBagProvider => GDOUtils.GetCastedGDO<Appliance, HopsBagProvider>();
+        public static Item YeastFull => GDOUtils.GetCastedGDO<Item, YeastFull>();
+        public static Appliance YeastProvider => GDOUtils.GetCastedGDO<Appliance, YeastProvider>();
+
+        public static Item Pot => (Item) GDOUtils.GetExistingGDO(ItemReferences.Pot);
+        public static Item ExtractCanClosed => GDOUtils.GetCastedGDO<Item, ExtractCanClosed>();
+        public static Item ExtractCanOpen => GDOUtils.GetCastedGDO<Item, ExtractCanOpen>();
+        public static Appliance ExtractCanProvider => GDOUtils.GetCastedGDO<Appliance, ExtractCanProvider>();
+        public static Item ExtractUncooked => GDOUtils.GetCastedGDO<Item, ExtractUncooked>();
+        public static Item ExtractHeated => GDOUtils.GetCastedGDO<Item, ExtractHeated>();
+        public static Item ExtractBoiling => GDOUtils.GetCastedGDO<Item, ExtractBoiling>();
+        public static Item ExtractBoiledWithTrash => GDOUtils.GetCastedGDO<Item, ExtractBoiledWithTrash>();
+        public static Item ExtractBoiled => GDOUtils.GetCastedGDO<Item, ExtractBoiled>();
+        public static Item ExtractCooled => GDOUtils.GetCastedGDO<Item, ExtractCooled>();
+        public static Item ExtractFinished => GDOUtils.GetCastedGDO<Item, ExtractFinished>();
+        public static Appliance ExtractFermenter => GDOUtils.GetCastedGDO<Appliance, ExtractFermenter>();
+
+        public static Dish HomebrewWheatDish = GDOUtils.GetCastedGDO<Dish, HomebrewWheatDish>();
+        public static Item WheatGrainPortion => GDOUtils.GetCastedGDO<Item, WheatGrainPortion>();
+        public static Appliance WheatGrainProvider => GDOUtils.GetCastedGDO<Appliance, WheatGrainProvider>();
+        public static Item WheatGrainMilled => GDOUtils.GetCastedGDO<Item, WheatGrainMilled>();
+        public static Item WheatGrainEmptyBag => GDOUtils.GetCastedGDO<Item, WheatGrainEmptyBag>();
+        public static Item WheatMashUnheated => GDOUtils.GetCastedGDO<Item, WheatMashUnheated>();
+        public static Item WheatMashWithTrash => GDOUtils.GetCastedGDO<Item, WheatMashWithTrash>();
+        public static Item WheatHeated => GDOUtils.GetCastedGDO<Item, WheatHeated>();
+        public static Item WheatBoiling => GDOUtils.GetCastedGDO<Item, WheatBoiling>();
+        public static Item WheatBoiledWithTrash => GDOUtils.GetCastedGDO<Item, WheatBoiledWithTrash>();
+        public static Item WheatBoiled => GDOUtils.GetCastedGDO<Item, WheatBoiled>();
+        public static Item WheatCooled => GDOUtils.GetCastedGDO<Item, WheatCooled>();
+        public static Item WheatFinished => GDOUtils.GetCastedGDO<Item, WheatFinished>();
+        public static Appliance WheatFermenter => GDOUtils.GetCastedGDO<Appliance, WheatFermenter>();
+
+
+        public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
+        public static Process CookProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook);
+        public static Process CoolProcess => GDOUtils.GetCastedGDO<Process, Cool>();
     }
 }

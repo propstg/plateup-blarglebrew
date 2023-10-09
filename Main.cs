@@ -3,16 +3,29 @@ using BlargleBrew.beergarita;
 using BlargleBrew.boot;
 using BlargleBrew.cards;
 using BlargleBrew.draft;
+using BlargleBrew.draft.allgrain;
+using BlargleBrew.draft.extract;
 using BlargleBrew.michelada;
+using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using HarmonyLib;
 using Kitchen;
+using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
+using KitchenBlargleBrew.draft.allgrain;
+using KitchenBlargleBrew.draft.extract;
+using KitchenBlargleBrew.draft.hops;
+using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
+using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
+using KitchenLib.References;
+using KitchenLib.Utils;
 using KitchenMods;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -23,7 +36,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.3.1";
+        public const string MOD_VERSION = "0.4.0";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
@@ -36,6 +49,35 @@ namespace KitchenBlargleBrew {
             bundle = mod.GetPacks<AssetBundleModPack>().SelectMany(e => e.AssetBundles).First();
             Log($"Asset bundle loaded.");
 
+            registerBoxedItems();
+            registerDraftItems();
+            registerDessertItems();
+            registerMicheladaItems();
+            registerBootItems();
+            registerBeermosaItems();
+            registerPickledEggItems();
+            registerStoutFloatItems();
+            registerTequilaBottle();
+            registerTequilaAndLimeDish();
+            registerBeergaritaDish();
+
+            registerCoolProcess();
+            registerCommonHomebrewItems();
+            registerWheatHomebrewItems();
+            registerStoutHomebrewItems();
+
+            //AddGameDataObject<PeanutBowlDish>();
+
+            Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
+                RestrictedItemSplits.BlacklistItem(Refs.KegStout);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
+                RestrictedItemSplits.BlacklistItem(Refs.KegLight);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
+            };
+        }
+
+        private void registerBoxedItems() {
+            AddGameDataObject<BoxedBeerDish>();
             AddGameDataObject<BeerCanEmpty>();
             AddGameDataObject<BeerCanClosed>();
             AddGameDataObject<BeerCanOpen>();
@@ -46,7 +88,10 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<BeerBottleOpen>();
             AddGameDataObject<BeerBottleWithLime>();
             AddGameDataObject<BeerBottleProvider>();
+        }
 
+        private void registerDraftItems() {
+            AddGameDataObject<DraftBeerDish>();
             AddGameDataObject<BeerMugStout>();
             AddGameDataObject<BeerMugWheat>();
             AddGameDataObject<WheatBeerWithOrange>();
@@ -59,56 +104,141 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+        }
 
+        private void registerDessertItems() {
+            AddGameDataObject<DessertBeerDish>();
+        }
+
+        private void registerMicheladaItems() {
+            AddGameDataObject<MicheladaDish>();
             AddGameDataObject<Michelada>();
             AddGameDataObject<TomatoJuice>();
             AddGameDataObject<TomatoJuicePitcher>();
             AddGameDataObject<TomatoJuiceUnmixed>();
+        }
 
-            AddGameDataObject<DraftBeerDish>();
-            AddGameDataObject<BoxedBeerDish>();
-            AddGameDataObject<DessertBeerDish>();
-
-#if DEBUG
-            AddGameDataObject<InfiniteFermenterWheat>();
-#endif
-            AddGameDataObject<KegProviderEmpty>();
-
+        private void registerBootItems() {
+            AddGameDataObject<BootDish>();
             AddGameDataObject<EmptyBoot>();
             AddGameDataObject<EmptyBootProvider>();
             AddGameDataObject<StoutBoot>();
-            AddGameDataObject<BootDish>();
-            AddGameDataObject<MicheladaDish>();
+        }
 
-            AddGameDataObject<PickledEgg>();
-            AddGameDataObject<PickledEggDish>();
-
-            AddGameDataObject<Beermosa>();
+        private void registerBeermosaItems() {
             AddGameDataObject<BottomlessBeermosasDish>();
+            AddGameDataObject<Beermosa>();
+        }
 
-            AddGameDataObject<StoutFloat>();
+        private void registerPickledEggItems() {
+            AddGameDataObject<PickledEggDish>();
+            AddGameDataObject<PickledEgg>();
+        }
+
+        private void registerStoutFloatItems() {
             AddGameDataObject<StoutFloatDish>();
+            AddGameDataObject<StoutFloat>();
+        }
 
+        private void registerTequilaBottle() {
             AddGameDataObject<TequilaBottle>();
             AddGameDataObject<TequilaBottleProvider>();
             AddGameDataObject<TequilaShot>();
+        }
+
+        private void registerTequilaAndLimeDish() {
             AddGameDataObject<TequilaAndLime>();
             AddGameDataObject<TequilaAndLimeDish>();
+        }
+
+        private void registerBeergaritaDish() {
             AddGameDataObject<Beergarita>();
             AddGameDataObject<BeergaritaDish>();
+        }
 
-            //AddGameDataObject<PeanutBowlDish>();
+        private void registerCommonHomebrewItems() {
+            AddGameDataObject<HopsBagEmpty>();
+            AddGameDataObject<HopsBag>();
+            AddGameDataObject<HopsBagProvider>();
+            AddGameDataObject<YeastFull>();
+            AddGameDataObject<YeastProvider>();
+            AddGameDataObject<KegProviderEmpty>();
+        }
 
+        private void registerCoolProcess() {
+            AddGameDataObject<Cool>();
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args) {
-                RestrictedItemSplits.BlacklistItem(Refs.KegStout);
-                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
-                RestrictedItemSplits.BlacklistItem(Refs.KegLight);
-                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
+                if (args.gamedata.TryGet(ApplianceReferences.Freezer, out Appliance freezer)) {
+                    if (!freezer.Processes.Select(x => x.GetType()).Contains(typeof(Cool))) {
+                        freezer.Processes.Add(new Appliance.ApplianceProcesses() {
+                            Process = Refs.CoolProcess,
+                            IsAutomatic = true,
+                            Speed = 1f,
+                            Validity = ProcessValidity.Generic
+                        });
+                    }
+                }
             };
+        }
+
+        private void registerWheatHomebrewItems() {
+            AddGameDataObject<HomebrewWheatDish>();
+            AddGameDataObject<WheatFermenter>();
+            AddGameDataObject<WheatGrainPortion>();
+            AddGameDataObject<WheatGrainMilled>();
+            AddGameDataObject<WheatGrainProvider>();
+            AddGameDataObject<WheatGrainEmptyBag>();
+
+            AddGameDataObject<WheatMashUnheated>();
+            AddGameDataObject<WheatMashWithTrash>();
+            AddGameDataObject<WheatHeated>();
+            AddGameDataObject<WheatBoiling>();
+            AddGameDataObject<WheatBoiledWithTrash>();
+            AddGameDataObject<WheatBoiled>();
+            AddGameDataObject<WheatCooled>();
+            AddGameDataObject<WheatFinished>();
+        }
+
+        private void registerStoutHomebrewItems() {
+            AddGameDataObject<HomebrewStoutDish>();
+            AddGameDataObject<ExtractFermenter>();
+            AddGameDataObject<ExtractCanClosed>();
+            AddGameDataObject<ExtractCanOpen>();
+            AddGameDataObject<ExtractCanProvider>();
+            AddGameDataObject<ExtractUncooked>();
+            AddGameDataObject<ExtractHeated>();
+            AddGameDataObject<ExtractBoiling>();
+            AddGameDataObject<ExtractBoiledWithTrash>();
+            AddGameDataObject<ExtractBoiled>();
+            AddGameDataObject<ExtractCooled>();
+            AddGameDataObject<ExtractFinished>();
         }
 
         protected override void OnInitialise() {
             base.OnInitialise();
+        }
+
+        private bool colorblindSetup = false;
+        protected override void OnUpdate() {
+            if (!colorblindSetup) {
+                colorblindSetup = true;
+                new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider }
+                    .Select(appliance => appliance.Prefab)
+                    .ForEach(prefab => {
+                        var existingColourBlindChild = GameObjectUtils.GetChild(prefab, "Colour Blind");
+                        if (existingColourBlindChild != null) {
+                            existingColourBlindChild.name = "asdf";
+                        }
+
+                        prefab.AddApplianceColorblindLabel("10 <sprite name=\"coin\" color=\"#ffcb00\">");
+                        var newColorBlindPrefab = GameObjectUtils.GetChild(prefab, "Colour Blind");
+                        newColorBlindPrefab.transform.localPosition = new Vector3(0.0f, 2.5f, 0.0f);
+                        newColorBlindPrefab.name = "CostDisplay";
+                        newColorBlindPrefab.GetChild("Title").SetActive(true);
+                        newColorBlindPrefab.SetActive(false);
+                        UnityEngine.Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
+                    });
+            }
         }
 
         public static void Log(object message) {

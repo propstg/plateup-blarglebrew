@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <LangTarget>latest</LangTarget>
+    <LangTarget>8</LangTarget>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.6.16" />
+    <PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.10.21" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,5 +17,6 @@
       <HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
     </Reference>
   </ItemGroup>
+
 
 </Project>
