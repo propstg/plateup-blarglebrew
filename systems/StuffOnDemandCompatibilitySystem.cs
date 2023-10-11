@@ -10,8 +10,6 @@ namespace BlargleBrew.systems {
     public class StuffOnDemandCompatibilitySystem : FranchiseFirstFrameSystem, IModSystem {
 
         protected override void OnUpdate() {
-            BlargleBrewMod.Log("StuffOnDemand compatibility system running");
-
             new List<Item> { Refs.BeerStout, Refs.WheatFinished, Refs.ExtractFinished }.ForEach(clearProviderIfNeeded);
         }
 

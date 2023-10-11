@@ -36,7 +36,7 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.4.0";
+        public const string MOD_VERSION = "0.4.1";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
