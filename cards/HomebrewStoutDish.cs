@@ -61,7 +61,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout as a main.", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout as a main.", "Bring a large map!") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

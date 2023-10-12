@@ -1,6 +1,7 @@
 ﻿using Kitchen;
 using KitchenBlargleBrew.kegerator;
 using KitchenMods;
+using System.Linq;
 using Unity.Entities;
 
 namespace KitchenBlargleBrew.appliances.kegerator
@@ -15,7 +16,12 @@ namespace KitchenBlargleBrew.appliances.kegerator
         protected override InteractionType RequiredType => InteractionType.Grab;
 
         protected override bool IsPossible(ref InteractionData data) {
-            if (Require(data.Target, out CAppliance appliance) &&
+            bool isHomebrewActive = GameInfo.AllCurrentCards
+                .Select(card => card.CardID)
+                .Any(cardId => cardId == Refs.HomebrewDish.ID);
+
+            if (!isHomebrewActive &&
+                Require(data.Target, out CAppliance appliance) &&
                 Require(data.Target, out CKegProvider kegProvider) &&
                 Require(data.Interactor, out heldItem) &&
                 Require(heldItem.HeldItem, out CKeg holdingKeg)) {
