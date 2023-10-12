@@ -11,7 +11,7 @@ namespace KitchenBlargleBrew.appliances.fermenter {
         private CFermenterState state;
         private CItemProvider itemProvider;
         private CItemHolder itemHolder;
-        private CKegColor kegColor;
+        private CCleanEmptyKeg kegColor;
 
         protected override InteractionType RequiredType => InteractionType.Grab;
 
@@ -20,7 +20,7 @@ namespace KitchenBlargleBrew.appliances.fermenter {
                 Require(data.Interactor, out itemHolder) &&
                 Require(itemHolder.HeldItem, out kegColor)) {
 
-                return kegColor.colorId == 0 && state.finishedQuantity > 0;
+                return state.finishedQuantity > 0;
             }
 
             return false;
