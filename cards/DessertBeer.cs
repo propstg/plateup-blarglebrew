@@ -11,6 +11,8 @@ namespace BlargleBrew.cards {
 
         public override string UniqueNameID => "Dessert Beer";
         public override DishType Type => DishType.Dessert;
+        public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
+        public override CardType CardType => CardType.Default;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 

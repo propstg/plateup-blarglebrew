@@ -11,6 +11,8 @@ namespace BlargleBrew.cards {
 
         public override string UniqueNameID => "Blargle Beer";
         public override DishType Type => DishType.Base;
+        public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
+        public override CardType CardType => CardType.Default;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
@@ -25,10 +27,6 @@ namespace BlargleBrew.cards {
             "The Parting Glass",
             "The Leaky Barrel",
             "Hole in the Wall",
-        };
-
-        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
-            Refs.DraftBeerDish,
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
@@ -71,6 +69,10 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "mug/glass", CommonMaterials.Mug.glass);
             MaterialUtils.ApplyMaterial(prefab, "mug/beer", CommonMaterials.Mug.stoutBeer);
             MaterialUtils.ApplyMaterial(prefab, "mug/foam", CommonMaterials.Mug.stoutFoam);
+        }
+
+        public override void OnRegister(Dish gdo) {
+            gdo.Difficulty = 1;
         }
     }
 }

@@ -11,6 +11,8 @@ namespace BlargleBrew.cards {
 
         public override string UniqueNameID => "BlargleBrew - Homebrew Stout";
         public override DishType Type => DishType.Base;
+        public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
+        public override CardType CardType => CardType.Default;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
@@ -18,7 +20,6 @@ namespace BlargleBrew.cards {
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption => true;
         public override bool RequiredNoDishItem => true;
-        public override bool IsUnlockable => false;
         public override List<Unlock> AllowedFoods => new List<Unlock>() {
             Refs.BoxedBeerDish, Refs.DraftBeerDish
         };
@@ -82,6 +83,10 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "brite-gauge-holder", CommonMaterials.metalBlack);
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge", CommonMaterials.thinGlass);
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge-holder", CommonMaterials.metalBlack);
+        }
+
+        public override void OnRegister(Dish gdo) {
+            gdo.Difficulty = 5;
         }
     }
 }
