@@ -14,6 +14,7 @@ namespace BlargleBrew.draft {
 
         protected abstract string name { get; }
         protected abstract Material[] labelMaterial { get; }
+        protected abstract Material[] kegMaterial { get; }
         protected abstract string prefabName { get; }
         protected abstract int colorId { get; }
         protected abstract string hackyColorblindLabel { get; }
@@ -31,7 +32,7 @@ namespace BlargleBrew.draft {
         };
 
         public override void OnRegister(Item gdo) {
-            MaterialUtils.ApplyMaterial(Prefab, "keg", CommonMaterials.Keg.metal);
+            MaterialUtils.ApplyMaterial(Prefab, "keg", kegMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "label", labelMaterial);
 
             GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gdo as Item);

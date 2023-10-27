@@ -8,6 +8,7 @@ namespace BlargleBrew.draft {
 
         protected override string name => "Wheat";
         protected override Material[] labelMaterial => CommonMaterials.Keg.wheatLabel;
+        protected override Material[] kegMaterial => CommonMaterials.Keg.metal;
         protected override string prefabName => "KegLight";
         protected override int colorId => 2;
         protected override string hackyColorblindLabel => "Wh";

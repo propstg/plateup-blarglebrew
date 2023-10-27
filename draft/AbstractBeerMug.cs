@@ -26,6 +26,7 @@ namespace BlargleBrew.draft {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Mug.glass);
             MaterialUtils.ApplyMaterial(Prefab, "beer", beerMaterial);
             MaterialUtils.ApplyMaterial(Prefab, "foam", foamMaterial);
+            /*
             GameObject vfxGameObject = new GameObject($"Beer VFX - {VFX_NAME}");
             VisualEffectAsset asset = Resources.FindObjectsOfTypeAll<VisualEffectAsset>().Where(vfx => vfx.name == VFX_NAME).FirstOrDefault();
             if (asset != default) {
@@ -40,6 +41,7 @@ namespace BlargleBrew.draft {
                 vfxGameObject.transform.localPosition = Vector3.zero;
                 vfxGameObject.transform.rotation = Quaternion.identity;
             }
+            */
 
             Prefab.transform.Find("Colour Blind").transform.localPosition = new Vector3(0, 0.2f, 0);
         }

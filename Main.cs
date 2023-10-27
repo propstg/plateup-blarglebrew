@@ -51,6 +51,7 @@ namespace KitchenBlargleBrew {
 
             registerBoxedItems();
             registerDraftItems();
+            registerDraftPumpkin();
             registerDessertItems();
             registerMicheladaItems();
             registerBootItems();
@@ -73,6 +74,8 @@ namespace KitchenBlargleBrew {
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegStout);
                 RestrictedItemSplits.BlacklistItem(Refs.KegLight);
                 RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegLight);
+                RestrictedItemSplits.BlacklistItem(Refs.KegPumpkin);
+                RestrictedItemSplits.AllowItem("BlargleBrew - Kegerator", Refs.KegPumpkin);
             };
         }
 
@@ -104,6 +107,13 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<KegProviderWheat>();
             AddGameDataObject<EmptyMugProvider>();
             AddGameDataObject<Kegerator>();
+        }
+
+        private void registerDraftPumpkin() {
+            AddGameDataObject<DraftPumpkinDish>();
+            AddGameDataObject<BeerMugPumpkin>();
+            AddGameDataObject<KegPumpkin>();
+            AddGameDataObject<KegProviderPumpkin>();
         }
 
         private void registerDessertItems() {
@@ -254,6 +264,7 @@ namespace KitchenBlargleBrew {
             if (__result.name.Contains("Beer") || 
                 __result.name.Contains("mug") || 
                 __result.name.Contains("MugWithOrange") ||
+                __result.name.Contains("PumpkinMug") ||
                 __result.name.Contains("Stout") ||
                 __result.name.Contains("Michelada")) {
                 changeRotationSoItemsAreNotTopDown(__result);
