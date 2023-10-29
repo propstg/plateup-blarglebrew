@@ -4,8 +4,7 @@ using KitchenMods;
 using System.Linq;
 using Unity.Entities;
 
-namespace KitchenBlargleBrew.appliances.kegerator
-{
+namespace KitchenBlargleBrew.appliances.kegerator {
 
     [UpdateBefore(typeof(ItemTransferGroup))]
     public class ReturnFullKegToProviderSystem : ItemInteractionSystem, IModSystem {
@@ -29,12 +28,18 @@ namespace KitchenBlargleBrew.appliances.kegerator
                 Require(heldItem.HeldItem, out CKegColor kegColor);
                 if (appliance.ID == Refs.KegEmptyProvider.ID && Require(heldItem.HeldItem, out CCleanEmptyKeg emptyKeg)) {
                     return true;
-                } else if (appliance.ID == Refs.KegLightProvider.ID && kegColor.colorId == 2 || appliance.ID == Refs.KegStoutProvider.ID && kegColor.colorId == 1) {
+                } else if (doesHeldKegMatchKegRack(appliance, kegColor)) {
                     Require(heldItem.HeldItem, out splittableItem);
                     return splittableItem.RemainingCount == splittableItem.TotalCount;
                 }
             }
             return false;
+        }
+
+        private bool doesHeldKegMatchKegRack(CAppliance rack, CKegColor heldKeg) {
+            return (rack.ID == Refs.KegLightProvider.ID && heldKeg.colorId == 2) ||
+                (rack.ID == Refs.KegStoutProvider.ID && heldKeg.colorId == 1) ||
+                (rack.ID == Refs.KegProviderPumpkin.ID && heldKeg.colorId == 3);
         }
 
         protected override void Perform(ref InteractionData data) {

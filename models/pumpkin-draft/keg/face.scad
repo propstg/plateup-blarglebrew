@@ -1,14 +1,18 @@
 use <./keg-shape.scad>
 scale = 0.1;
 scale([scale, scale, scale])
-union() {
-intersection() {
-	difference() {
-		scale([1.01, 1.01, 1.01]) keg();
-		cylinder(d=49, h=100);
+kegFace();
+
+module kegFace() {
+	union() {
+		intersection() {
+			difference() {
+				scale([1.01, 1.01, 1.01]) keg();
+				cylinder(d=49, h=100);
+			}
+			theFace();
+		}
 	}
-	theFace();
-}
 }
 
 
