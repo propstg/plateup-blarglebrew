@@ -17,12 +17,11 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override string ColourBlindTag => "Pe";
         public override Appliance DedicatedProvider => Refs.PumpkinExtractCanProvider;
 
-        // TODO materials
         public override void OnRegister(Item item) {
-            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.ExtractStout.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.ExtractStout.extractUndiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.ExtractStout.label);
-            MaterialUtils.ApplyMaterial(Prefab, "lid", CommonMaterials.ExtractStout.lid);
+            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.PumpkinBrew.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.PumpkinBrew.pumpkinExtractUndiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.PumpkinBrew.label);
+            MaterialUtils.ApplyMaterial(Prefab, "lid", CommonMaterials.PumpkinBrew.pumpkinExtractUndiluted);
         }
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {

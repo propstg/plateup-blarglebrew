@@ -15,11 +15,10 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "Pe";
 
-        // TODO materials
         public override void OnRegister(Item item) {
-            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.ExtractStout.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.ExtractStout.extractUndiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.ExtractStout.label);
+            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.PumpkinBrew.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.PumpkinBrew.pumpkinExtractUndiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.PumpkinBrew.label);
         }
     }
 }

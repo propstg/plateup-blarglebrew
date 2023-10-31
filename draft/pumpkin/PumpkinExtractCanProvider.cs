@@ -18,14 +18,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override bool SellOnlyAsDuplicate => true;
         public override string UniqueNameID => "BlargleBrew - Pumpkin Extract Provider";
 
-        // TODO materials
         public override void OnRegister(Appliance gdo) {
             var fridgePrefab = (GDOUtils.GetExistingGDO(ApplianceReferences.SourceMeat) as IHasPrefab)?.Prefab.transform.Find("Fridge").gameObject;
             Prefab.AttachPrefabAsChild(fridgePrefab);
-            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.ExtractStout.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.ExtractStout.extractUndiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.ExtractStout.label);
-            MaterialUtils.ApplyMaterial(Prefab, "lid", CommonMaterials.ExtractStout.lid);
+            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.PumpkinBrew.glass);
+            MaterialUtils.ApplyMaterial(Prefab, "extract", CommonMaterials.PumpkinBrew.pumpkinExtractUndiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.PumpkinBrew.label);
+            MaterialUtils.ApplyMaterial(Prefab, "lid", CommonMaterials.PumpkinBrew.label);
             Prefab.transform.Find("body").transform.localPosition += new Vector3(0, 0.5f, 0);
             Prefab.transform.Find("extract").transform.localPosition += new Vector3(0, 0.5f, 0);
             Prefab.transform.Find("label").transform.localPosition += new Vector3(0, 0.5f, 0);

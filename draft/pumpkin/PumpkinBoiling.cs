@@ -45,11 +45,10 @@ namespace KitchenBlargleBrew.draft.pumpkin {
             }
         };
         
-        // TODO materials
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.wheatBrew);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.WheatBrew.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.PumpkinBrew.pumpkinExtractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.PumpkinBrew.foam);
             MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Hops.hops);
             MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Hops.clip);
             MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
@@ -88,7 +87,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "PE", Item = Refs.PumpkinHeated },
+                    new ColourBlindLabel() { Text = "PeP", Item = Refs.PumpkinHeated },
                     new ColourBlindLabel() { Text = "H", Item = Refs.HopsBag },
                 };
             }

@@ -15,14 +15,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override ItemValue ItemValue => ItemValue.None;
         public override Item DisposesTo => Refs.Pot;
 
-        // TODO update materials 
         public override void OnRegister(Item item) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.WheatBrew.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.PumpkinBrew.foam);
 
             GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(item);
             clonedColourBlind.transform.localPosition = new Vector3(0, 0.8f, 0);
-            ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "P";
+            ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "PeP";
         }
     }
 }

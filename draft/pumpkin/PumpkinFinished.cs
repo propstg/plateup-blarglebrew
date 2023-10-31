@@ -42,12 +42,11 @@ namespace KitchenBlargleBrew.draft.pumpkin {
             },
         };
 
-        // TODO materials
         public override void OnRegister(ItemGroup gameDataObject) {
             BlargleBrewMod.Log("Registering PumpkinFinished");
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.wheatBrew);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.WheatBrew.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.PumpkinBrew.pumpkinExtractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.PumpkinBrew.foam);
 
             Prefab.GetComponent<PumpkinFinishedItemGroupView>()?.Setup(Prefab);
 
@@ -73,7 +72,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "PEH", Item = Refs.PumpkinCooled },
+                    new ColourBlindLabel() { Text = "PePH", Item = Refs.PumpkinCooled },
                     new ColourBlindLabel() { Text = "Y", Item = Refs.YeastFull },
                 };
             }

@@ -23,18 +23,17 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override Item SplitSubItem => Refs.HopsBagEmpty;
         public override bool AllowSplitMerging => false;
 
-        // TODO materials
         public override void OnRegister(Item item) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.wheatBrew);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.WheatBrew.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.PumpkinBrew.pumpkinExtractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.PumpkinBrew.foam);
             MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Hops.hops);
             MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Hops.clip);
             MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
 
             GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(item);
             clonedColourBlind.transform.localPosition = new Vector3(0, 0.8f, 0);
-            ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "PEH";
+            ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "PePH";
         }
     }
 }

@@ -53,12 +53,11 @@ namespace KitchenBlargleBrew.draft.pumpkin {
             }
         };
 
-        // TODO materials
         public override void OnRegister(ItemGroup gameDataObject) {
-            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.WheatBrew.pot);
-            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.WheatBrew.water);
-            MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Keg.wheatLabel);
-            MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Keg.wheatLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
+            MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.PumpkinBrew.pumpkinExtractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Keg.pumpkinLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Keg.pumpkinLabel);
             MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
 
             Prefab.GetComponent<PumpkinMashUnheatedItemGroupView>()?.Setup(Prefab);
@@ -71,18 +70,17 @@ namespace KitchenBlargleBrew.draft.pumpkin {
 
         public class PumpkinMashUnheatedItemGroupView : ItemGroupView {
             internal void Setup(GameObject prefab) {
-                // TODO update items
                 ComponentGroups = new List<ComponentGroup>() {
                     new ComponentGroup() {
                         Item = Refs.Pot,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "pot"),
                     },
                     new ComponentGroup() {
-                        Item = Refs.Water,
+                        Item = Refs.PumpkinExtractCanOpen,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
                     },
                     new ComponentGroup() {
-                        Item = Refs.WheatGrainMilled,
+                        Item = Refs.PumpkinPieces,
                         Objects = new List<GameObject> {
                             GameObjectUtils.GetChildObject(prefab, "bag/contents"),
                             GameObjectUtils.GetChildObject(prefab, "bag/clip"),
@@ -93,7 +91,8 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "P", Item = Refs.WheatGrainMilled } // TODO
+                    new ColourBlindLabel() { Text = "Pe", Item = Refs.PumpkinExtractCanOpen},
+                    new ColourBlindLabel() { Text = "P", Item = Refs.PumpkinPieces},
                 };
             }
         }
