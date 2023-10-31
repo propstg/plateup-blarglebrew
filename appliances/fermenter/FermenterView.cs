@@ -53,6 +53,10 @@ namespace KitchenBlargleBrew.kegerator {
                     case 2:
                         MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.wheatLabel);
                         break;
+                    case 3:
+                        // TODO material
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        break;
                     default:
                         MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.emptyLabel);
                         break;
@@ -65,6 +69,10 @@ namespace KitchenBlargleBrew.kegerator {
                         MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.stoutLabel);
                         break;
                     case 2:
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        break;
+                    case 3:
+                        // TODO material
                         MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.wheatLabel);
                         break;
                     default:

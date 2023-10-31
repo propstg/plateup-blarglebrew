@@ -7,22 +7,27 @@ using UnityEngine;
 
 namespace BlargleBrew.cards {
 
-    public class HomebrewStoutDish : CustomDish {
+    public class HomebrewPumpkinDish : CustomDish {
 
-        public override string UniqueNameID => "BlargleBrew - Homebrew Stout";
-        public override DishType Type => DishType.Base;
+        public override string UniqueNameID => "BlargleBrew - Homebrew Pumpkin";
+        public override DishType Type => DishType.Main;
         public override UnlockGroup UnlockGroup => UnlockGroup.Dish;
         public override CardType CardType => CardType.Default;
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallIncrease;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
-        public override bool IsAvailableAsLobbyOption => true;
+        public override bool IsAvailableAsLobbyOption =>
+            #if DEBUG
+                true;
+            #else
+                false;
+            #endif
         public override bool RequiredNoDishItem => true;
+        public override bool IsUnlockable => true;
 
         public override List<string> StartingNameSet => new List<string> {
-            "Don't Panic",
             "I'm Ok",
             "We Don't Card",
             "Buzzkill Jimmy's",
@@ -32,14 +37,15 @@ namespace BlargleBrew.cards {
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.ExtractCanClosed,
-            Refs.BeerStout,
+            Refs.Pumpkin,
+            Refs.BeerMugPumpkin,
+            Refs.PumpkinExtractCanClosed,
             Refs.Pot,
             Refs.Water,
             Refs.HopsBag,
             Refs.YeastFull,
-            Refs.ExtractFinished,
-            Refs.KegStout,
+            Refs.PumpkinFinished,
+            Refs.KegPumpkin,
             Refs.CleanEmptyKeg,
         };
 
@@ -50,16 +56,20 @@ namespace BlargleBrew.cards {
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
-            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerStout, Weight = 1 },
-            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerStout, Weight = 2 },
+            new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerMugPumpkin, Weight = 1 },
+            new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerMugPumpkin, Weight = 2 },
+        };
+
+        public override List<Unlock> HardcodedRequirements => new List<Unlock> {
+            Refs.HomebrewDish,
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add extract to pot of water.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Add pumpkin extract to pot of water. Add chopped pumpkin.\nCook.\nRemove pumpkin.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout as a main.", "Bring a large map!") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Pumpkin", "Adds homebrew pumpkin as a main.", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {
@@ -80,10 +90,6 @@ namespace BlargleBrew.cards {
             MaterialUtils.ApplyMaterial(prefab, "brite-gauge-holder", CommonMaterials.metalBlack);
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge", CommonMaterials.thinGlass);
             MaterialUtils.ApplyMaterial(prefab, "fermenter-gauge-holder", CommonMaterials.metalBlack);
-        }
-
-        public override void OnRegister(Dish gdo) {
-            gdo.Difficulty = 5;
         }
     }
 }

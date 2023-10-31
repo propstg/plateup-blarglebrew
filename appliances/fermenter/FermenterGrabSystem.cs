@@ -41,8 +41,10 @@ namespace KitchenBlargleBrew.appliances.fermenter {
         private CCreateItem getJankyKegTypeByColor(CFermenterState state) {
             if (state.colorId == 1) {
                 return Refs.KegStout.ID;
+            } else if (state.colorId == 2) {
+                return Refs.KegLight.ID;
             }
-            return Refs.KegLight.ID;
+            return Refs.KegPumpkin.ID;
         }
     }
 }

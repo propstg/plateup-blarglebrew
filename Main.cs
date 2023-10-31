@@ -15,6 +15,7 @@ using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.allgrain;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.draft.hops;
+using KitchenBlargleBrew.draft.pumpkin;
 using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
@@ -66,6 +67,7 @@ namespace KitchenBlargleBrew {
             registerCommonHomebrewItems();
             registerWheatHomebrewItems();
             registerStoutHomebrewItems();
+            registerPumpkinHomebrewItems();
 
             //AddGameDataObject<PeanutBowlDish>();
 
@@ -222,6 +224,23 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<ExtractBoiled>();
             AddGameDataObject<ExtractCooled>();
             AddGameDataObject<ExtractFinished>();
+        }
+
+        private void registerPumpkinHomebrewItems() {
+            AddGameDataObject<HomebrewPumpkinDish>();
+            AddGameDataObject<PumpkinFermenter>();
+            AddGameDataObject<PumpkinExtractCanClosed>();
+            AddGameDataObject<PumpkinExtractCanOpen>();
+            AddGameDataObject<PumpkinExtractCanProvider>();
+
+            AddGameDataObject<PumpkinMashUnheated>();
+            AddGameDataObject<PumpkinMashWithTrash>();
+            AddGameDataObject<PumpkinHeated>();
+            AddGameDataObject<PumpkinBoiling>();
+            AddGameDataObject<PumpkinBoiledWithTrash>();
+            AddGameDataObject<PumpkinBoiled>();
+            AddGameDataObject<PumpkinFinished>();
+            AddGameDataObject<PumpkinCooled>();
         }
 
         protected override void OnInitialise() {

@@ -8,11 +8,13 @@ using BlargleBrew.michelada;
 using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
+using Kitchen;
 using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.allgrain;
 using KitchenBlargleBrew.draft.extract;
 using KitchenBlargleBrew.draft.hops;
+using KitchenBlargleBrew.draft.pumpkin;
 using KitchenBlargleBrew.draft.yeast;
 using KitchenBlargleBrew.kegerator;
 using KitchenBlargleBrew.michelada;
@@ -138,6 +140,22 @@ namespace KitchenBlargleBrew
         public static Item WheatCooled => GDOUtils.GetCastedGDO<Item, WheatCooled>();
         public static Item WheatFinished => GDOUtils.GetCastedGDO<Item, WheatFinished>();
         public static Appliance WheatFermenter => GDOUtils.GetCastedGDO<Appliance, WheatFermenter>();
+
+        public static Dish HomebrewPumpkinDish = GDOUtils.GetCastedGDO<Dish, HomebrewPumpkinDish>();
+        public static Item Pumpkin => (Item) GDOUtils.GetExistingGDO(ItemReferences.Pumpkin);
+        public static Item PumpkinPieces => (Item) GDOUtils.GetExistingGDO(ItemReferences.PumpkinPieces);
+        public static Item PumpkinMashUnheated => GDOUtils.GetCastedGDO<Item, PumpkinMashUnheated>();
+        public static Item PumpkinMashWithTrash => GDOUtils.GetCastedGDO<Item, PumpkinMashWithTrash>();
+        public static Item PumpkinHeated => GDOUtils.GetCastedGDO<Item, PumpkinHeated>();
+        public static Item PumpkinBoiling => GDOUtils.GetCastedGDO<Item, PumpkinBoiling>();
+        public static Item PumpkinBoiledWithTrash => GDOUtils.GetCastedGDO<Item, PumpkinBoiledWithTrash>();
+        public static Item PumpkinBoiled => GDOUtils.GetCastedGDO<Item, PumpkinBoiled>();
+        public static Item PumpkinCooled => GDOUtils.GetCastedGDO<Item, PumpkinCooled>();
+        public static Item PumpkinFinished => GDOUtils.GetCastedGDO<Item, PumpkinFinished>();
+        public static Item PumpkinExtractCanClosed => GDOUtils.GetCastedGDO<Item, PumpkinExtractCanClosed>();
+        public static Item PumpkinExtractCanOpen => GDOUtils.GetCastedGDO<Item, PumpkinExtractCanOpen>();
+        public static Appliance PumpkinExtractCanProvider => GDOUtils.GetCastedGDO<Appliance, PumpkinExtractCanProvider>();
+        public static Appliance PumpkinFermenter => GDOUtils.GetCastedGDO<Appliance, PumpkinFermenter>();
 
 
         public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
