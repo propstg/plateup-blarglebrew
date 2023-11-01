@@ -30,6 +30,9 @@ namespace KitchenBlargleBrew.kegerator {
                 case 2:
                     MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.wheatLabel);
                     break;
+                case 3:
+                    MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.pumpkinLabelKegerator);
+                    break;
                 default:
                     MaterialUtils.ApplyMaterial(labelGdo, "", CommonMaterials.Keg.emptyLabel);
                     break;

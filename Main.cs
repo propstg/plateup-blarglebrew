@@ -251,7 +251,7 @@ namespace KitchenBlargleBrew {
         protected override void OnUpdate() {
             if (!colorblindSetup) {
                 colorblindSetup = true;
-                new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider }
+                new List<Appliance> { Refs.KegLightProvider, Refs.KegStoutProvider, Refs.KegProviderPumpkin }
                     .Select(appliance => appliance.Prefab)
                     .ForEach(prefab => {
                         var existingColourBlindChild = GameObjectUtils.GetChild(prefab, "Colour Blind");

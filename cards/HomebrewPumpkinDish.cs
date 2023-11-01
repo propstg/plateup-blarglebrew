@@ -27,15 +27,6 @@ namespace BlargleBrew.cards {
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => true;
 
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-            "We Don't Card",
-            "Buzzkill Jimmy's",
-            "The Parting Glass",
-            "The Leaky Barrel",
-            "Hole in the Wall",
-        };
-
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.Pumpkin,
             Refs.BeerMugPumpkin,
@@ -69,7 +60,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Pumpkin", "Adds homebrew pumpkin as a main.", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Pumpkin", "Adds homebrew pumpkin.", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

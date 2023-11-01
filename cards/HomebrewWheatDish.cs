@@ -16,7 +16,7 @@ namespace BlargleBrew.cards {
         public override GameObject DisplayPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("HomebrewDisplay");
 
-        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.None;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
         public override bool IsAvailableAsLobbyOption =>
             #if DEBUG
@@ -68,7 +68,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Wheat", "Adds homebrew wheat as a main.", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Wheat", "Adds homebrew wheat.", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

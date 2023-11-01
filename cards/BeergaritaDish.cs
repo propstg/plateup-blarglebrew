@@ -17,6 +17,7 @@ namespace BlargleBrew.cards {
         public override GameObject IconPrefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("DraftDisplay");
 
         public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
+        public override DishCustomerChange CustomerMultiplier => DishCustomerChange.SmallDecrease;
         public override bool RequiredNoDishItem => true;
         public override bool IsAvailableAsLobbyOption =>
             #if DEBUG

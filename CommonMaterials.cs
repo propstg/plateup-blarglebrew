@@ -33,7 +33,7 @@ namespace BlargleBrew {
         public static Material[] wheat => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Wheat", 0xFFD15E, 0.75f));
         public static Material[] wheatSack => new Material[] { MaterialUtils.GetExistingMaterial("Sack - Brown"), MaterialUtils.CreateFlat("BlargleBrew - Wheat Sack", 0xAB8C3E) };
         public static Material[] thinGlass => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Thin Glass", 0xF6FEFF, 0.1f));
-        public static Material[] pumpkinBeer => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pumpkin", 0xFF7518, 0.8f));
+        public static Material[] pumpkinBeer => wrap(MaterialUtils.CreateTransparent("BlargleBrew - Pumpkin", 0xFF7518, 0.9f));
         public static Material[] pumpkinKeg => wrap(MaterialUtils.CreateFlat("BlargleBrew - Pumpkin Keg", 0xFF7518));
 
         public static class Bottle {
@@ -76,6 +76,7 @@ namespace BlargleBrew {
             public static Material[] stoutLabel => metalBlack;
             public static Material[] wheatLabel => postitYellow;
             public static Material[] pumpkinLabel => metalBlack;
+            public static Material[] pumpkinLabelKegerator => pumpkinKeg;
             public static Material[] pumpkinBody => pumpkinKeg;
             public static Material[] emptyLabel => metalDirty;
         }
