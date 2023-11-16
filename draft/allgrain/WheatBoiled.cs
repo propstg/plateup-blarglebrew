@@ -2,6 +2,7 @@
 using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
+using KitchenLib.References;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,12 +27,13 @@ namespace KitchenBlargleBrew.draft.allgrain {
             ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "WhH";
         }
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
-            new Item.ItemProcess {
-                Duration = 10f,
-                IsBad = false,
-                Process = Refs.CoolProcess,
-                Result = Refs.WheatCooled,
-            }
+            AutomaticItemProcess
+        };
+
+        public override Item.ItemProcess AutomaticItemProcess => new Item.ItemProcess {
+            Result = Refs.WheatCooled,
+            Process = Refs.SteepProcess,
+            Duration = 10f,
         };
     }
 }

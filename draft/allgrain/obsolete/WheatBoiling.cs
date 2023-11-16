@@ -3,12 +3,14 @@ using KitchenBlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.allgrain {
 
+    [Obsolete]
     class WheatBoiling : CustomItemGroup<WheatBoiling.WheatBoilingItemGroupView> {
 
         public override string UniqueNameID => "WheatBoiling";

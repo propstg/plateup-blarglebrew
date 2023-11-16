@@ -8,7 +8,6 @@ using BlargleBrew.michelada;
 using BlargleBrew.processes;
 using BlargleBrew.tequila;
 using IngredientLib.Ingredient.Items;
-using Kitchen;
 using KitchenBlargleBrew.appliances.fermenter;
 using KitchenBlargleBrew.boot;
 using KitchenBlargleBrew.draft.allgrain;
@@ -22,9 +21,13 @@ using KitchenData;
 using KitchenLib.References;
 using KitchenLib.Utils;
 
-namespace KitchenBlargleBrew
-{
+namespace KitchenBlargleBrew {
     public class Refs {
+
+        public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
+        public static Process CookProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook);
+        public static Process CoolProcess => GDOUtils.GetCastedGDO<Process, Cool>();
+        public static Process SteepProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.SteepTea);
 
         public static Appliance KegStoutProvider => GDOUtils.GetCastedGDO<Appliance, KegProviderStout>();
         public static Appliance KegLightProvider => GDOUtils.GetCastedGDO<Appliance, KegProviderWheat>();
@@ -156,11 +159,5 @@ namespace KitchenBlargleBrew
         public static Item PumpkinExtractCanOpen => GDOUtils.GetCastedGDO<Item, PumpkinExtractCanOpen>();
         public static Appliance PumpkinExtractCanProvider => GDOUtils.GetCastedGDO<Appliance, PumpkinExtractCanProvider>();
         public static Appliance PumpkinFermenter => GDOUtils.GetCastedGDO<Appliance, PumpkinFermenter>();
-
-
-        public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
-        public static Process CookProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook);
-        public static Process CoolProcess => GDOUtils.GetCastedGDO<Process, Cool>();
-        public static Process SteepProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.SteepTea);
     }
 }

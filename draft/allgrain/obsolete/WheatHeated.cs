@@ -3,10 +3,12 @@ using KitchenData;
 using KitchenLib.Colorblind;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.allgrain {
 
+    [Obsolete]
     public class WheatHeated : CustomItem {
 
         public override string UniqueNameID => "WheatHeated";

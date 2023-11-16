@@ -64,7 +64,7 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Chop/grind grains. Add to pot of water.\nCook.\nRemove grains.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Chop/grind grains. Add to pot of water with hops.\nCook.\nLet it cool down.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

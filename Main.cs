@@ -65,8 +65,8 @@ namespace KitchenBlargleBrew {
 
             registerCoolProcess();
             registerCommonHomebrewItems();
-            registerWheatHomebrewItems();
             registerStoutHomebrewItems();
+            registerWheatHomebrewItems();
             registerPumpkinHomebrewItems();
 
             //AddGameDataObject<PeanutBowlDish>();
@@ -206,8 +206,8 @@ namespace KitchenBlargleBrew {
             AddGameDataObject<WheatHeated>();
             AddGameDataObject<WheatBoiling>();
             AddGameDataObject<WheatBoiledWithTrash>();
-            AddGameDataObject<WheatBoiled>();
             AddGameDataObject<WheatCooled>();
+            AddGameDataObject<WheatBoiled>();
             AddGameDataObject<WheatFinished>();
         }
 

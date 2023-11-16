@@ -35,6 +35,13 @@ namespace BlargleBrew.draft.allgrain {
                     Refs.WheatGrainMilled,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>() {
+                    Refs.HopsBag,
+                }
+            },
         };
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
@@ -42,7 +49,7 @@ namespace BlargleBrew.draft.allgrain {
                 Duration = 10f,
                 IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.WheatMashWithTrash,
+                Result = Refs.WheatBoiled,
             }
         };
 
@@ -81,10 +88,12 @@ namespace BlargleBrew.draft.allgrain {
                         },
                         DrawAll = true,
                     },
+                    // TODO hops bag
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "Wh", Item = Refs.WheatGrainMilled }
+                    new ColourBlindLabel() { Text = "Wh", Item = Refs.WheatGrainMilled },
+                    new ColourBlindLabel() { Text = "H", Item = Refs.HopsBag }
                 };
             }
         }
