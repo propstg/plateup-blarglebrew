@@ -37,12 +37,12 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.5.0";
+        public const string MOD_VERSION = "0.6.0";
         public const string MOD_AUTHOR = "blargle";
 
         public static AssetBundle bundle;
 
-        public BlargleBrewMod() : base(MOD_ID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, ">=1.1.7", Assembly.GetExecutingAssembly()) { }
+        public BlargleBrewMod() : base(MOD_ID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, ">=1.1.8", Assembly.GetExecutingAssembly()) { }
 
         protected override void OnPostActivate(Mod mod) {
             Log($"v{MOD_VERSION} initialized");

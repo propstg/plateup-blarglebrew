@@ -12,7 +12,7 @@ namespace BlargleBrew.draft.extract {
     class ExtractUncooked : CustomItemGroup<ExtractUncooked.UncookedExtractItemGroupView> {
 
         public override string UniqueNameID => "UncookedExtract";
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractUncooked");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("ExtractBoiling");
         public override ItemCategory ItemCategory => ItemCategory.Generic;
         public override ItemStorage ItemStorageFlags => ItemStorage.Small;
         public override Item DisposesTo => Refs.Pot;
@@ -35,6 +35,13 @@ namespace BlargleBrew.draft.extract {
                     Refs.ExtractCanOpen,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>() {
+                    Refs.HopsBag,
+                }
+            },
         };
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
@@ -42,13 +49,18 @@ namespace BlargleBrew.draft.extract {
                 Duration = 10f,
                 IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.ExtractHeated,
+                Result = Refs.ExtractBoiled,
             }
         };
 
         public override void OnRegister(ItemGroup gameDataObject) {
+            // TODO add a second liquid and set it to water?
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
             MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);
+            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Hops.hops);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Hops.clip);
+            MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
 
             Prefab.GetComponent<UncookedExtractItemGroupView>()?.Setup(Prefab);
 
@@ -66,17 +78,24 @@ namespace BlargleBrew.draft.extract {
                         GameObject = GameObjectUtils.GetChildObject(prefab, "pot"),
                     },
                     new ComponentGroup() {
-                        Item = Refs.Water,
+                        Item = Refs.ExtractCanOpen,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
                     },
                     new ComponentGroup() {
-                        Item = Refs.ExtractCanOpen,
-                        GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
+                        Item = Refs.HopsBag,
+                        Objects = new List<GameObject> {
+                            GameObjectUtils.GetChildObject(prefab, "bag"),
+                            GameObjectUtils.GetChildObject(prefab, "bag/bag"),
+                            GameObjectUtils.GetChildObject(prefab, "bag/clip"),
+                            GameObjectUtils.GetChildObject(prefab, "bag/contents"),
+                        },
+                        DrawAll = true,
                     },
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
-                    new ColourBlindLabel() { Text = "Ex", Item = Refs.Water }
+                    new ColourBlindLabel() { Text = "Ex", Item = Refs.ExtractCanOpen },
+                    new ColourBlindLabel() { Text = "H", Item = Refs.HopsBag },
                 };
             }
         }

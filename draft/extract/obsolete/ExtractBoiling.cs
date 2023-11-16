@@ -3,12 +3,14 @@ using KitchenBlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
 
 namespace BlargleBrew.draft.extract {
 
+    [Obsolete]
     class ExtractBoiling : CustomItemGroup<ExtractBoiling.ExtractBoilingItemGroupView> {
 
         public override string UniqueNameID => "ExtractBoiling";
@@ -39,9 +41,8 @@ namespace BlargleBrew.draft.extract {
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             new Item.ItemProcess {
                 Duration = 10f,
-                IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.ExtractBoiledWithTrash,
+                Result = Refs.ExtractBoiled,
             }
         };
 

@@ -161,5 +161,6 @@ namespace KitchenBlargleBrew
         public static Process ChopProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop);
         public static Process CookProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook);
         public static Process CoolProcess => GDOUtils.GetCastedGDO<Process, Cool>();
+        public static Process SteepProcess => (Process)GDOUtils.GetExistingGDO(ProcessReferences.SteepTea);
     }
 }

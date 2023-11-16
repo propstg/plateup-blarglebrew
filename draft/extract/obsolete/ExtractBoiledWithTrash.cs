@@ -2,11 +2,13 @@
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KitchenBlargleBrew.draft.extract {
 
+    [Obsolete]
     public class ExtractBoiledWithTrash : CustomItem {
 
         public override string UniqueNameID => "ExtractBoiledWithTrash";

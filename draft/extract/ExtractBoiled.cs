@@ -1,6 +1,7 @@
 ﻿using BlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
+using KitchenLib.References;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,12 +23,13 @@ namespace KitchenBlargleBrew.draft.extract {
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
         }
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
-            new Item.ItemProcess {
-                Duration = 10f,
-                IsBad = false,
-                Process = Refs.CoolProcess,
-                Result = Refs.ExtractCooled,
-            }
+            AutomaticItemProcess
+        };
+
+        public override Item.ItemProcess AutomaticItemProcess => new Item.ItemProcess {
+            Result = Refs.ExtractCooled,
+            Process = Refs.SteepProcess,
+            Duration = 10f,
         };
     }
 }

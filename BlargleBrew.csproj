@@ -9,6 +9,10 @@
     <PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.10.21" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <AssetBundlePath>C:\Users\Gregory\My project (3)\Assets\StreamingAssets\blarglebrew.assets</AssetBundlePath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="MessagePack">
       <HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.dll</HintPath>
