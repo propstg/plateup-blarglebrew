@@ -27,15 +27,6 @@ namespace BlargleBrew.cards {
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => true;
 
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-            "We Don't Card",
-            "Buzzkill Jimmy's",
-            "The Parting Glass",
-            "The Leaky Barrel",
-            "Hole in the Wall",
-        };
-
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.WheatGrainPortion,
             Refs.BeerWheat,
@@ -44,14 +35,12 @@ namespace BlargleBrew.cards {
             Refs.HopsBag,
             Refs.YeastFull,
             Refs.WheatFinished,
-            Refs.KegLight,
             Refs.CleanEmptyKeg,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
             Refs.CookProcess,
             Refs.ChopProcess,
-            Refs.CoolProcess,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {

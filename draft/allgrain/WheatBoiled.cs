@@ -26,6 +26,7 @@ namespace KitchenBlargleBrew.draft.allgrain {
             clonedColourBlind.transform.localPosition = new Vector3(0, 0.8f, 0);
             ColorblindUtils.getTextMeshProFromClonedObject(clonedColourBlind).text = "WhH";
         }
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             AutomaticItemProcess
         };

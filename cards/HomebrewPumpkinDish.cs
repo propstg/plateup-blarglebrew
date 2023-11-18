@@ -36,14 +36,12 @@ namespace BlargleBrew.cards {
             Refs.HopsBag,
             Refs.YeastFull,
             Refs.PumpkinFinished,
-            Refs.KegPumpkin,
             Refs.CleanEmptyKeg,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
             Refs.CookProcess,
             Refs.ChopProcess,
-            Refs.CoolProcess,
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {

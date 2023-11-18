@@ -3,6 +3,7 @@ using Kitchen;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
@@ -42,6 +43,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                     Refs.PumpkinPieces,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>() {
+                    Refs.HopsBag,
+                }
+            },
         };
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
@@ -49,7 +57,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 Duration = 10f,
                 IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.PumpkinMashWithTrash,
+                Result = Refs.PumpkinBoiled,
             }
         };
 
@@ -88,11 +96,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                         },
                         DrawAll = true,
                     },
+                    // TODO hops
                 };
 
                 ComponentLabels = new List<ColourBlindLabel>() {
                     new ColourBlindLabel() { Text = "Pe", Item = Refs.PumpkinExtractCanOpen},
                     new ColourBlindLabel() { Text = "P", Item = Refs.PumpkinPieces},
+                    new ColourBlindLabel() { Text = "H", Item = Refs.HopsBag},
                 };
             }
         }

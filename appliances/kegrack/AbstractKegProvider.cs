@@ -18,6 +18,7 @@ namespace BlargleBrew.draft {
         protected abstract bool preventReturns { get; }
         protected virtual Material[] kegMaterial => CommonMaterials.Keg.metal;
         protected virtual bool conditionalProvider { get; }
+        protected virtual string labelPath { get; }
 
         public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>(prefabName);
 
@@ -55,8 +56,8 @@ namespace BlargleBrew.draft {
 
         public override void OnRegister(Appliance gdo) {
             MaterialUtils.ApplyMaterial(Prefab, "kegs", kegMaterial);
-            MaterialUtils.ApplyMaterial(Prefab, "labels", labelMaterial);
-            MaterialUtils.ApplyMaterial(Prefab, "rack", CommonMaterials.Keg.rack);
+            MaterialUtils.ApplyMaterial(Prefab, "kegrack", CommonMaterials.Keg.rack);
+            MaterialUtils.ApplyMaterial(Prefab, labelPath, labelMaterial);
             Prefab.AddComponent<ConditionallyPaidProviderView>().Setup(Prefab);
         }
     }
