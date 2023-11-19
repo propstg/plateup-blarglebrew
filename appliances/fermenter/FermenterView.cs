@@ -3,6 +3,7 @@ using Kitchen;
 using KitchenBlargleBrew.components;
 using KitchenLib.Utils;
 using MessagePack;
+using TMPro;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace KitchenBlargleBrew.kegerator {
         public GameObject[] fermentingGauge;
         [SerializeField]
         public GameObject[] finishedGauge;
+        [SerializeField]
+        public TextMeshPro readyCount;
 
         public void Setup(GameObject prefab) {
             fermentingGauge = new GameObject[] {
@@ -61,6 +64,8 @@ namespace KitchenBlargleBrew.kegerator {
                 GameObjectUtils.GetChildObject(prefab, "brite-segment-18"),
                 GameObjectUtils.GetChildObject(prefab, "brite-segment-19"),
             };
+
+            BlargleBrewMod.DebugLog("HERE");
         }
 
         protected override void UpdateData(ViewData viewData) {
@@ -97,6 +102,10 @@ namespace KitchenBlargleBrew.kegerator {
                         MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.emptyLabel);
                         break;
                 }
+            }
+            BlargleBrewMod.DebugLog("readycount null? " + readyCount != null);
+            if (readyCount != null) {
+                readyCount.text = $"<sprite name=\"clock\"> {viewData.fermentingQuantity}\n<sprite name=\"split\"> {viewData.finishedQuantity}";
             }
         }
 
