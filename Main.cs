@@ -280,10 +280,10 @@ namespace KitchenBlargleBrew {
                         GameObject colorBlind = UnityEngine.Object.Instantiate(Refs.Pie.Prefab.transform.Find("Colour Blind").gameObject);
                         colorBlind.gameObject.transform.SetParent(prefab.transform, false);
                         colorBlind.name = "ReadyCount";
-                        Transform title = colourBlind.transform.Find("Title");
+                        Transform title = colorBlind.transform.Find("Title");
                         title.localPosition = Vector3.up * 1.25f;
                         title.gameObject.SetActive(true);
-                        UnityEngine.Object.Destroy(colourBlind.gameObject.GetComponent<ColourBlindMode>());
+                        UnityEngine.Object.Destroy(colorBlind.gameObject.GetComponent<ColourBlindMode>());
                         prefab.GetComponent<FermenterView>().readyCount = title.gameObject.GetComponent<TextMeshPro>();
                     });
             }
