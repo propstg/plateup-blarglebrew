@@ -44,6 +44,10 @@ namespace BlargleBrew.cards {
             Refs.ChopProcess,
         };
 
+        public override HashSet<Item> BlockProviders => new HashSet<Item> {
+            Refs.KegPumpkin
+        };
+
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
             new Dish.MenuItem() { Phase = MenuPhase.Starter, Item = Refs.BeerMugPumpkin, Weight = 1 },
             new Dish.MenuItem() { Phase = MenuPhase.Main, Item = Refs.BeerMugPumpkin, Weight = 2 },

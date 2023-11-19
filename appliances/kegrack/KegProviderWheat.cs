@@ -11,7 +11,7 @@ namespace BlargleBrew.draft {
         protected override string name => "Wheat";
         protected override Material[] labelMaterial => CommonMaterials.Keg.wheatLabel;
         protected override bool preventReturns => true;
-        protected override bool conditionalProvider => true;
+        protected override bool conditionalProvider => false;
         protected override string labelPath => "keg-bands";
         public override List<Appliance> Upgrades => new List<Appliance>() {
             Refs.KegEmptyProvider

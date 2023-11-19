@@ -64,8 +64,6 @@ namespace KitchenBlargleBrew.kegerator {
                 GameObjectUtils.GetChildObject(prefab, "brite-segment-18"),
                 GameObjectUtils.GetChildObject(prefab, "brite-segment-19"),
             };
-
-            BlargleBrewMod.DebugLog("HERE");
         }
 
         protected override void UpdateData(ViewData viewData) {
@@ -103,13 +101,12 @@ namespace KitchenBlargleBrew.kegerator {
                         break;
                 }
             }
-            BlargleBrewMod.DebugLog("readycount null? " + readyCount != null);
             if (readyCount != null) {
                 readyCount.text = $"<sprite name=\"clock\"> {viewData.fermentingQuantity}\n<sprite name=\"split\"> {viewData.finishedQuantity}";
             }
         }
 
-        public class UpdateView : IncrementalViewSystemBase<VariableProviderView.ViewData> {
+        public class UpdateView : IncrementalViewSystemBase<FermenterView.ViewData> {
 
             private EntityQuery viewsQuery;
 
@@ -148,10 +145,10 @@ namespace KitchenBlargleBrew.kegerator {
             public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
-                BlargleBrewMod.Log($"checking if changed. fermentingQuantity = {fermentingQuantity} = {check.finishedQuantity}, finishedQuantity = {finishedQuantity} = {check.finishedQuantity}, colorId = {colorId} = {check.colorId} ");
-                return fermentingQuantity == check.fermentingQuantity
+                var isSame = fermentingQuantity == check.fermentingQuantity
                     && finishedQuantity == check.finishedQuantity
                     && colorId == check.colorId;
+                return !isSame;
             }
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) {

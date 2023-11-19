@@ -159,5 +159,6 @@ namespace KitchenBlargleBrew {
         public static Item PumpkinExtractCanOpen => GDOUtils.GetCastedGDO<Item, PumpkinExtractCanOpen>();
         public static Appliance PumpkinExtractCanProvider => GDOUtils.GetCastedGDO<Appliance, PumpkinExtractCanProvider>();
         public static Appliance PumpkinFermenter => GDOUtils.GetCastedGDO<Appliance, PumpkinFermenter>();
+        public static Item Pie => (Item) GDOUtils.GetExistingGDO(ItemReferences.PieMeatCooked);
     }
 }

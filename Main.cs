@@ -273,10 +273,13 @@ namespace KitchenBlargleBrew {
                 new List<Appliance> { Refs.ExtractFermenter }
                     .Select(appliance => appliance.Prefab)
                     .ForEach(prefab => {
-                        Log("HERE");
-                        GameObject colourBlind = UnityEngine.Object.Instantiate(GameData.Main.Get<Item>(ItemReferences.PieMeatCooked).Prefab.transform.Find("Colour Blind").gameObject);
-                        colourBlind.gameObject.transform.SetParent(prefab.transform, false);
-                        colourBlind.name = "ReadyCount";
+                        if (GameObjectUtils.GetChild(prefab, "ReadyCount") != default) {
+                            return;
+                        }
+
+                        GameObject colorBlind = UnityEngine.Object.Instantiate(Refs.Pie.Prefab.transform.Find("Colour Blind").gameObject);
+                        colorBlind.gameObject.transform.SetParent(prefab.transform, false);
+                        colorBlind.name = "ReadyCount";
                         Transform title = colourBlind.transform.Find("Title");
                         title.localPosition = Vector3.up * 1.25f;
                         title.gameObject.SetActive(true);
