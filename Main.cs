@@ -27,8 +27,11 @@ using KitchenLib.Utils;
 using KitchenMods;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 
 namespace KitchenBlargleBrew {
@@ -37,8 +40,8 @@ namespace KitchenBlargleBrew {
 
         public const string MOD_ID = "blargle.BlargleBrew";
         public const string MOD_NAME = "BlargleBrew";
-        public const string MOD_VERSION = "0.6.0";
         public const string MOD_AUTHOR = "blargle";
+        public static readonly string MOD_VERSION = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.ToString();
 
         public static AssetBundle bundle;
 
@@ -267,11 +270,29 @@ namespace KitchenBlargleBrew {
                         newColorBlindPrefab.SetActive(false);
                         UnityEngine.Object.Destroy(newColorBlindPrefab.GetComponentInChildren<ColourBlindMode>());
                     });
+                new List<Appliance> { Refs.ExtractFermenter }
+                    .Select(appliance => appliance.Prefab)
+                    .ForEach(prefab => {
+                        Log("HERE");
+                        GameObject colourBlind = UnityEngine.Object.Instantiate(GameData.Main.Get<Item>(ItemReferences.PieMeatCooked).Prefab.transform.Find("Colour Blind").gameObject);
+                        colourBlind.gameObject.transform.SetParent(prefab.transform, false);
+                        colourBlind.name = "ReadyCount";
+                        Transform title = colourBlind.transform.Find("Title");
+                        title.localPosition = Vector3.up * 1.25f;
+                        title.gameObject.SetActive(true);
+                        UnityEngine.Object.Destroy(colourBlind.gameObject.GetComponent<ColourBlindMode>());
+                        prefab.GetComponent<FermenterView>().readyCount = title.gameObject.GetComponent<TextMeshPro>();
+                    });
             }
         }
 
-        public static void Log(object message) {
-            Debug.Log($"[{MOD_ID}] {message}");
+        [Conditional("DEBUG")]
+        public static void DebugLog(object message, [CallerFilePath] string callingFilePath = "", [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null) {
+            Log(message, callingFilePath, lineNumber, caller);
+        }
+
+        public static void Log(object message, [CallerFilePath] string callingFilePath = "", [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null) {
+            UnityEngine.Debug.Log($"[{MOD_ID}] [{caller}({callingFilePath}:{lineNumber})] {message}");
         }
     }
 
