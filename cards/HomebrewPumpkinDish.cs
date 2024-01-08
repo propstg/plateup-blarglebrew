@@ -30,7 +30,7 @@ namespace BlargleBrew.cards {
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.Pumpkin,
             Refs.BeerMugPumpkin,
-            Refs.PumpkinExtractCanClosed,
+            Refs.PumpkinExtractCanOpen,
             Refs.Pot,
             Refs.Water,
             Refs.HopsBag,
@@ -58,7 +58,7 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add pumpkin extract, chopped pumpkin, ands hops to pot of water.\nCook.\nLet it cool down.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Add pumpkin extract, chopped pumpkin, and hops to pot of water.\nCook.\nLet it cool down.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {

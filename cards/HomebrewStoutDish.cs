@@ -32,7 +32,7 @@ namespace BlargleBrew.cards {
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.ExtractCanClosed,
+            Refs.ExtractCanOpen,
             Refs.BeerStout,
             Refs.Pot,
             Refs.Water,
@@ -61,7 +61,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout.", "Bring a large map!") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout", "Bring a large map!") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

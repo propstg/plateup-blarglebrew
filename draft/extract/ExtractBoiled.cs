@@ -1,7 +1,7 @@
 ﻿using BlargleBrew;
+using IngredientLib.Util;
 using KitchenData;
 using KitchenLib.Customs;
-using KitchenLib.References;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +21,9 @@ namespace KitchenBlargleBrew.draft.extract {
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
             MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
+            Prefab.ApplyVisualEffect("Steam");
         }
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             AutomaticItemProcess
         };

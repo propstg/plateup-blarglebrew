@@ -15,7 +15,6 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
         public override ItemValue ItemValue => ItemValue.None;
         public override string ColourBlindTag => "Pe";
-        public override Appliance DedicatedProvider => Refs.PumpkinExtractCanProvider;
 
         public override void OnRegister(Item item) {
             MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.PumpkinBrew.glass);

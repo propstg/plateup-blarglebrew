@@ -9,6 +9,7 @@ namespace BlargleBrew.draft {
 
         protected override string prefabName => "KegRackSmallPumpkin";
         protected override string name => "Keg Rack Pumpkin";
+        protected override string displayName => "Pumpkin";
         protected override Material[] labelMaterial => CommonMaterials.Keg.pumpkinLabel;
         protected override Material[] kegMaterial => CommonMaterials.Keg.pumpkinBody;
         protected override bool preventReturns => true;

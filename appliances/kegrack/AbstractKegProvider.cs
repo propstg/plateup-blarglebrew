@@ -13,6 +13,7 @@ namespace BlargleBrew.draft {
     public abstract class AbstractKegProvider<T> : CustomAppliance {
 
         protected abstract string name { get; }
+        protected abstract string displayName { get; }
         protected abstract Material[] labelMaterial { get; }
         protected abstract string prefabName { get; }
         protected abstract bool preventReturns { get; }
@@ -49,8 +50,8 @@ namespace BlargleBrew.draft {
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {
-                Name = $"Keg {name}",
-                Description = $"Provides {name} keg"
+                Name = $"Keg {displayName}",
+                Description = $"Provides {displayName} keg"
             })
         };
 

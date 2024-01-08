@@ -32,7 +32,7 @@ namespace KitchenBlargleBrew.draft.extract {
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {
-            KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<ExtractCanClosed>().GameDataObject.ID)
+            KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<ExtractCanOpen>().GameDataObject.ID)
         };
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {

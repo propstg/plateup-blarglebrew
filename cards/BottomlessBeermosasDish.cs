@@ -49,7 +49,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bottomless Beermosas", ":D", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Bottomless Beermosas", "Adds Beermosas for all phases", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {
