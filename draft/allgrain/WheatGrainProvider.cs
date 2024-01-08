@@ -31,6 +31,7 @@ namespace KitchenBlargleBrew.draft.allgrain {
             KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<WheatGrainPortion>().GameDataObject.ID)
         };
 
+
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
             (Locale.English, new ApplianceInfo() {
                 Name = "Wheat Grain",

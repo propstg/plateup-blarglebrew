@@ -19,7 +19,7 @@ namespace KitchenBlargleBrew.appliances.fermenter {
         public override PriceTier PriceTier => PriceTier.ExtremelyExpensive;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking;
         public override bool IsNonInteractive => false;
-        public override bool IsPurchasable => true;
+        public override bool IsPurchasable => false;
         public override bool SellOnlyAsDuplicate => true;
         public override string UniqueNameID => $"BlargleBrew - Fermenter {beerName}";
 
