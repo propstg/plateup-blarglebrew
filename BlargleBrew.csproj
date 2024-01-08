@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
-		<LangTarget>8</LangTarget>
+		<LangVersion>8</LangVersion>
 		<PathMap>$(MSBuildThisFileDirectory)=./</PathMap>
 		<VersionPrefix>0.6.0</VersionPrefix>
 	</PropertyGroup>

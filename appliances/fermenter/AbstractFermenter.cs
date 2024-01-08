@@ -25,10 +25,11 @@ namespace KitchenBlargleBrew.appliances.fermenter {
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty>() {
             new CFermenterState() {
-                finishedQuantity = 5,
+                finishedQuantity = 0,
                 fermentingQuantity = 0,
                 colorId = colorId,
             },
+            new CNewlySpawnedFermenter() { },
         };
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {
