@@ -3,6 +3,7 @@ using Kitchen;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static KitchenData.ItemGroup;
@@ -33,6 +34,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 IsMandatory = true,
                 Items = new List<Item>() {
                     Refs.PumpkinExtractCanOpen,
+                    Refs.PumpkinExtractCanClosed,
                 }
             },
             new ItemSet() {
@@ -42,6 +44,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                     Refs.PumpkinPieces,
                 }
             },
+            new ItemSet() {
+                Max = 1,
+                Min = 1,
+                Items = new List<Item>() {
+                    Refs.HopsBag,
+                }
+            },
         };
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
@@ -49,16 +58,19 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 Duration = 10f,
                 IsBad = false,
                 Process = Refs.CookProcess,
-                Result = Refs.PumpkinMashWithTrash,
+                Result = Refs.PumpkinBoiled,
             }
         };
 
         public override void OnRegister(ItemGroup gameDataObject) {
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.PumpkinBrew.pot);
             MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.PumpkinBrew.pumpkinExtractDiluted);
-            MaterialUtils.ApplyMaterial(Prefab, "bag/contents", CommonMaterials.Keg.pumpkinLabel);
-            MaterialUtils.ApplyMaterial(Prefab, "bag/clip", CommonMaterials.Keg.pumpkinLabel);
-            MaterialUtils.ApplyMaterial(Prefab, "bag/bag", CommonMaterials.Hops.bag);
+            MaterialUtils.ApplyMaterial(Prefab, "grains/contents", CommonMaterials.Keg.pumpkinLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "grains/clip", CommonMaterials.Keg.pumpkinLabel);
+            MaterialUtils.ApplyMaterial(Prefab, "grains/bag", CommonMaterials.Hops.bag);
+            MaterialUtils.ApplyMaterial(Prefab, "hops/contents", CommonMaterials.Hops.hops);
+            MaterialUtils.ApplyMaterial(Prefab, "hops/clip", CommonMaterials.Hops.clip);
+            MaterialUtils.ApplyMaterial(Prefab, "hops/bag", CommonMaterials.Hops.bag);
 
             Prefab.GetComponent<PumpkinMashUnheatedItemGroupView>()?.Setup(Prefab);
 
@@ -80,11 +92,24 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                         GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
                     },
                     new ComponentGroup() {
+                        Item = Refs.PumpkinExtractCanClosed,
+                        GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
+                    },
+                    new ComponentGroup() {
                         Item = Refs.PumpkinPieces,
                         Objects = new List<GameObject> {
-                            GameObjectUtils.GetChildObject(prefab, "bag/contents"),
-                            GameObjectUtils.GetChildObject(prefab, "bag/clip"),
-                            GameObjectUtils.GetChildObject(prefab, "bag/bag"),
+                            GameObjectUtils.GetChildObject(prefab, "grains/contents"),
+                            GameObjectUtils.GetChildObject(prefab, "grains/clip"),
+                            GameObjectUtils.GetChildObject(prefab, "grains/bag"),
+                        },
+                        DrawAll = true,
+                    },
+                    new ComponentGroup() {
+                        Item = Refs.HopsBag,
+                        Objects = new List<GameObject> {
+                            GameObjectUtils.GetChildObject(prefab, "hops/contents"),
+                            GameObjectUtils.GetChildObject(prefab, "hops/clip"),
+                            GameObjectUtils.GetChildObject(prefab, "hops/bag"),
                         },
                         DrawAll = true,
                     },
@@ -93,6 +118,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 ComponentLabels = new List<ColourBlindLabel>() {
                     new ColourBlindLabel() { Text = "Pe", Item = Refs.PumpkinExtractCanOpen},
                     new ColourBlindLabel() { Text = "P", Item = Refs.PumpkinPieces},
+                    new ColourBlindLabel() { Text = "H", Item = Refs.HopsBag},
                 };
             }
         }

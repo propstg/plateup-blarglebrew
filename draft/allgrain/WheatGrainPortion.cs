@@ -23,7 +23,7 @@ namespace KitchenBlargleBrew.draft.allgrain {
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
             new Item.ItemProcess {
-                Duration = 5f,
+                Duration = 1f,
                 IsBad = false,
                 Process = Refs.ChopProcess,
                 Result = Refs.WheatGrainMilled

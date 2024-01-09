@@ -27,15 +27,6 @@ namespace BlargleBrew.cards {
         public override bool RequiredNoDishItem => true;
         public override bool IsUnlockable => true;
 
-        public override List<string> StartingNameSet => new List<string> {
-            "I'm Ok",
-            "We Don't Card",
-            "Buzzkill Jimmy's",
-            "The Parting Glass",
-            "The Leaky Barrel",
-            "Hole in the Wall",
-        };
-
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
             Refs.WheatGrainPortion,
             Refs.BeerWheat,
@@ -44,14 +35,16 @@ namespace BlargleBrew.cards {
             Refs.HopsBag,
             Refs.YeastFull,
             Refs.WheatFinished,
-            Refs.KegLight,
             Refs.CleanEmptyKeg,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
             Refs.CookProcess,
             Refs.ChopProcess,
-            Refs.CoolProcess,
+        };
+
+        public override HashSet<Item> BlockProviders => new HashSet<Item> {
+            Refs.KegLight
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
@@ -64,11 +57,11 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Chop/grind grains. Add to pot of water.\nCook.\nRemove grains.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Chop/grind grains. Add to pot of water with hops.\nCook.\nLet it cool down.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Wheat", "Adds homebrew wheat.", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew Wheat", "Adds homebrew wheat", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

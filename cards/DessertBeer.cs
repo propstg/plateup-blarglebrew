@@ -51,7 +51,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("One last round", "Customers order more beers for dessert.", "DRINK RESPONSIBLY") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("One last round", "Customers order more beers for dessert", "DRINK RESPONSIBLY") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

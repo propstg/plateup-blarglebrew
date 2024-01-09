@@ -8,6 +8,7 @@ using Unity.Entities;
 
 namespace BlargleBrew.systems {
 
+    /*
     public class ChangeHardcodedRequirementsSystem : StartOfNightSystem, IModSystem {
 
         //private EntityQuery kegQuery;
@@ -46,4 +47,5 @@ namespace BlargleBrew.systems {
             //kegs.Dispose();
         }
     }
+    */
 }

@@ -3,6 +3,7 @@ using Kitchen;
 using KitchenBlargleBrew.components;
 using KitchenLib.Utils;
 using MessagePack;
+using TMPro;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -15,72 +16,97 @@ namespace KitchenBlargleBrew.kegerator {
         public GameObject[] fermentingGauge;
         [SerializeField]
         public GameObject[] finishedGauge;
+        [SerializeField]
+        public TextMeshPro readyCount;
 
         public void Setup(GameObject prefab) {
             fermentingGauge = new GameObject[] {
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-0"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-1"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-2"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-3"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-4"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-5"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-6"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-7"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-8"),
-                GameObjectUtils.GetChildObject(prefab, "fermenter-gauge-segment-9"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-0"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-1"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-2"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-3"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-4"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-5"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-6"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-7"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-8"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-9"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-10"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-11"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-12"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-13"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-14"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-15"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-16"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-17"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-18"),
+                GameObjectUtils.GetChildObject(prefab, "fermenter-segment-19"),
             };
             finishedGauge = new GameObject[] {
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-0"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-1"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-2"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-3"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-4"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-5"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-6"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-7"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-8"),
-                GameObjectUtils.GetChildObject(prefab, "brite-gauge-segment-9"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-0"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-1"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-2"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-3"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-4"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-5"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-6"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-7"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-8"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-9"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-10"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-11"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-12"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-13"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-14"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-15"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-16"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-17"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-18"),
+                GameObjectUtils.GetChildObject(prefab, "brite-segment-19"),
             };
         }
 
         protected override void UpdateData(ViewData viewData) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 19; i++) {
                 fermentingGauge[i].SetActive(viewData.fermentingQuantity > i);
                 switch (viewData.colorId) {
                     case 1:
-                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.stoutLabel);
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Mug.stoutBeer);
                         break;
                     case 2:
-                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Mug.wheatBeer);
                         break;
                     case 3:
-                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.pumpkinLabelKegerator);
+                        MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Mug.pumpkinBeer);
                         break;
                     default:
                         MaterialUtils.ApplyMaterial(fermentingGauge[i], "", CommonMaterials.Keg.emptyLabel);
                         break;
                 }
             }
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 19; i++) {
                 finishedGauge[i].SetActive(viewData.finishedQuantity > i);
                 switch (viewData.colorId) {
                     case 1:
-                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.stoutLabel);
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Mug.stoutBeer);
                         break;
                     case 2:
-                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.wheatLabel);
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Mug.wheatBeer);
                         break;
                     case 3:
-                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.pumpkinLabelKegerator);
+                        MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Mug.pumpkinBeer);
                         break;
                     default:
                         MaterialUtils.ApplyMaterial(finishedGauge[i], "", CommonMaterials.Keg.emptyLabel);
                         break;
                 }
             }
+            if (readyCount != null) {
+                readyCount.text = $"<sprite name=\"clock\"> {viewData.fermentingQuantity}\n<sprite name=\"split\"> {viewData.finishedQuantity}";
+            }
         }
 
-        public class UpdateView : IncrementalViewSystemBase<VariableProviderView.ViewData> {
+        public class UpdateView : IncrementalViewSystemBase<FermenterView.ViewData> {
 
             private EntityQuery viewsQuery;
 
@@ -119,10 +145,10 @@ namespace KitchenBlargleBrew.kegerator {
             public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
-                BlargleBrewMod.Log($"checking if changed. fermentingQuantity = {fermentingQuantity} = {check.finishedQuantity}, finishedQuantity = {finishedQuantity} = {check.finishedQuantity}, colorId = {colorId} = {check.colorId} ");
-                return fermentingQuantity == check.fermentingQuantity
+                var isSame = fermentingQuantity == check.fermentingQuantity
                     && finishedQuantity == check.finishedQuantity
                     && colorId == check.colorId;
+                return !isSame;
             }
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) {

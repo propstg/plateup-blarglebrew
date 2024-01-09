@@ -1,8 +1,10 @@
-﻿using ApplianceLib.Api.Prefab;
+﻿using ApplianceLib.Api;
+using ApplianceLib.Api.Prefab;
 using Kitchen;
 using KitchenBlargleBrew;
 using KitchenData;
 using KitchenLib.Customs;
+using KitchenLib.References;
 using KitchenLib.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +29,19 @@ namespace BlargleBrew.tequila {
             KitchenPropertiesUtils.GetCItemProvider(Refs.Tequila.ID, 1, 1, false, false, true, false, false, true, false)
         };
 
+        public override List<Appliance.ApplianceProcesses> Processes => new List<Appliance.ApplianceProcesses> {
+            new Appliance.ApplianceProcesses() {
+                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Chop),
+                Speed = 1f,
+                IsAutomatic = false
+            },
+            new Appliance.ApplianceProcesses() {
+                Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Knead),
+                Speed = 1f,
+                IsAutomatic = false
+            },
+        };
+
         public override void SetupPrefab(GameObject prefab) {
             prefab.AttachCounter(CounterType.DoubleDoors);
             var holdTransform = prefab.GetChild("HoldPoint").transform;
@@ -43,6 +58,7 @@ namespace BlargleBrew.tequila {
             ReflectionUtils.GetField<LimitedItemSourceView>("Items").SetValue(sourceView, new List<GameObject>() {
                 GameObjectUtils.GetChildObject(prefab, "HoldPoint/Bottle")
             });
+            ApplianceGroups.AddApplianceToGroup(ApplianceGroup.AllCounters, GDOUtils.GetCastedGDO<Appliance, TequilaBottleProvider>());
         }
     }
 }

@@ -27,12 +27,13 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         }
 
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
-            new Item.ItemProcess {
-                Duration = 10f,
-                IsBad = false,
-                Process = Refs.CoolProcess,
-                Result = Refs.PumpkinCooled,
-            }
+            AutomaticItemProcess
+        };
+
+        public override Item.ItemProcess AutomaticItemProcess => new Item.ItemProcess {
+            Result = Refs.PumpkinCooled,
+            Process = Refs.SteepProcess,
+            Duration = 10f,
         };
     }
 }

@@ -32,7 +32,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {
-            KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<PumpkinExtractCanClosed>().GameDataObject.ID)
+            KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<PumpkinExtractCanOpen>().GameDataObject.ID)
         };
 
         public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> {

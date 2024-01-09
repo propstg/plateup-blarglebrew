@@ -1,22 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <LangTarget>8</LangTarget>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<LangVersion>8</LangVersion>
+		<PathMap>$(MSBuildThisFileDirectory)=./</PathMap>
+		<VersionPrefix>0.6.0</VersionPrefix>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.10.21" />
-  </ItemGroup>
+	<PropertyGroup Label="Override Stack trace file locations">
+		<PathMap>$(MSBuildThisFileDirectory)=./</PathMap>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="MessagePack">
-      <HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.dll</HintPath>
-    </Reference>
-    <Reference Include="MessagePack.Annotations">
-      <HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Yariazen.PlateUp.ModBuildUtilities" Version="1.10.21" />
+	</ItemGroup>
 
+	<PropertyGroup>
+		<AssetBundlePath>C:\Users\Gregory\My project (3)\Assets\StreamingAssets\blarglebrew.assets</AssetBundlePath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="MessagePack">
+			<HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.dll</HintPath>
+		</Reference>
+		<Reference Include="MessagePack.Annotations">
+			<HintPath>E:\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

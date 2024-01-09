@@ -39,7 +39,7 @@ namespace KitchenBlargleBrew.kegerator {
             }
         }
 
-        public class UpdateView : IncrementalViewSystemBase<VariableProviderView.ViewData> {
+        public class UpdateView : IncrementalViewSystemBase<KegeratorView.ViewData> {
 
             private EntityQuery viewsQuery;
 
@@ -72,6 +72,7 @@ namespace KitchenBlargleBrew.kegerator {
                 entities.Dispose();
                 views.Dispose();
                 components.Dispose();
+                holders.Dispose();
             }
         }
 
@@ -84,8 +85,7 @@ namespace KitchenBlargleBrew.kegerator {
             public int colorId;
 
             public bool IsChangedFrom(ViewData check) {
-                BlargleBrewMod.Log($"checking if changed. open != check.open = {open} != {check.open} = {open != check.open}");
-                return open != check.open && colorId != check.colorId;
+                return !(open == check.open && colorId == check.colorId);
             }
 
             public IUpdatableObject GetRelevantSubview(IObjectView view) {

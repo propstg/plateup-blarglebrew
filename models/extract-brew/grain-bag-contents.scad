@@ -1,5 +1,4 @@
 scale([scale, scale, scale])
+rotate(55)
 translate([-20, 0, 50])
-difference() {
-	sphere(d=30);
-}
+sphere(d=30);

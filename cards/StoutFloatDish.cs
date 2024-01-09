@@ -46,7 +46,7 @@ namespace BlargleBrew.cards {
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Stout Float", ":D", "") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Stout Float", "Adds a stout float as a dessert", "") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

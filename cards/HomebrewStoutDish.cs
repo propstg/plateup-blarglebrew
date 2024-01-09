@@ -32,21 +32,23 @@ namespace BlargleBrew.cards {
         };
 
         public override HashSet<Item> MinimumIngredients => new HashSet<Item> {
-            Refs.ExtractCanClosed,
+            Refs.ExtractCanOpen,
             Refs.BeerStout,
             Refs.Pot,
             Refs.Water,
             Refs.HopsBag,
             Refs.YeastFull,
             Refs.ExtractFinished,
-            Refs.KegStout,
             Refs.CleanEmptyKeg,
         };
 
         public override HashSet<Process> RequiredProcesses => new HashSet<Process> {
             Refs.CookProcess,
             Refs.ChopProcess,
-            Refs.CoolProcess,
+        };
+
+        public override HashSet<Item> BlockProviders => new HashSet<Item> {
+            Refs.KegStout
         };
 
         public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>() {
@@ -55,11 +57,11 @@ namespace BlargleBrew.cards {
         };
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string> {
-            { Locale.English, "Add extract to pot of water.\nCook.\nAdd hops.\nCook.\nRemove hops.\nCool.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
+            { Locale.English, "Add extract and hops to pot of water.\nCook.\nLet it cool down.\nAdd yeast.\nAdd to fermenter.\nUse clean, empty keg to retrieve tomorrow.\nServe normally." }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)> {
-            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout.", "Bring a large map!") )}
+            { (Locale.English, LocalisationUtils.CreateUnlockInfo("Homebrew", "Adds homebrew stout", "Bring a large map!") )}
         };
 
         public override void SetupIconPrefab(GameObject prefab) {

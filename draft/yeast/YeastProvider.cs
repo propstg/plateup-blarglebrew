@@ -11,7 +11,7 @@ namespace KitchenBlargleBrew.draft.yeast {
 
     public class YeastProvider : CustomAppliance {
 
-        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("YeastFridge");
+        public override GameObject Prefab => BlargleBrewMod.bundle.LoadAsset<GameObject>("YeastPacketFridge");
         public override PriceTier PriceTier => PriceTier.Medium;
         public override ShoppingTags ShoppingTags => ShoppingTags.Cooking;
         public override bool IsPurchasable => true;
@@ -21,10 +21,10 @@ namespace KitchenBlargleBrew.draft.yeast {
         public override void OnRegister(Appliance gdo) {
             var fridgePrefab = (GDOUtils.GetExistingGDO(ApplianceReferences.SourceMeat) as IHasPrefab)?.Prefab.transform.Find("Fridge").gameObject;
             Prefab.AttachPrefabAsChild(fridgePrefab);
-            MaterialUtils.ApplyMaterial(Prefab, "body", CommonMaterials.Yeast.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "yeast", CommonMaterials.Yeast.yeast);
-            Prefab.transform.Find("body").transform.localPosition += new Vector3(0, 0.5f, 0);
+            MaterialUtils.ApplyMaterial(Prefab, "yeast", CommonMaterials.metalShinyBlue);
+            MaterialUtils.ApplyMaterial(Prefab, "label", CommonMaterials.metalBlack);
             Prefab.transform.Find("yeast").transform.localPosition += new Vector3(0, 0.5f, 0);
+            Prefab.transform.Find("label").transform.localPosition += new Vector3(0, 0.5f, 0);
         }
 
         public override List<IApplianceProperty> Properties => new List<IApplianceProperty> {

@@ -1,4 +1,5 @@
 ﻿using BlargleBrew;
+using IngredientLib.Util;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.Utils;
@@ -20,14 +21,17 @@ namespace KitchenBlargleBrew.draft.extract {
             MaterialUtils.ApplyMaterial(Prefab, "pot", CommonMaterials.ExtractStout.pot);
             MaterialUtils.ApplyMaterial(Prefab, "liquid", CommonMaterials.ExtractStout.extractDiluted);
             MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.ExtractStout.foam);
+            Prefab.ApplyVisualEffect("Steam");
         }
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess> {
-            new Item.ItemProcess {
-                Duration = 10f,
-                IsBad = false,
-                Process = Refs.CoolProcess,
-                Result = Refs.ExtractCooled,
-            }
+            AutomaticItemProcess
+        };
+
+        public override Item.ItemProcess AutomaticItemProcess => new Item.ItemProcess {
+            Result = Refs.ExtractCooled,
+            Process = Refs.SteepProcess,
+            Duration = 10f,
         };
     }
 }
