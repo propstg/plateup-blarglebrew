@@ -33,6 +33,7 @@ namespace BlargleBrew.draft.extract {
                 IsMandatory = true,
                 Items = new List<Item>() {
                     Refs.ExtractCanOpen,
+                    Refs.ExtractCanClosed,
                 }
             },
             new ItemSet() {
@@ -79,6 +80,10 @@ namespace BlargleBrew.draft.extract {
                     },
                     new ComponentGroup() {
                         Item = Refs.ExtractCanOpen,
+                        GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
+                    },
+                    new ComponentGroup() {
+                        Item = Refs.ExtractCanClosed,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
                     },
                     new ComponentGroup() {

@@ -34,6 +34,7 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                 IsMandatory = true,
                 Items = new List<Item>() {
                     Refs.PumpkinExtractCanOpen,
+                    Refs.PumpkinExtractCanClosed,
                 }
             },
             new ItemSet() {
@@ -88,6 +89,10 @@ namespace KitchenBlargleBrew.draft.pumpkin {
                     },
                     new ComponentGroup() {
                         Item = Refs.PumpkinExtractCanOpen,
+                        GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
+                    },
+                    new ComponentGroup() {
+                        Item = Refs.PumpkinExtractCanClosed,
                         GameObject = GameObjectUtils.GetChildObject(prefab, "liquid"),
                     },
                     new ComponentGroup() {
