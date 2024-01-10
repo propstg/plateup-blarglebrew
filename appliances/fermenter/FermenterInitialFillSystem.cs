@@ -2,6 +2,7 @@
 using KitchenBlargleBrew;
 using KitchenBlargleBrew.components;
 using KitchenMods;
+using System;
 using Unity.Collections;
 using Unity.Entities;
 
@@ -27,11 +28,12 @@ namespace BlargleBrew.appliances.fermenter {
 
             int groups = customerScheduleQuery.CalculateEntityCount();
             int maxGroupSize = GetSingleton<SKitchenParameters>().Parameters.MaximumGroupSize;
-            int kegs = minimumKegs + (groups * maxGroupSize) / 5;
+
+            int kegs = minimumKegs + (int) Math.Ceiling((groups * maxGroupSize * 2) / 5f);
 
             BlargleBrewMod.Log($"Found {groups} customer groups");
             BlargleBrewMod.Log($"Found maximum group size of {maxGroupSize}");
-            BlargleBrewMod.Log($"Setting kegs for newly spawned kegs to (groups * maxGroupSize) / 5 + minimumKegs = ({groups} * {maxGroupSize}) / 5 + {minimumKegs} = {kegs}");
+            BlargleBrewMod.Log($"Setting kegs for newly spawned kegs to (groups * maxGroupSize * 2) / 5 + minimumKegs = ({groups} * {maxGroupSize} * 2) / 5 + {minimumKegs} = {kegs}");
 
             for (var i = 0; i < entities.Length; i++) {
                 var entity = entities[i];
