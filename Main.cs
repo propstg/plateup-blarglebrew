@@ -23,6 +23,7 @@ using KitchenData;
 using KitchenLib;
 using KitchenLib.Event;
 using KitchenLib.References;
+using KitchenLib.Registry;
 using KitchenLib.Utils;
 using KitchenMods;
 using System;
@@ -297,6 +298,8 @@ namespace KitchenBlargleBrew {
         public static void Log(object message, [CallerFilePath] string callingFilePath = "", [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null) {
             UnityEngine.Debug.Log($"[{MOD_ID}] [{caller}({callingFilePath}:{lineNumber})] {message}");
         }
+
+        public static bool IsGreenBeerActive => ModRegistery.Registered.Any(entry => entry.Value.ModID == "com.starfluxgames.stpatricksday");
     }
 
 

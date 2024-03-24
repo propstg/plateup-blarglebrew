@@ -46,8 +46,12 @@ namespace BlargleBrew.draft {
 
         public override void OnRegister(ItemGroup gameDataObject) {
             MaterialUtils.ApplyMaterial(Prefab, "glass", CommonMaterials.Mug.glass);
-            MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Mug.wheatBeer);
-            MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.Mug.wheatFoam);
+            if (BlargleBrewMod.IsGreenBeerActive) {
+                MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.wheatGreen);
+            } else {
+                MaterialUtils.ApplyMaterial(Prefab, "beer", CommonMaterials.Mug.wheatBeer);
+                MaterialUtils.ApplyMaterial(Prefab, "foam", CommonMaterials.Mug.wheatFoam);
+            }
             MaterialUtils.ApplyMaterial(Prefab, "orange", CommonMaterials.Mug.orange);
 
             GameObject clonedColourBlind = ColorblindUtils.cloneColourBlindObjectAndAddToItem(gameDataObject);
